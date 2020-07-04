@@ -1,6 +1,7 @@
 vim_to_nvim:
 	rm ~/.config/nvim/init.vim
 	cp ~/.vimrc ~/.config/nvim/init.vim 
+	git config --global core.editor "nvim"
 
 neovim_linux:
 	sudo add-apt-repository ppa:neovim-ppa/unstable  
