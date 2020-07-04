@@ -3,7 +3,7 @@
 export PATH=~/repos/cpip/bin:$PATH:~/.local/bin
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/carlos/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Start vim with the root conda env
 export CONDA_DEFAULT_ENV="root"
@@ -108,10 +108,8 @@ alias vi="nvim"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# needed for using kinsas dataplatform scripts
-export PATH=/Users/carlos/repos/dataplatform/airflow/bin:$PATH
 # needed for using selenium
-export PATH=/Users/carlos/gekodriver/:$PATH
+export PATH=$HOME/gekodriver/:$PATH
 
 # bindkeys to vi
 bindkey -v
@@ -149,16 +147,16 @@ function theme_power
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/carlos/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('$HOME/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/carlos/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/carlos/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/carlos/anaconda3/bin:$PATH"
+        export PATH="$HOME/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-alias config='/usr/bin/git --git-dir=/Users/carlos/.myconfig/ --work-tree=/Users/carlos'
+alias config='/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME'
