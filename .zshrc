@@ -85,12 +85,14 @@ source $ZSH/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+ if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='nvim'
+ else
+   export EDITOR='nvim'
+ fi
 
+alias vi="nvim"
+# alias zshconfig="mate ~/.zshrc"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
