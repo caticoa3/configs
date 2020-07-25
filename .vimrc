@@ -1,3 +1,4 @@
+" test
 set nocompatible               " Be iMproved
 mapclear
 "let g:python_host_prog ='/Users/carlos/anaconda3/envs/python2/bin/python'
@@ -74,15 +75,28 @@ if dein#load_state('~/.cache/dein')
   "call dein#add('honza/vim-snippets')
   call dein#add('scrooloose/nerdcommenter')
 
-  call dein#add('vimwiki/vimwiki')
-  call dein#add('jcc-ne/taskwiki')
-  call dein#add('farseer90718/vim-taskwarrior')
+  "call dein#add('vimwiki/vimwiki')
+  "call dein#add('jcc-ne/taskwiki')
+  "call dein#add('farseer90718/vim-taskwarrior')
   call dein#add('majutsushi/tagbar')
 
   "call dein#add('chrisbra/Recover.vim')
   "
   call dein#add('deoplete-plugins/deoplete-jedi') " async jedi
   call dein#add('Shougo/deoplete.nvim')
+
+  " -- json highlighting
+  call dein#add('elzr/vim-json')
+  
+  " -- markdown dev
+  call dein#add('godlygeek/tabular')
+  call dein#add('plasticboy/vim-markdown')
+
+  call dein#add('vim-pandoc/vim-pandoc-syntax')
+  call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
+					\ 'build': 'sh -c "cd app & yarn install"' })
+
+
 
   " Required:
   call dein#end()
@@ -315,3 +329,8 @@ let g:vimwiki_list = [
             \]
 
 nnoremap <silent> <F3> :redir @a<CR>:g//<CR>:redir END<CR>:new<CR>:put! a<CR>
+
+" -- iamcco/makrkdown-preview.nvim configs
+nnoremap <M-m> :MarkdownPreview<CR>
+let g:mkdp_refresh_slow=1
+let g:mkdp_markdown_css='$HOME/.config/nvim/github-markdown.css' 
