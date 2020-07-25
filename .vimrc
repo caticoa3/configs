@@ -333,4 +333,4 @@ nnoremap <silent> <F3> :redir @a<CR>:g//<CR>:redir END<CR>:new<CR>:put! a<CR>
 " -- iamcco/makrkdown-preview.nvim configs
 nnoremap <M-m> :MarkdownPreview<CR>
 let g:mkdp_refresh_slow=1
-let g:mkdp_markdown_css='$HOME/.config/nvim/github-markdown.css' 
+let g:mkdp_markdown_css='$HOME/.config/nvim/github-markdown.css'

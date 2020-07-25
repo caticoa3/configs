@@ -92,6 +92,7 @@ source $ZSH/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
  fi
 
 alias vi="nvim"
+alias vim="nvim"
 # alias zshconfig="mate ~/.zshrc"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
