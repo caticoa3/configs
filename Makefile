@@ -1,3 +1,13 @@
+dotfile_vc:
+	echo ".myconfig" >> .gitignore
+	mkdir .myconfig
+	git clone --bare https://github.com/caticoa3/configs.git
+	alias config='/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME'
+	config checkout
+
+set_zsh:
+	chsh -s $(which zsh)
+
 vim_to_nvim:
 	rm ~/.config/nvim/init.vim
 	cp ~/.vimrc ~/.config/nvim/init.vim 

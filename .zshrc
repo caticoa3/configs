@@ -93,6 +93,7 @@ source $ZSH/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 alias vi="nvim"
 alias vim="nvim"
+alias vi_swap="cd ~/.local/share/nvim/swap"
 # alias zshconfig="mate ~/.zshrc"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -161,3 +162,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 alias config='/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME'
+
+eval "$(thefuck --alias)"
+
+eval $(thefuck --alias)
