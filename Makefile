@@ -1,7 +1,7 @@
 dotfile_vc:
 	echo ".myconfig" >> .gitignore
 	mkdir .myconfig
-	git clone --bare https://github.com/caticoa3/configs.git
+	git clone --bare https://github.com/caticoa3/configs.git $HOME/.myconfig/
 	alias config='/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME'
 	config checkout
 
