@@ -31,3 +31,15 @@ pimp_zsh_linux:
 setup_conda_linux:
 	wget -c https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
 	bash Anaconda3-2020.07-Linux-x86_64.sh 
+
+# jupyter themes -vim option removes jupyter notebook customizations  
+# need to save custom.js then restore
+jupyter_light:
+	mv ~/.jupyter/custom/custom.js ~/.jupyter/custom/temp_custom.js
+	jt -t grade3 -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T -vim
+	mv ~/.jupyter/custom/temp_custom.js ~/.jupyter/custom/custom.js
+
+jupyter_dark:
+	mv ~/.jupyter/custom/custom.js ~/.jupyter/custom/temp_custom.js
+	jt -t onedork -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T -vim
+	mv ~/.jupyter/custom/temp_custom.js ~/.jupyter/custom/custom.js
