@@ -1,0 +1,27 @@
+{
+  "select_keymap_line_wrap": true,
+  "load_extensions": {
+    "execute_time/ExecuteTime": true,
+    "nbextensions_configurator/config_menu/main": true,
+    "keyboard_shortcut_editor/main": true,
+    "select_keymap/main": true,
+    "varInspector/main": true,
+    "vim_binding/vim_binding": true,
+    "autosavetime/main": true,
+    "toc2/main": true,
+    "snippets_menu/main": true,
+    "collapsible_headings/main": true
+  },
+  "Notebook": {
+    "Header": false,
+    "Toolbar": true
+  },
+  "Cell": {
+    "cm_config": {
+      "lineNumbers": true
+    }
+  },
+  "toc2": {
+    "collapse_to_match_collapsible_headings": true
+  }
+}
