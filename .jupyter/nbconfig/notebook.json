@@ -10,7 +10,8 @@
     "autosavetime/main": true,
     "toc2/main": true,
     "snippets_menu/main": true,
-    "collapsible_headings/main": true
+    "collapsible_headings/main": true,
+    "spellchecker/main": true
   },
   "Notebook": {
     "Header": false,
@@ -22,6 +23,7 @@
     }
   },
   "toc2": {
-    "collapse_to_match_collapsible_headings": true
+    "collapse_to_match_collapsible_headings": true,
+    "number_sections": false
   }
 }
