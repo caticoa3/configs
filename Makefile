@@ -32,11 +32,17 @@ setup_conda_linux:
 	wget -c https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
 	bash Anaconda3-2020.07-Linux-x86_64.sh 
 
+# TODO: Setup conda on OSX and install rich library
+conda_mac:
+	curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+	./Miniconda3-latest-MacOSX-x86_64.sh
+	# conda install rich
+
 # jupyter themes -vim option removes jupyter notebook customizations  
-# need to save custom.js then restore
+# workaround is to save custom.js to a temp file then restore
 jupyter_light:
 	mv ~/.jupyter/custom/custom.js ~/.jupyter/custom/temp_custom.js
-	jt -t grade3 -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T -vim
+	jt -t grade3 -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T -vim -N
 	mv ~/.jupyter/custom/temp_custom.js ~/.jupyter/custom/custom.js
 
 jupyter_dark:
