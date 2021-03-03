@@ -57,8 +57,10 @@ if dein#load_state('~/.cache/dein')
   " -- use vim with the libraries in a conda evn
   "call dein#add('cjrh/vim-conda')
 
-  " -- python dev
+  " -- python linting
+  call dein#add('psf/black', { 'branch': 'stable' }) 
   call dein#add('python-mode/python-mode')
+  " -- python dev
   call dein#add('davidhalter/jedi-vim')
   call dein#add('Konfekt/FastFold')
   call dein#add('tpope/vim-fugitive')
@@ -200,6 +202,7 @@ syntax on
 
 let g:pymode_python = 'python3'
 let g:pymode_folding = 1
+let g:pymode_trim_whitespaces = 0 
 
 " Load rope plugin
 let g:pymode_rope = 0
@@ -290,7 +293,6 @@ set diffopt=filler,vertical
 "let g:UltisnipsUsePythonVersion = 3
 "let g:conda_startup_msg_suppress = 0
 
-" --- vimwiki
 let g:vimwiki_list = [
             \{'path': '~/vimwiki/text/datum',
             \ 'path_html': '~/vimwiki/html/datum',
@@ -334,3 +336,22 @@ nnoremap <silent> <F3> :redir @a<CR>:g//<CR>:redir END<CR>:new<CR>:put! a<CR>
 nnoremap <M-m> :MarkdownPreview<CR>
 let g:mkdp_refresh_slow=1
 let g:mkdp_markdown_css='$HOME/.config/nvim/github-markdown.css'
+
+" -- remove trailing white space except from comments
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction 
+" use Preserve() search with regex for white space of lines that do not
+" being with # passing the command :%s/\(#.\+\)\@<!\s\+$//e as a string needs more esapes 
+nmap <leader># :call Preserve("%s/\\(#.\\+\\)\\@<!\\s\\+$//e")<CR>
+" remove all trailing white space
+nmap <leader>$ :call Preserve("%s/\\s\\+$//e")<CR>
+
