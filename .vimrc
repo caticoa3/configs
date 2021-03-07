@@ -56,6 +56,9 @@ if dein#load_state('~/.cache/dein')
 
   " -- use vim with the libraries in a conda evn
   "call dein#add('cjrh/vim-conda')
+  
+  "call dein#add('neoclide/coc.nvim', { 'merged': 0 })
+  "call dein#add('pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' })
 
   " -- python linting
   call dein#add('psf/black', { 'branch': 'stable' })
@@ -231,6 +234,7 @@ let g:pymode_lint_checker = "pep8, mccabe, pyflakes"
 " Auto check on save
 let g:pymode_lint_write = 1
 
+
 " syntax highlighting
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
@@ -322,3 +326,6 @@ nmap <leader># :call Preserve("%s/\\(#.\\+\\)\\@<!\\s\\+$//e")<CR>
 " remove all trailing white space
 nmap <leader>$ :call Preserve("%s/\\s\\+$//e")<CR>
 
+" text wraping
+autocmd VimEnter * :set wrap " would not work without autocmd
+set wrapmargin=2
