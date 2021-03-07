@@ -166,3 +166,8 @@ alias config='/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME'
 eval "$(thefuck --alias)"
 
 eval $(thefuck --alias)
+
+# google auth
+export GOOGLE_APPLICATION_CREDENTIALS="$HOME/auth/google/default_free.json"
+
+alias dir_tree="ls -R | grep ':' | sed -e 's/://' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
