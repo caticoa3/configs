@@ -53,12 +53,13 @@ if dein#load_state('~/.cache/dein')
   call dein#add('vim-airline/vim-airline')
   call dein#add('vim-airline/vim-airline-themes')
   call dein#add('altercation/vim-colors-solarized')
+  call dein#add('morhetz/gruvbox')
 
   " -- use vim with the libraries in a conda evn
   "call dein#add('cjrh/vim-conda')
 
   " -- python linting
-  call dein#add('psf/black', { 'branch': 'stable' }) 
+  call dein#add('psf/black', { 'branch': 'stable' })
   call dein#add('python-mode/python-mode')
   " -- python dev
   call dein#add('davidhalter/jedi-vim')
@@ -89,7 +90,7 @@ if dein#load_state('~/.cache/dein')
 
   " -- json highlighting
   call dein#add('elzr/vim-json')
-  
+
   " -- markdown dev
   call dein#add('godlygeek/tabular')
   call dein#add('plasticboy/vim-markdown')
@@ -110,6 +111,12 @@ filetype plugin indent on
 syntax enable
 
 colorscheme solarized
+
+" -- gitgutter
+nnoremap <F3> :GitGutterBufferToggle<CR>
+"let g:gitgutter_override_sign_column_highlight = 1
+let g:gitgutter_set_sign_backgrounds = 1
+highlight clear SignColumn
 
 " If you want to install not installed plugins on startup.
 "if dein#check_install()
@@ -134,6 +141,7 @@ set path+=**
 " - Use * to make it fuzzy
 " ---------
 "
+"let g:gitgutter_async=0
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#hunks#enabled = 0
@@ -188,7 +196,7 @@ let g:fastfold_force = 1
 " let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
 " let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
 " -- to be faster, set the fastfold update commands to blank
-let g:fastfold_fold_command_suffixes =  []  
+let g:fastfold_fold_command_suffixes =  []
 let g:fastfold_fold_movement_commands = []
 
 
@@ -202,7 +210,7 @@ syntax on
 
 let g:pymode_python = 'python3'
 let g:pymode_folding = 1
-let g:pymode_trim_whitespaces = 0 
+let g:pymode_trim_whitespaces = 0
 
 " Load rope plugin
 let g:pymode_rope = 0
@@ -271,7 +279,7 @@ vmap <Leader>s :SlimuxREPLSendSelection<CR>
 map <Leader>a :SlimuxShellLast<CR>
 map <Leader>k :SlimuxSendKeysLast<CR>
 
-" -  yankring 
+" -  yankring
 map <Leader><space> :YRShow <CR>
 let g:yankring_replace_n_pkey="<leader> p"
 
@@ -348,9 +356,9 @@ function! Preserve(command)
   " Clean up: restore previous search history, and cursor position
   let @/=_s
   call cursor(l, c)
-endfunction 
+endfunction
 " use Preserve() search with regex for white space of lines that do not
-" being with # passing the command :%s/\(#.\+\)\@<!\s\+$//e as a string needs more esapes 
+" being with # passing the command :%s/\(#.\+\)\@<!\s\+$//e as a string needs more esapes
 nmap <leader># :call Preserve("%s/\\(#.\\+\\)\\@<!\\s\\+$//e")<CR>
 " remove all trailing white space
 nmap <leader>$ :call Preserve("%s/\\s\\+$//e")<CR>
