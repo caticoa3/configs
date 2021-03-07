@@ -1,4 +1,3 @@
-" test
 set nocompatible               " Be iMproved
 mapclear
 "let g:python_host_prog ='/Users/carlos/anaconda3/envs/python2/bin/python'
@@ -66,21 +65,19 @@ if dein#load_state('~/.cache/dein')
   call dein#add('Konfekt/FastFold')
   call dein#add('tpope/vim-fugitive')
   call dein#add('airblade/vim-gitgutter')
-  call dein#add('scrooloose/nerdtree')
   call dein#add('easymotion/vim-easymotion')
+
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('Xuyuanp/nerdtree-git-plugin')
+  call dein#add('ryanoasis/vim-devicons')
 
   call dein#add('christoomey/vim-tmux-navigator')
   call dein#add('epeli/slimux')
 
   call dein#add('vim-scripts/YankRing.vim')
   call dein#add('ctrlpvim/ctrlP.vim')
-  "call dein#add('SirVer/ultisnips')
-  "call dein#add('honza/vim-snippets')
   call dein#add('scrooloose/nerdcommenter')
 
-  "call dein#add('vimwiki/vimwiki')
-  "call dein#add('jcc-ne/taskwiki')
-  "call dein#add('farseer90718/vim-taskwarrior')
   call dein#add('majutsushi/tagbar')
 
   "call dein#add('chrisbra/Recover.vim')
@@ -100,7 +97,6 @@ if dein#load_state('~/.cache/dein')
 					\ 'build': 'sh -c "cd app & yarn install"' })
 
 
-
   " Required:
   call dein#end()
   call dein#save_state()
@@ -111,6 +107,9 @@ filetype plugin indent on
 syntax enable
 
 colorscheme solarized
+
+"remove verticle split highlight
+autocmd! VimEnter,ColorScheme * hi VertSplit ctermbg=none
 
 " -- gitgutter
 nnoremap <F3> :GitGutterBufferToggle<CR>
@@ -141,8 +140,6 @@ set path+=**
 " - Use * to make it fuzzy
 " ---------
 "
-"let g:gitgutter_async=0
-
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#branch#enabled = 0
@@ -279,7 +276,10 @@ vmap <Leader>s :SlimuxREPLSendSelection<CR>
 map <Leader>a :SlimuxShellLast<CR>
 map <Leader>k :SlimuxSendKeysLast<CR>
 
-" -  yankring
+" -- NERDTree related
+let NERDTreeIgnore=['\.git$', '__pycache__$']
+
+" --  yankring
 map <Leader><space> :YRShow <CR>
 let g:yankring_replace_n_pkey="<leader> p"
 
@@ -289,10 +289,6 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 "let g:ctrlp_cmd = 'CtrlPBuffer'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|(\.(swp|ico|git|svn|pyc))'
 
-autocmd FileType wiki,vimwiki set expandtab
-autocmd FileType wiki,vimwiki set tabstop=3
-nnoremap <leader>wa :VimwikiAll2HTML<CR>
-
 " --- vim-fugitive
 set diffopt=filler,vertical
 
@@ -300,43 +296,6 @@ set diffopt=filler,vertical
 "let g:jedi#force_py_version = 3
 "let g:UltisnipsUsePythonVersion = 3
 "let g:conda_startup_msg_suppress = 0
-
-let g:vimwiki_list = [
-            \{'path': '~/vimwiki/text/datum',
-            \ 'path_html': '~/vimwiki/html/datum',
-            \'syntax': 'markdown',
-            \'ext': '.md',
-            \ 'auto_toc': 1,
-            \ 'index': 'index',
-            \ 'template_path': '~/vimwiki/templates/',
-            \ 'template_default': 'def_template',
-            \ 'template_ext': '.html'},
-            \{'path': '~/vimwiki/text/fin',
-            \ 'path_html': '~/vimwiki/html/fin',
-            \'syntax': 'default',
-            \'ext': '.md',
-            \ 'auto_toc': 1,
-            \ 'index': 'index',
-            \ 'template_path': '~/vimwiki/templates/',
-            \ 'template_default': 'def_template',
-            \ 'template_ext': '.html'},
-            \{'path': '~/vimwiki/text/general',
-            \ 'path_html': '~/vimwiki/html/general',
-            \'syntax': 'default',
-            \'ext': '.wiki',
-            \ 'auto_toc': 1,
-            \ 'index': 'index',
-            \ 'template_path': '~/vimwiki/templates/',
-            \ 'template_default': 'def_template',
-            \ 'template_ext': '.html'},
-            \{'path': '~/vimwiki/text/tech',
-            \ 'ext': '.wiki',
-            \ 'path_html': '~/vimwiki/html/tech',
-            \ 'auto_toc': 1,
-            \ 'template_path': '~/vimwiki/templates/',
-            \ 'template_default': 'def_template',
-            \ 'template_ext': '.html'}
-            \]
 
 nnoremap <silent> <F3> :redir @a<CR>:g//<CR>:redir END<CR>:new<CR>:put! a<CR>
 
