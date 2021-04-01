@@ -32,6 +32,9 @@ else
    set background=dark
 endif
 
+nnoremap <leader>bl :set background=light<CR>
+nnoremap <leader>bd :set background=dark<CR>
+
 "set termguicolors
 
 "dein Scripts-----------------------------
@@ -56,7 +59,7 @@ if dein#load_state('~/.cache/dein')
 
   " -- use vim with the libraries in a conda evn
   "call dein#add('cjrh/vim-conda')
-  
+
   "call dein#add('neoclide/coc.nvim', { 'merged': 0 })
   "call dein#add('pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' })
 
@@ -119,6 +122,7 @@ nnoremap <F3> :GitGutterBufferToggle<CR>
 "let g:gitgutter_override_sign_column_highlight = 1
 let g:gitgutter_set_sign_backgrounds = 1
 highlight clear SignColumn
+"highlight! link SignColumn LineNr
 
 " If you want to install not installed plugins on startup.
 "if dein#check_install()
@@ -282,6 +286,7 @@ map <Leader>k :SlimuxSendKeysLast<CR>
 
 " -- NERDTree related
 let NERDTreeIgnore=['\.git$', '__pycache__$']
+map <Leader>N :NERDTree<CR>
 
 " --  yankring
 map <Leader><space> :YRShow <CR>
@@ -329,3 +334,6 @@ nmap <leader>$ :call Preserve("%s/\\s\\+$//e")<CR>
 " text wraping
 autocmd VimEnter * :set wrap " would not work without autocmd
 set wrapmargin=2
+
+command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_
+			\| diffthis | wincmd p | diffthis
