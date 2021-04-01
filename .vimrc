@@ -25,16 +25,6 @@ nnoremap <leader>p "+p
 " start with no spell
 set nospell
 
-" set background light or dark
-if strftime("%H") < 17 && strftime("%H") > 6
-   set background=light
-else
-   set background=dark
-endif
-
-nnoremap <leader>bl :set background=light<CR>
-nnoremap <leader>bd :set background=dark<CR>
-
 "set termguicolors
 
 "dein Scripts-----------------------------
@@ -112,7 +102,18 @@ endif
 filetype plugin indent on
 syntax enable
 
-colorscheme solarized
+" set background light or dark
+if strftime("%H") < 17 && strftime("%H") > 7
+   colorscheme solarized
+   set background=light
+else
+   colorscheme gruvbox
+   set background=dark
+endif
+
+nnoremap <leader>bl :colorscheme solarized<CR> :set background=light<CR>
+nnoremap <leader>bd :colorscheme gruvbox<CR> :set background=dark<CR>
+
 
 "remove verticle split highlight
 autocmd! VimEnter,ColorScheme * hi VertSplit ctermbg=none
