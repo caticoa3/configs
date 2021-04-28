@@ -103,7 +103,7 @@ filetype plugin indent on
 syntax enable
 
 " set background light or dark
-if strftime("%H") < 17 && strftime("%H") > 7
+if strftime("%H") < 18 && strftime("%H") > 7
    colorscheme solarized
    set background=light
 else
@@ -233,11 +233,12 @@ let g:pymode_run = 1
 let g:pymode_run_key = 'R'
 
 "Linting
-let g:pymode_lint = 1
 "flake8 is a wrapper around of pep8, mccabe and pyflakes: https://pypi.org/project/flake8/
-let g:pymode_lint_checker = "pep8, mccabe, pyflakes"
+let g:pymode_lint_checker = "pyflakes, mccabe, pep8"
+let g:pymode_lint = 1
 " Auto check on save
 let g:pymode_lint_write = 1
+let g:pymode_lint_ignore=["E501"]  " ignore long lines
 
 
 " syntax highlighting
