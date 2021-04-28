@@ -1,18 +1,19 @@
-c = get_config()
+# c = get_config()
 # modified from: https://github.com/ipython/ipython/issues/8009
-import os
-from subprocess import check_call
+# import os
+# from subprocess import check_call
 
-def post_save(model, os_path, contents_manager):
-    """post-save hook for converting notebooks to .html"""
-    d, fname = os.path.split(os_path)
+# save to other formats when saving
+# def post_save(model, os_path, contents_manager):
+    # """post-save hook for converting notebooks to .html"""
+    # d, fname = os.path.split(os_path)
 
-    if (model['type'] != 'notebook') or (fname.split('.')[1] != 'ipynb'):
-        return # only do this for notebooks and avoid when jupytext saves a *.py 
+    # if (model['type'] != 'notebook') or (fname.split('.')[1] != 'ipynb'):
+        # return # only do this for notebooks and avoid when jupytext saves a *.py 
 
-    check_call(['jupyter', 'nbconvert', '--to', 'html', fname], cwd=d)
+    # check_call(['jupyter', 'nbconvert', '--to', 'html', '--no-input', '--no-prompt', fname], cwd=d)
 
-c.FileContentsManager.post_save_hook = post_save
+# c.FileContentsManager.post_save_hook = post_save
 # Configuration file for jupyter-notebook.
 
 #------------------------------------------------------------------------------
