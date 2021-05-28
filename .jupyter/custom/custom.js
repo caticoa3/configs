@@ -25,6 +25,24 @@ require([
     km.edit_shortcuts.events.trigger('rebuild.QuickHelp');
   });
 });
+
+require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
+    console.log('Loading `snippets_menu` customizations from `custom.js`');
+    var horizontal_line = '---';
+    var plotly = {
+        'name' : 'Plotly',
+        'sub-menu' : [
+            {
+                'name' : 'Remove Category Name',
+                'snippet' : ['fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))', 'fig.show()'],
+            },
+        ],
+    };
+    snippets_menu.options['menus'] = snippets_menu.default_menus;
+    snippets_menu.options['menus'][0]['sub-menu'].push(horizontal_line);
+    snippets_menu.options['menus'][0]['sub-menu'].push(plotly);
+    console.log('Loaded `snippets_menu` customizations from `custom.js`');
+});
 // leave at least 2 line with only a star on it below, or doc generation fails
 /**
  *
