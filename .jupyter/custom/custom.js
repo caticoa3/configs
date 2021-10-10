@@ -30,11 +30,15 @@ require(["nbextensions/snippets_menu/main"], function (snippets_menu) {
     console.log('Loading `snippets_menu` customizations from `custom.js`');
     var horizontal_line = '---';
     var plotly = {
-        'name' : 'Plotly',
+        'name' : 'CAA',
         'sub-menu' : [
             {
-                'name' : 'Remove Category Name',
+                'name' : 'Plotly Remove Category Name',
                 'snippet' : ['fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))', 'fig.show()'],
+            },
+            {
+                'name' : 'Src And Data Dir To System Path',
+                'snippet' : ['import sys', 'sys.path.append("../data")', 'sys.path.append("../src")', 'sys.path = list(set(sys.path))'],
             },
         ],
     };

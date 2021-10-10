@@ -25,6 +25,10 @@ nnoremap <leader>p "+p
 " start with no spell
 set nospell
 
+" find and replace
+nnoremap <leader>r :%s///gc<left><left><left>
+nnoremap <leader>rs :s///gc<left><left><left>
+
 "set termguicolors
 
 "dein Scripts-----------------------------
@@ -59,8 +63,11 @@ if dein#load_state('~/.cache/dein')
   " -- python dev
   call dein#add('davidhalter/jedi-vim')
   call dein#add('Konfekt/FastFold')
+
   call dein#add('tpope/vim-fugitive')
   call dein#add('airblade/vim-gitgutter')
+  call dein#add('whiteinge/diffconflicts')
+
   call dein#add('easymotion/vim-easymotion')
 
   call dein#add('scrooloose/nerdtree')
@@ -80,6 +87,10 @@ if dein#load_state('~/.cache/dein')
   "
   call dein#add('deoplete-plugins/deoplete-jedi') " async jedi
   call dein#add('Shougo/deoplete.nvim')
+
+  " -- find things 
+  call dein#add('mhinz/vim-grepper')
+  call dein#add('dyng/ctrlsf.vim')
 
   " -- json highlighting
   call dein#add('elzr/vim-json')
@@ -240,12 +251,15 @@ let g:pymode_lint = 1
 let g:pymode_lint_write = 1
 let g:pymode_lint_ignore=["E501"]  " ignore long lines
 
-
 " syntax highlighting
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all
 let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+" VimGrepper config
+let g:grepper = {} 
+let g:grepper.dir = 'repo'
 
 "-----------------set jedi-------------------
 
