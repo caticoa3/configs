@@ -1,7 +1,8 @@
 set nocompatible               " Be iMproved
 mapclear
-"let g:python_host_prog ='/Users/carlos/anaconda3/envs/python2/bin/python'
-let g:python3_host_prog="/Users/carlos/anaconda3/bin/python3"
+"let g:python_host_prog ='~/anaconda3/envs/python2/bin/python'
+let g:python3_host_prog='~/anaconda3/bin/python3'
+
 
 let mapleader = ","
 vnoremap kj <Esc>gV
