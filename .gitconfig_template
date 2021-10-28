@@ -1,0 +1,29 @@
+; This is Git's per-user configuration file.
+[user]
+; Please adapt and uncomment the following lines:
+	;name = your name
+	;email = your email
+[core]
+	editor = nvim
+
+[diff]
+	tool = nvimdiff
+[merge]
+    tool = diffconflicts
+    ;tool = nvimdiff
+
+[difftool "nvimdiff"]
+    cmd = nvim -d -u ~/.nvimrc \"$LOCAL\" \"$REMOTE\"
+
+[mergetool "nvimdiff"]
+    ;cmd = nvim -d -u ~/.nvimrc \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
+    cmd = nvim -f -u ~/.nvimrc -c Gdiff \"$MERGED\"
+
+[mergetool "diffconflicts"]
+	cmd = nvim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+	trustExitCode = false
+
+[mergetool]
+	keepBackup = false
+[credential]
+	helper = store
