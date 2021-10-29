@@ -16,7 +16,7 @@ vim_to_nvim:
 	ln -s ~/.vimrc ~/.config/nvim/init.vim
 	# cp ~/.vimrc ~/.config/nvim/init.vim 
 	mv ~/.gitconfig ~/.gitconfig_original
-	mv ~/.gitconfig_template ~/.gitconfig
+	cp ~/.gitconfig_template ~/.gitconfig
 	git config --global core.editor "nvim"
 
 neovim_linux:
