@@ -4,13 +4,17 @@
 	;name = your name
 	;email = your email
 [core]
-	editor = nvim
+    editor = nvim
+    pager = delta
 
 [diff]
-	tool = nvimdiff
+    tool = nvimdiff
+    colorMoved = default ; delta plugin
+
 [merge]
     tool = diffconflicts
     ;tool = nvimdiff
+    conflictstyle = diff3 ; delta plugin
 
 [difftool "nvimdiff"]
     cmd = nvim -d -u ~/.nvimrc \"$LOCAL\" \"$REMOTE\"
@@ -20,10 +24,20 @@
     cmd = nvim -f -u ~/.nvimrc -c Gdiff \"$MERGED\"
 
 [mergetool "diffconflicts"]
-	cmd = nvim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
-	trustExitCode = false
+    cmd = nvim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+    trustExitCode = false
 
 [mergetool]
-	keepBackup = false
+    keepBackup = false
 [credential]
-	helper = store
+    helper = store
+
+# delta 
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    ;syntax-theme = GitHub ;ansi ;Solarized (light) ;gruvbox-dark
+    side-by-side = True
+	syntax-theme = GitHub
