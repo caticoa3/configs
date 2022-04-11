@@ -11,6 +11,9 @@ export CONDA_DEFAULT_ENV="root"
 # set vim config home
 export XDG_CONFIG_HOME="~/.config"
 
+# set path for latex conversion needed to convert to pdf
+export PATH=/Library/TeX/texbin:$PATH
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -168,6 +171,26 @@ eval "$(thefuck --alias)"
 eval $(thefuck --alias)
 
 # google auth
-export GOOGLE_APPLICATION_CREDENTIALS="$HOME/auth/google/default_free.json"
+export GOOGLE_APPLICATION_CREDENTIALS="$HOME/auth/google/mds-social-listening_voc-pipeline-runner.json"
+#alias gsutil= 'gsutil -o "GSUtil:parallel_process_count=1"'
 
 alias dir_tree="ls -R | grep ':' | sed -e 's/://' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
+export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/cariza2/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/cariza2/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/cariza2/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/cariza2/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Changing theme from cli
+alias setlight="git config --global delta.syntax-theme GitHub"
+alias setdark="git config --global delta.syntax-theme Solarized"
+
+if [[  $(date +%H) -gt 18  ]] ||  [[ $(date +%H) -lt 7  ]]; then
+    echo "setting dark"
+    setdark
+else
+    echo "setting light"
+    setlight
+fi
