@@ -43,6 +43,8 @@ setup_conda_linux:
 	bash Anaconda3-2020.07-Linux-x86_64.sh 
 
 # TODO: Setup conda on OSX and install rich library
+# TODO: brew installs: yarn, node, pandoc, xelatex, precommit, delta, etc
+#https://medium.com/macoclock/how-to-setup-pandoc-and-latex-on-macos-mojave-8e18fa71e816
 conda_mac:
 	curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
 	./Miniconda3-latest-MacOSX-x86_64.sh
