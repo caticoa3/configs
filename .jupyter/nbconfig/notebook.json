@@ -11,7 +11,8 @@
     "toc2/main": true,
     "snippets_menu/main": true,
     "collapsible_headings/main": true,
-    "spellchecker/main": true
+    "spellchecker/main": true,
+    "jupyter-js-widgets/extension": true
   },
   "Notebook": {
     "Header": false,
