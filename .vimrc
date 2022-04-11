@@ -1,7 +1,7 @@
 set nocompatible               " Be iMproved
 mapclear
 "let g:python_host_prog ='~/anaconda3/envs/python2/bin/python'
-let g:python3_host_prog='~/anaconda3/bin/python3'
+let g:python3_host_prog = expand('~/anaconda3/bin/python')
 
 
 let mapleader = ","
@@ -100,10 +100,10 @@ if dein#load_state('~/.cache/dein')
   call dein#add('godlygeek/tabular')
   call dein#add('plasticboy/vim-markdown')
 
+  call dein#add('vim-pandoc/vim-pandoc')
   call dein#add('vim-pandoc/vim-pandoc-syntax')
   call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
 					\ 'build': 'sh -c "cd app & yarn install"' })
-
 
   " Required:
   call dein#end()
@@ -278,7 +278,7 @@ let g:jedi#completions_enabled = 0  " use deoplete-jedi instead
 let g:jedi#use_tabs_not_buffers = 1
 
 " -- deoplete setup
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
 let g:deoplete#sources#jedi#ignore_errors = v:true
 nnoremap <leader>D :call deoplete#disable()<CR>
 nnoremap <leader>E :call deoplete#enable()<CR>
