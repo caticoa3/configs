@@ -1,0 +1,26 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    #-   id: trailing-whitespace
+-   repo: https://github.com/mwouts/jupytext
+    rev: v1.13.8
+    hooks:
+    #-   id: jupytext
+        #args: [--pipe, 'pandoc --from ipynb --to ipynb --wrap=preserve --markdown-headings=atx', --show-changes]
+        #additional_dependencies:
+        #- nbformat==5.0.8  # because pandoc 2.11.4 does not preserve yet the new cell ids
+    -   id: jupytext
+        args: [--pipe-fmt, "py:light", --pipe, "autopep8 - --ignore W291,E402", --show-changes]
+        # TODO: automate replacement of double spaces page breaks im md with <br/> and try black
+        #args: [--pipe-fmt, "py:light", --pipe, black, --show-changes]
+        additional_dependencies:
+        #- black==22.3.0  # Matches black hook below
+        - autopep8  # Matches black hook below
+        - nbformat==5.0.8  # for compatibility with the pandoc hook above
+#-   repo: https://github.com/psf/black
+    #rev: 22.3.0
+    #hooks:
+      #- id: black
