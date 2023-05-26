@@ -66,6 +66,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('Konfekt/FastFold')
 
   call dein#add('tpope/vim-fugitive')
+  call dein#add('tpope/vim-rhubarb.git')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('whiteinge/diffconflicts')
 
@@ -104,6 +105,9 @@ if dein#load_state('~/.cache/dein')
   call dein#add('vim-pandoc/vim-pandoc-syntax')
   call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
 					\ 'build': 'sh -c "cd app & yarn install"' })
+  
+  " -- snippets
+  call dein#add('SirVer/ultisnips')
 
   " Required:
   call dein#end()
@@ -250,7 +254,7 @@ let g:pymode_lint_checker = "pyflakes, mccabe, pep8"
 let g:pymode_lint = 1
 " Auto check on save
 let g:pymode_lint_write = 1
-let g:pymode_lint_ignore=["E501"]  " ignore long lines
+let g:pymode_lint_ignore=["E501", "E402"]  " ignore long lines
 
 " syntax highlighting
 let g:pymode_syntax = 1
@@ -273,21 +277,20 @@ let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "1"
 " let g:jedi#force_py_version = 3 " (default: 'auto')
 " let g:jedi#popup_select_first = 0 " (default: 1)
-let g:jedi#popup_on_dot = 0 " (default: 1)
+let g:jedi#popup_on_dot = 1 " (default: 1)
 let g:jedi#completions_enabled = 0  " use deoplete-jedi instead
 let g:jedi#use_tabs_not_buffers = 1
 
 " -- deoplete setup
-let g:deoplete#enable_at_startup = 0
+let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#ignore_errors = v:true
+
 nnoremap <leader>D :call deoplete#disable()<CR>
 nnoremap <leader>E :call deoplete#enable()<CR>
 
 " ------- snippet -------------
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsSnippetsDir="~/.vim/bundle/myBundle/UltiSnips"
-" let g:UltiSnipsSnippetsDirectories=["~/.vim/bundle/myBundle/UltiSnips"]
 let g:UltiSnipsListSnippets="<c-tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
