@@ -1,4 +1,4 @@
-local opts = { noremap = true, silent = true }
+local opts = { noremap = true }
 
 local term_opts = { silent = true }
 
@@ -18,7 +18,24 @@ vim.g.maplocalleader = ","
 --   term_mode = "t",
 --   command_mode = "c",
 
+-- Press kj fast for ESC
+keymap("i", "kj", "<ESC>", opts)
+keymap("v", "kj", "<ESC>", opts)
+keymap("x", "kj", "<ESC>", opts)
+keymap("c", "kj", "<ESC>", opts)
+
 -- Normal --
+-- Spelling
+vim.opt.spelllang = "en_us"
+keymap("n", "<leader><leader>s", ":set spell!<CR>", opts)
+keymap("n", "<leader><leader>p", ":set paste!<CR>", opts)
+keymap("n", "<leader>p", '"+p', opts)
+
+
+-- find and replace
+keymap("n", "<leader>r", ":%s///gc<left><left><left>", opts)
+keymap("n", "<leader>rs", ":s///gc<left><left><left>", opts)
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -37,28 +54,28 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
--- Press kj fast to enter
-keymap("i", "kj", "<ESC>", opts)
-keymap("v", "kj", "<ESC>", opts)
-keymap("x", "kj", "<ESC>", opts)
-keymap("c", "kj", "<ESC>", opts)
 
 -- Visual --
--- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
-
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+-- Move text left and right (double mappings)
+keymap("v", "<", "<gv", opts) --remove indentation
+keymap("v", ">", ">gv", opts) -- add indentation
+keymap("v", "<A-h>", "<gv", opts) --remove indentation
+keymap("v", "<A-l>", ">gv", opts) -- add indentation
+
 keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
--- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
+-- Move text up and down 
+keymap("x", "K",     ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "J",     ":move '>+1<CR>gv-gv", opts)
+keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
+-- Move text left and right
+keymap("x", "<A-h>", "<gv", opts)
+keymap("x", "<A-l>", ">gv", opts)
 
 -- Terminal --
 -- Better terminal navigation
