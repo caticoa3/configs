@@ -283,7 +283,7 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|(\.(swp|ico|git|svn|pyc))'
 
 " --- vim-fugitive
-set diffopt=filler,vertical
+set diffopt=filler, vertical
 
 " --- configurations for working with vim-conda plugin
 "let g:jedi#force_py_version = 3

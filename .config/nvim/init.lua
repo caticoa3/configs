@@ -65,8 +65,7 @@ vim.opt.rtp:prepend(lazypath)
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
-
-  -- Git related plugins
+-- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   'airblade/vim-gitgutter',
@@ -97,6 +96,18 @@ require('lazy').setup({
   'ctrlpvim/ctrlP.vim',
   'scrooloose/nerdcommenter',  --determines prefix to comment depending on file type
 
+  -- markdown dev
+  'godlygeek/tabular',
+  'plasticboy/vim-markdown',
+
+  -- converting to filetypes
+  'vim-pandoc/vim-pandoc',
+  'vim-pandoc/vim-pandoc-syntax',
+
+  {'iamcco/markdown-preview.nvim',
+  on_ft= {'markdown', 'pandoc.markdown', 'rmd'},
+	build= 'sh -c "cd app & yarn install"'
+  },
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
