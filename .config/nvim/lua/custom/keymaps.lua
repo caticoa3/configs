@@ -20,9 +20,6 @@ keymap("n", "<leader>.", "@q", opts) --repeat action n time
 keymap("n", "<leader>bl", ":colorscheme solarized<CR> :set background=light<CR>", opts)
 keymap("n", "<leader>bd", ":colorscheme gruvbox<CR> :set background=dard<CR>", opts)
 
--- unknown copied migrated from .vimrc
-keymap("n", "<tab><tab>", "<c-w>W", opts)
-
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -54,6 +51,7 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", "<tab><tab>", "<C-w>W", opts) --cycle througwindows
 
 keymap("n", "<leader>e", ":Lex 30<cr>", opts)
 
@@ -96,3 +94,14 @@ keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+
+-- Plugin Dependent
+-- slimux 
+keymap('', "<Leader>s", ":SlimuxREPLSendLine<CR>", opts)
+keymap('v', "<Leader>s", "SlimuxREPLSendSelection<CR>", opts)
+keymap('x', "<Leader>s", "SlimuxREPLSendSelection<CR>", opts)
+keymap('', "<Leader>a", ":SlimuxShellLast<CR>", opts)
+keymap('', "<Leader>k", ":SlimuxSendKeysLast<CR>", opts)
+
+-- NERDTree
+keymap('', "<Leader>N", ":NERDTree<CR>", opts)
