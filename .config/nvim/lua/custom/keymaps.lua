@@ -105,3 +105,7 @@ keymap('', "<Leader>k", ":SlimuxSendKeysLast<CR>", opts)
 
 -- NERDTree
 keymap('', "<Leader>N", ":NERDTree<CR>", opts)
+
+--yankring
+keymap('', "<Leader><space>", ":YRShow <CR>", opts)
+vim.g.yankring_replace_n_pkey = "<leader> p"
