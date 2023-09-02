@@ -3,32 +3,7 @@ mapclear
 "let g:python_host_prog ='~/anaconda3/envs/python2/bin/python'
 let g:python3_host_prog = expand('~/anaconda3/bin/python')
 
-
-let mapleader = ","
-vnoremap kj <Esc>gV
-onoremap kj <Esc>
-cnoremap kj <C-C><Esc>
-inoremap kj <Esc>
-
-nnoremap <tab><tab> <c-w>w
 set t_Co=256
-set autochdir
-
-" quick repeat, qq to start
-nnoremap <leader>. @q
-
-" toggle spell
-set spell spelllang=en_us
-" hi SpellBad cterm=underline ctermfg=black ctermbg=219
-nnoremap <leader><leader>s :set spell!<CR>
-nnoremap <leader><leader>p :set paste!<CR>
-nnoremap <leader>p "+p
-" start with no spell
-set nospell
-
-" find and replace
-nnoremap <leader>r :%s///gc<left><left><left>
-nnoremap <leader>rs :s///gc<left><left><left>
 
 "set termguicolors
 
@@ -65,12 +40,12 @@ if dein#load_state('~/.cache/dein')
   call dein#add('davidhalter/jedi-vim')
   call dein#add('Konfekt/FastFold')
 
-  call dein#add('tpope/vim-fugitive')
-  call dein#add('tpope/vim-rhubarb.git')
-  call dein#add('airblade/vim-gitgutter')
-  call dein#add('whiteinge/diffconflicts')
+  call dein#add('tpope/vim-fugitive')  " migrated to lua lazy pluging manager
+  call dein#add('tpope/vim-rhubarb.git')  " migrated to lua lazy pluging manager
+  call dei##add('airblade/vim-gitgutter')  " migrated to lua lazy pluging manager
+  call dein#add('whiteinge/diffconflicts')  " migrated to lua lazy pluging manager
 
-  call dein#add('easymotion/vim-easymotion')
+  call dein#add('easymotion/vim-easymotion')  " migrated to lua lazy pluging manager  
 
   call dein#add('scrooloose/nerdtree')
   call dein#add('Xuyuanp/nerdtree-git-plugin')
@@ -115,7 +90,6 @@ if dein#load_state('~/.cache/dein')
 endif
 
 " Required:
-filetype plugin indent on
 syntax enable
 
 " set background light or dark
@@ -126,10 +100,6 @@ else
    colorscheme gruvbox
    set background=dark
 endif
-
-nnoremap <leader>bl :colorscheme solarized<CR> :set background=light<CR>
-nnoremap <leader>bd :colorscheme gruvbox<CR> :set background=dark<CR>
-
 
 "remove verticle split highlight
 autocmd! VimEnter,ColorScheme * hi VertSplit ctermbg=none
@@ -223,7 +193,6 @@ let g:fastfold_fold_movement_commands = []
 
 " ====  set pymode ====
 "filetype off
-filetype plugin indent on
 syntax on
 
 " FileType python set omnifunc=pythoncomplete#Complete
@@ -261,10 +230,6 @@ let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all
 let g:pymode_syntax_space_errors = g:pymode_syntax_all
-
-" VimGrepper config
-let g:grepper = {} 
-let g:grepper.dir = 'repo'
 
 "-----------------set jedi-------------------
 
@@ -306,7 +271,6 @@ map <Leader>k :SlimuxSendKeysLast<CR>
 
 " -- NERDTree related
 let NERDTreeIgnore=['\.git$', '__pycache__$']
-map <Leader>N :NERDTree<CR>
 
 " --  yankring
 map <Leader><space> :YRShow <CR>

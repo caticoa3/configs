@@ -69,9 +69,33 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+  'airblade/vim-gitgutter',
+  'whiteinge/diffconflicts',
+
+  -- Faster vim motions for jumping to section in code
+  'easymotion/vim-easymotion',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
+
+  -- File navigation in side bar
+  'scrooloose/nerdtree',
+  'Xuyuanp/nerdtree-git-plugin',
+  'ryanoasis/vim-devicons',
+
+  --TMUX interactions
+  'christoomey/vim-tmux-navigator', --Navigating to and from tmux panes to vim
+  'epeli/slimux', --Passing lines of code to a another tmux windo
+
+  --saving working session panes ets
+  --[[
+     ['xolox/vim-session',
+     ]]
+
+  --yanking and commenting
+  'vim-scripts/YankRing.vim',
+  'ctrlpvim/ctrlP.vim',
+  'scrooloose/nerdcommenter',  --determines prefix to comment depending on file type
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -409,7 +433,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('<C-s>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
