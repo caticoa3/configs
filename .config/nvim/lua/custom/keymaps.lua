@@ -10,6 +10,19 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
+-- pasting
+keymap("n", "<leader>p", '"+p', opts)
+
+-- quick repeat, qq to start
+keymap("n", "<leader>.", "@q", opts) --repeat action n time
+
+-- switching colorscheme
+keymap("n", "<leader>bl", ":colorscheme solarized<CR> :set background=light<CR>", opts)
+keymap("n", "<leader>bd", ":colorscheme gruvbox<CR> :set background=dard<CR>", opts)
+
+-- unknown copied migrated from .vimrc
+keymap("n", "<tab><tab>", "<c-w>W", opts)
+
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -29,7 +42,7 @@ keymap("c", "kj", "<ESC>", opts)
 vim.opt.spelllang = "en_us"
 keymap("n", "<leader><leader>s", ":set spell!<CR>", opts)
 keymap("n", "<leader><leader>p", ":set paste!<CR>", opts)
-keymap("n", "<leader>p", '"+p', opts)
+
 
 
 -- find and replace
