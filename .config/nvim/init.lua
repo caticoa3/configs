@@ -1,10 +1,8 @@
 --[[
-
+--
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
 =====================================================================
-
-Kickstart.nvim is *not* a distribution.
 
 Kickstart.nvim is a template for your own configuration.
   The goal is that you can read every line of code, top-to-bottom, understand
@@ -27,12 +25,13 @@ Kickstart Guide:
 I have left several `:help X` comments throughout the init.lua
 You should run that command and read that help section for more information.
 
+
 In addition, I have some `NOTE:` items throughout the file.
-These are for you, the reader to help understand what is happening. Feel free to delete
+These darkare for you, the reader to help understand what is happening. Feel free to delete
 them once you know what you're doing, but they should serve as a guide for when you
 are first encountering a few different constructs in your nvim config.
 
-I hope you enjoy your Neovim journey,
+I hope you enjoy your Neovim journey,  ctermbg=none
 - TJ
 
 P.S. You can delete this when you're done too. It's your config now :)
@@ -40,6 +39,7 @@ P.S. You can delete this when you're done too. It's your config now :)
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+--
 
 require('lua.custom.keymaps')
 -- Install package manager
@@ -64,8 +64,7 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
--- Git related plugins
+  -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   'airblade/vim-gitgutter',
@@ -81,6 +80,13 @@ require('lazy').setup({
   'scrooloose/nerdtree',
   'Xuyuanp/nerdtree-git-plugin',
   'ryanoasis/vim-devicons',
+
+  -- json highlighting
+  --'elzr/vim-json',
+
+  -- find things 
+  'mhinz/vim-grepper',
+  --'dyng/ctrlsf.vim',
 
   --TMUX interactions
   'christoomey/vim-tmux-navigator', --Navigating to and from tmux panes to vim
@@ -108,6 +114,26 @@ require('lazy').setup({
   on_ft= {'markdown', 'pandoc.markdown', 'rmd'},
 	build= 'sh -c "cd app & yarn install"'
   },
+
+  --Design and color schemes
+  'vim-airline/vim-airline',
+  'vim-airline/vim-airline-themes',
+
+  --color schemes
+  'lifepillar/vim-solarized8',
+  'altercation/vim-colors-solarized',
+  'morhetz/gruvbox',
+  --[[
+     [{
+     [  -- Theme inspired by Atom
+     [  'navarasu/onedark.nvim',
+     [  priority = 1000,
+     [  config = function()
+     [    vim.cmd.colorscheme 'onedark'
+     [  end,
+     [},
+     ]]
+
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -165,28 +191,22 @@ require('lazy').setup({
     },
   },
 
-  {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
-  },
 
-  {
-    -- Set lualine as statusline
-    'nvim-lualine/lualine.nvim',
-    -- See `:help lualine.txt`
-    opts = {
-      options = {
-        icons_enabled = false,
-        theme = 'onedark',
-        component_separators = '|',
-        section_separators = '',
-      },
-    },
-  },
+--  {
+--    -- Set lualine as statusline
+--    'nvim-lualine/lualine.nvim',
+--    -- See `:help lualine.txt`
+--    opts = {
+--      options = {
+--        icons_enabled = false,
+--        --[[
+--           [theme = 'onedark',
+--           ]]
+--        component_separators = '|',
+--        section_separators = '',
+--      },
+--    },
+--  },
 
   {
     -- Add indentation guides even on blank lines
@@ -200,7 +220,9 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  --[[
+     [{ 'numToStr/Comment.nvim', opts = {} },
+     ]]
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -557,5 +579,6 @@ cmp.setup {
   },
 }
 
+require('lua.custom.options')
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -17,8 +17,12 @@ keymap("n", "<leader>p", '"+p', opts)
 keymap("n", "<leader>.", "@q", opts) --repeat action n time
 
 -- switching colorscheme
-keymap("n", "<leader>bl", ":colorscheme solarized<CR> :set background=light<CR>", opts)
-keymap("n", "<leader>bd", ":colorscheme gruvbox<CR> :set background=dard<CR>", opts)
+keymap("n", "<leader>bl", ":set background=light<CR> :colorscheme solarized8<CR>", opts)
+
+keymap("n", "<leader>bd", ":colorscheme gruvbox<CR> :set background=dark<CR>", opts)
+
+keymap("n", "<leader>b1d", ":let g:onedark_config = {'style': 'warm'}<CR> :colorscheme onedark<CR>", opts)
+
 
 -- Modes
 --   normal_mode = "n",
@@ -109,3 +113,6 @@ keymap('', "<Leader>N", ":NERDTree<CR>", opts)
 --yankring
 keymap('', "<Leader><space>", ":YRShow <CR>", opts)
 vim.g.yankring_replace_n_pkey = "<leader> p"
+
+--Gitgutter
+keymap("n", "<F3>", "GitGutterBufferToggle<CR>", opts)

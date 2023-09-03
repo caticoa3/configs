@@ -1,5 +1,3 @@
-set nocompatible               " Be iMproved
-mapclear
 "let g:python_host_prog ='~/anaconda3/envs/python2/bin/python'
 let g:python3_host_prog = expand('~/anaconda3/bin/python')
 
@@ -40,28 +38,11 @@ if dein#load_state('~/.cache/dein')
   call dein#add('davidhalter/jedi-vim')
   call dein#add('Konfekt/FastFold')
 
-  call dein#add('tpope/vim-fugitive')  " migrated to lua lazy pluging manager
-  call dein#add('tpope/vim-rhubarb.git')  " migrated to lua lazy pluging manager
-  call dei##add('airblade/vim-gitgutter')  " migrated to lua lazy pluging manager
-  call dein#add('whiteinge/diffconflicts')  " migrated to lua lazy pluging manager
-
-  call dein#add('easymotion/vim-easymotion')  " migrated to lua lazy pluging manager  
-
-  call dein#add('scrooloose/nerdtree')
-  call dein#add('Xuyuanp/nerdtree-git-plugin')
-  call dein#add('ryanoasis/vim-devicons')
-
   call dein#add('christoomey/vim-tmux-navigator')
   call dein#add('epeli/slimux')
 
-  call dein#add('vim-scripts/YankRing.vim')
-  call dein#add('ctrlpvim/ctrlP.vim')
-  call dein#add('scrooloose/nerdcommenter')
-
   call dein#add('majutsushi/tagbar')
 
-  "call dein#add('chrisbra/Recover.vim')
-  "
   call dein#add('deoplete-plugins/deoplete-jedi') " async jedi
   call dein#add('Shougo/deoplete.nvim')
 
@@ -72,14 +53,7 @@ if dein#load_state('~/.cache/dein')
   " -- json highlighting
   call dein#add('elzr/vim-json')
 
-  " -- markdown dev
-  call dein#add('godlygeek/tabular')
-  call dein#add('plasticboy/vim-markdown')
-
   call dein#add('vim-pandoc/vim-pandoc')
-  call dein#add('vim-pandoc/vim-pandoc-syntax')
-  call dein#add('iamcco/markdown-preview.nvim', {'on_ft': ['markdown', 'pandoc.markdown', 'rmd'],
-					\ 'build': 'sh -c "cd app & yarn install"' })
   
   " -- snippets
   call dein#add('SirVer/ultisnips')
@@ -107,6 +81,8 @@ autocmd! VimEnter,ColorScheme * hi VertSplit ctermbg=none
 " -- gitgutter
 nnoremap <F3> :GitGutterBufferToggle<CR>
 "let g:gitgutter_override_sign_column_highlight = 1
+--gitgutter color
+vim.g.gitgutter_set_sign_backgrounds = 1
 let g:gitgutter_set_sign_backgrounds = 1
 highlight clear SignColumn
 "highlight! link SignColumn LineNr
