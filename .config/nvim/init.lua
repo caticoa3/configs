@@ -1,5 +1,4 @@
 --[[
---
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
 =====================================================================
@@ -32,9 +31,9 @@ them once you know what you're doing, but they should serve as a guide for when 
  
 P.S. You can delete this when you're done too. It's your config now :)
 --]]
---
 
-require('lua.custom.keymaps')
+require('custom.keymaps')
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -513,6 +512,6 @@ cmp.setup {
   },
 }
 
-require('lua.custom.options')
+require('custom.options')  -- no need to specify the lua directory it will search within
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
