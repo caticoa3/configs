@@ -81,8 +81,6 @@ autocmd! VimEnter,ColorScheme * hi VertSplit ctermbg=none
 " -- gitgutter
 nnoremap <F3> :GitGutterBufferToggle<CR>
 "let g:gitgutter_override_sign_column_highlight = 1
---gitgutter color
-vim.g.gitgutter_set_sign_backgrounds = 1
 let g:gitgutter_set_sign_backgrounds = 1
 highlight clear SignColumn
 "highlight! link SignColumn LineNr
