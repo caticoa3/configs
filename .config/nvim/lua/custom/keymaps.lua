@@ -5,8 +5,8 @@ local term_opts = { silent = true }
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
---Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+--Remap comma as leader key
+keymap("", ",", "<Nop>", opts)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
@@ -14,14 +14,16 @@ vim.g.maplocalleader = ","
 keymap("n", "<leader>p", '"+p', opts)
 
 -- quick repeat, qq to start
-keymap("n", "<leader>.", "@q", opts) --repeat action n time
+--[[
+   [keymap("n", "<leader>.", "@q", opts) --repeat action n time
+   ]]
 
 -- switching colorscheme
 keymap("n", "<leader>bl", ":set background=light<CR> :colorscheme solarized8<CR>", opts)
 
-keymap("n", "<leader>bd", ":colorscheme gruvbox<CR> :set background=dark<CR>", opts)
+keymap("n", "<leader>bd", ":set background=dark<CR> :colorscheme gruvbox<CR>", opts)
 
-keymap("n", "<leader>b1d", ":let g:onedark_config = {'style': 'warm'}<CR> :colorscheme onedark<CR>", opts)
+keymap("n", "<leader>bd1", ":set background=dark<CR> :let g:onedark_config = {'style': 'warm'}<CR> :colorscheme onedark<CR>", opts)
 
 
 -- Modes
@@ -112,7 +114,7 @@ keymap('', "<Leader>N", ":NERDTree<CR>", opts)
 
 --yankring
 keymap('', "<Leader><space>", ":YRShow <CR>", opts)
-vim.g.yankring_replace_n_pkey = "<leader> p"
+vim.g.yankring_replace_n_pkey = "<leader>yp"
 
 --Gitgutter
 keymap("n", "<F3>", "GitGutterBufferToggle<CR>", opts)

@@ -29,16 +29,9 @@ You should run that command and read that help section for more information.
 In addition, I have some `NOTE:` items throughout the file.
 These darkare for you, the reader to help understand what is happening. Feel free to delete
 them once you know what you're doing, but they should serve as a guide for when you
-are first encountering a few different constructs in your nvim config.
-
-I hope you enjoy your Neovim journey,  ctermbg=none
-- TJ
-
+ 
 P.S. You can delete this when you're done too. It's your config now :)
 --]]
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 --
 
 require('lua.custom.keymaps')
