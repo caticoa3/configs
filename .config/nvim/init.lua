@@ -115,6 +115,7 @@ require('lazy').setup({
   --color schemes
   'lifepillar/vim-solarized8',
   'morhetz/gruvbox',
+  'ellisonleao/gruvbox.nvim',
   {
     -- theme inspired by atom
     'navarasu/onedark.nvim',

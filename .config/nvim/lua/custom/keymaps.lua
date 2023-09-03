@@ -23,7 +23,7 @@ keymap("n", "<leader>bl", ":set background=light<CR> :colorscheme solarized8<CR>
 
 keymap("n", "<leader>bd", ":set background=dark<CR> :colorscheme gruvbox<CR>", opts)
 
-keymap("n", "<leader>bd1", ":set background=dark<CR> :let g:onedark_config = {'style': 'warm'}<CR> :colorscheme onedark<CR>", opts)
+keymap("n", "<leader>bd1", ":set background=dark<CR> :let g:onedark_config = {'style': 'warmer'}<CR> :colorscheme onedark<CR>", opts)
 
 
 -- Modes
