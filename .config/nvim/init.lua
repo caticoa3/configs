@@ -121,18 +121,15 @@ require('lazy').setup({
 
   --color schemes
   'lifepillar/vim-solarized8',
-  'altercation/vim-colors-solarized',
   'morhetz/gruvbox',
-  --[[
-     [{
-     [  -- Theme inspired by Atom
-     [  'navarasu/onedark.nvim',
-     [  priority = 1000,
-     [  config = function()
-     [    vim.cmd.colorscheme 'onedark'
-     [  end,
-     [},
-     ]]
+  {
+    -- theme inspired by atom
+    'navarasu/onedark.nvim',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'onedark'
+    end,
+  },
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
