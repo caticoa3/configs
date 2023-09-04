@@ -46,16 +46,6 @@ if dein#load_state('~/.cache/dein')
   call dein#add('deoplete-plugins/deoplete-jedi') " async jedi
   call dein#add('Shougo/deoplete.nvim')
 
-  " -- find things 
-  call dein#add('mhinz/vim-grepper')
-  call dein#add('dyng/ctrlsf.vim')
-
-  " -- json highlighting
-  call dein#add('elzr/vim-json')
-
-  call dein#add('vim-pandoc/vim-pandoc')
-  
-  " -- snippets
   call dein#add('SirVer/ultisnips')
 
   " Required:
@@ -79,10 +69,9 @@ endif
 autocmd! VimEnter,ColorScheme * hi VertSplit ctermbg=none
 
 " -- gitgutter
-nnoremap <F3> :GitGutterBufferToggle<CR>
 "let g:gitgutter_override_sign_column_highlight = 1
-let g:gitgutter_set_sign_backgrounds = 1
-highlight clear SignColumn
+"let g:gitgutter_set_sign_backgrounds = 1
+"highlight clear SignColumn
 "highlight! link SignColumn LineNr
 
 " If you want to install not installed plugins on startup.
@@ -108,12 +97,10 @@ set path+=**
 " - Use * to make it fuzzy
 " ---------
 "
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#hunks#enabled = 0
-let g:airline#extensions#branch#enabled = 0
-let g:airline_theme = 'powerlineish'
-" Spacing between # and text when commenting lines with NERD commenter
-" let NERDSpaceDelims=1
+"let g:airline_powerline_fonts = 1
+"let g:airline#extensions#hunks#enabled = 0
+"let g:airline#extensions#branch#enabled = 0
+"let g:airline_theme = 'powerlineish'
 
 if v:version >= 400
   function! RelativeNumberToggle()

@@ -82,7 +82,7 @@ require('lazy').setup({
 
   --TMUX interactions
   'christoomey/vim-tmux-navigator', --Navigating to and from tmux panes to vim
-  'epeli/slimux', --Passing lines of code to a another tmux windo
+  'epeli/slimux', --send selected code to other tmux window
 
   --saving working session panes ets
   --[[
@@ -126,14 +126,15 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
+      -- manages LSP servers, DAP servers, linters, and formatters
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
 
-      -- Useful status updates for LSP
+      -- eye candy...status updates widget for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
-      -- Additional lua configuration, makes nvim stuff amazing!
+      -- lua LSP for configs and plugin...api func, autocompletions etc 
       'folke/neodev.nvim',
     },
   },
@@ -148,6 +149,7 @@ require('lazy').setup({
 
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-cmdline',
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
@@ -253,6 +255,18 @@ require('lazy').setup({
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
 }, {})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore)o.
+
+local cmp = require'cmp'
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
