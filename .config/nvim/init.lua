@@ -69,7 +69,7 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   -- File navigation in side bar
-  'scrooloose/nerdtree',
+  'preservim/nerdtree',
   'Xuyuanp/nerdtree-git-plugin',
   'ryanoasis/vim-devicons',
 
@@ -103,7 +103,8 @@ require('lazy').setup({
   'vim-pandoc/vim-pandoc-syntax',
 
   {'iamcco/markdown-preview.nvim',
-  on_ft= {'markdown', 'pandoc.markdown', 'rmd'},
+  ft = {'markdown', 'pandoc.markdown', 'rmd'},
+  --cmd = { "MarkdownPreview", "MarkdownPreviewStop" },
 	build= 'sh -c "cd app & yarn install"'
   },
 
@@ -116,7 +117,8 @@ require('lazy').setup({
   'morhetz/gruvbox',
   'ellisonleao/gruvbox.nvim',
   {'navarasu/onedark.nvim', -- theme inspired by atom
-    priority = 1000,
+    lazy = false,
+    priority = 1000,  -- load before all otehrs
   },
 
   -- NOTE: This is where your plugins related to LSP can be installed.
