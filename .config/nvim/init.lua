@@ -68,10 +68,15 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
-  -- File navigation in side bar
-  'preservim/nerdtree',
-  'Xuyuanp/nerdtree-git-plugin',
-  'ryanoasis/vim-devicons',
+  {"nvim-neo-tree/neo-tree.nvim",
+      lazy=false,
+      branch = "v3.x",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+        "MunifTanjim/nui.nvim",
+      },
+  },
 
   -- json highlighting
   --'elzr/vim-json',

@@ -1,5 +1,5 @@
 vim.opt.autochdir = true
---vim.opt.termguicolors = true
+vim.o.termguicolors = true             -- NOTE: You should make sure your terminal supports this
 
 --plugin dependent settings
 --vim.g.gitgutter_set_sign_backgrounds = 1
@@ -27,7 +27,6 @@ vim.api.nvim_create_autocmd({"VimEnter", "ColorScheme"}, {
 vim.cmd("let g:onedark_config = {'style' : 'warmer'}")
 vim.cmd.colorscheme 'onedark'
 
-
 --WIP
 --vim.g.airline_powerline_fonts = 1
 --vim.cmd('let g:airline#extensions#hunks#enabled = 0')
@@ -42,9 +41,8 @@ vim.o.breakindent = true               -- Enable break indent
 vim.o.undofile = true                  -- Save undo history
 vim.o.ignorecase = true                -- Case-insensitive searching
 --vim.o.smartcase = true                 -- " " UNLESS \C or capital in search
-vim.wo.signcolumn = 'yes'              -- Keep signcolumn on by default
+--vim.wo.signcolumn = 'yes'              -- Keep signcolumn on by default
 vim.o.updatetime = 250                 -- Decrease update time
 vim.o.timeoutlen = 300                 -- Decrease update time
 vim.o.completeopt = 'menuone,noselect' -- completopt for a better completion experience
-vim.o.termguicolors = true             -- NOTE: You should make sure your terminal supports this
 
