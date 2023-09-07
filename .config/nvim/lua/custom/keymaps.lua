@@ -65,7 +65,6 @@ keymap("n", "<A-l>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
-
 -- Visual and Visual Block -- 
 keymap("v", "<A-k>", ":m .-2<CR>==", opts) -- move text up
 keymap("v", "<A-j>", ":m .+1<CR>==", opts) -- move text down
@@ -103,8 +102,8 @@ keymap({'v', 'x'}, "<Leader>s", "SlimuxREPLSendSelection<CR>", opts)
 keymap('', "<Leader>a", ":SlimuxShellLast<CR>", opts)
 keymap('', "<Leader>k", ":SlimuxSendKeysLast<CR>", opts)
 
--- NERDTree
-keymap('', "<Leader>N", ":NERDTree<CR>", opts)
+--NeoTree
+keymap('', "<Leader>N", ":Neotree<CR>", opts)
 
 --yankring
 keymap('', "<Leader>yr", ":YRShow <CR>", opts)

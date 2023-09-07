@@ -9,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export CONDA_DEFAULT_ENV="root"
 
 # set vim config home
-export XDG_CONFIG_HOME="~/.config"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # set path for latex conversion needed to convert to pdf
 export PATH=/Library/TeX/texbin:$PATH
