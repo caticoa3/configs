@@ -1,39 +1,3 @@
---[[
-=====================================================================
-==================== READ THIS BEFORE CONTINUING ====================
-=====================================================================
-
-Kickstart.nvim is a template for your own configuration.
-  The goal is that you can read every line of code, top-to-bottom, understand
-  what your configuration is doing, and modify it to suit your needs.
-
-  Once you've done that, you should start exploring, configuring and tinkering to
-  explore Neovim!
-
-  If you don't know anything about Lua, I recommend taking some time to read through
-  a guide. One possible example:
-  - https://learnxinyminutes.com/docs/lua/
-
-
-  And then you can explore or search through `:help lua-guide`
-  - https://neovim.io/doc/user/lua-guide.html
-
-
-Kickstart Guide:
-
-I have left several `:help X` comments throughout the init.lua
-You should run that command and read that help section for more information.
-
-
-In addition, I have some `NOTE:` items throughout the file.
-These darkare for you, the reader to help understand what is happening. Feel free to delete
-them once you know what you're doing, but they should serve as a guide for when you
- 
-P.S. You can delete this when you're done too. It's your config now :)
---]]
-
-require('custom.keymaps')
-
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -50,9 +14,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- NOTE: Here is where you install your plugins.
---  You can configure plugins using the `config` key.
---
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
@@ -89,11 +50,6 @@ require('lazy').setup({
   'christoomey/vim-tmux-navigator', --Navigating to and from tmux panes to vim
   'epeli/slimux', --send selected code to other tmux window
 
-  --saving working session panes ets
-  --[[
-     ['xolox/vim-session',
-     ]]
-
   --yanking and commenting
   'vim-scripts/YankRing.vim',
   'ctrlpvim/ctrlP.vim',
@@ -114,12 +70,24 @@ require('lazy').setup({
   },
 
   --Design and color schemes
-  'vim-airline/vim-airline',
-  'vim-airline/vim-airline-themes',
+  -- 'vim-airline/vim-airline',
+  -- 'vim-airline/vim-airline-themes',
+ {
+    -- Set lualine as statusline
+    'nvim-lualine/lualine.nvim',
+    -- See `:help lualine.txt`
+    opts = {
+      options = {
+        icons_enabled = true,
+        component_separators = '|',
+        section_separators = '',
+      },
+    },
+  },
 
   --color schemes
   'lifepillar/vim-solarized8',
-  'morhetz/gruvbox',
+  --'morhetz/gruvbox',
   'ellisonleao/gruvbox.nvim',
   {'navarasu/onedark.nvim', -- theme inspired by atom
     lazy = false,
@@ -146,21 +114,21 @@ require('lazy').setup({
     },
   },
 
-  {
-    -- Autocompletion
-    'hrsh7th/nvim-cmp',
-    dependencies = {
-      -- Snippet Engine & its associated nvim-cmp source
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
+  { -- Autocompletion
+  'hrsh7th/nvim-cmp',
 
-      -- Adds LSP completion capabilities
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-cmdline',
+  dependencies = {
+  -- Snippet Engine & its associated nvim-cmp source
+  'L3MON4D3/LuaSnip',
+  'saadparwaiz1/cmp_luasnip',
 
-      -- Adds a number of user-friendly snippets
-      'rafamadriz/friendly-snippets',
-    },
+  -- Adds LSP completion capabilities
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-cmdline',
+
+  -- Adds a number of user-friendly snippets
+  'rafamadriz/friendly-snippets',
+  },
   },
 
   -- Useful plugin to show you pending keybinds.
@@ -184,24 +152,6 @@ require('lazy').setup({
       end,
     },
   },
-
-
---  {
---    -- Set lualine as statusline
---    'nvim-lualine/lualine.nvim',
---    -- See `:help lualine.txt`
---    opts = {
---      options = {
---        icons_enabled = false,
---        --[[
---           [theme = 'onedark',
---           ]]
---        component_separators = '|',
---        section_separators = '',
---      },
---    },
---  },
-
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
@@ -229,8 +179,6 @@ require('lazy').setup({
       -- requirements installed.
       {
         'nvim-telescope/telescope-fzf-native.nvim',
-        -- NOTE: If you are having trouble with this installation,
-        --       refer to the README for telescope-fzf-native for more instructions.
         build = 'make',
         cond = function()
           return vim.fn.executable 'make' == 1
@@ -247,12 +195,6 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
-
-  -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
-  -- require 'kickstart.plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
@@ -291,39 +233,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- [[ Configure Telescope ]]
--- See `:help telescope` and `:help telescope.setup()`
-require('telescope').setup {
-  defaults = {
-    mappings = {
-      i = {
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
-      },
-    },
-  },
-}
-
--- Enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
-
--- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
-end, { desc = '[/] Fuzzily search in current buffer' })
-
-vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -536,3 +445,5 @@ cmp.setup {
 require('custom.options')  -- no need to specify the lua directory it will search within
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+require('custom.telescope')
+require('custom.keymaps')
