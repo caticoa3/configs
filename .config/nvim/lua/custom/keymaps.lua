@@ -11,7 +11,7 @@ vim.g.maplocalleader = ","
 keymap("n", "<Leader>p", '"+p', opts) -- paste system clipboard
 
 --[[
-   [keymap("n", "<Leader>.", "@q", opts) --repeat actions stored in q 
+   [keymap("n", "<Leader>.", "@q", opts) --repeat actions stored in q
    ]]
 
 -- switching colorscheme
@@ -65,7 +65,7 @@ keymap("n", "<A-l>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
--- Visual and Visual Block -- 
+-- Visual and Visual Block --
 keymap("v", "<A-k>", ":m .-2<CR>==", opts) -- move text up
 keymap("v", "<A-j>", ":m .+1<CR>==", opts) -- move text down
 keymap({"v", "x"}, "<A-h>", "<gv", opts)   -- remove indentation
@@ -74,13 +74,13 @@ keymap({"v", "x"}, "<A-l>", ">gv", opts)   -- add indentation
 keymap("v", "<", "<gv", opts) --remove indentation
 keymap("v", ">", ">gv", opts) -- add indentation
 
--- Visual Block -- Move text up and down 
+-- Visual Block -- Move text up and down
 keymap("x", "K",     ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "J",     ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 
---keymap("v", "p", '"_dP', opts)  --yank and paste combined 
+--keymap("v", "p", '"_dP', opts)  --yank and paste combined
 
 -- Terminal --
 -- Better terminal navigation
@@ -96,7 +96,7 @@ keymap('n', '<Leader>e', vim.diagnostic.open_float, { desc = 'Open floating diag
 keymap('n', '<Leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- Plugin Dependent
--- slimux 
+-- slimux
 keymap('', "<Leader>s", ":SlimuxREPLSendLine<CR>", opts)
 keymap({'v', 'x'}, "<Leader>s", "SlimuxREPLSendSelection<CR>", opts)
 keymap('', "<Leader>a", ":SlimuxShellLast<CR>", opts)
@@ -136,3 +136,12 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- Remap for dealing with word wrap
 --keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 --keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- Vim<->TMUX Navigation
+vim.cmd([[
+  noremap <silent> <c-h> :<C-U>TmuxNavigateLeft<cr>
+  noremap <silent> <c-j> :<C-U>TmuxNavigateDown<cr>
+  noremap <silent> <c-k> :<C-U>TmuxNavigateUp<cr>
+  noremap <silent> <c-l> :<C-U>TmuxNavigateRight<cr>
+  noremap <silent> <c-\> :<C-U>TmuxNavigatePrevious<cr>
+]])
