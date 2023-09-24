@@ -102,14 +102,22 @@ require('lazy').setup({
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
       -- manages LSP servers, DAP servers, linters, and formatters
-      { 'williamboman/mason.nvim', config = true },
+      { 'williamboman/mason.nvim', config = true ,
+        opts = {
+          ensure_installed = {
+            'mypy',
+            'ruff',
+            'pyrite'
+          }
+        }
+      },
       'williamboman/mason-lspconfig.nvim',
 
       -- eye candy...status updates widget for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
-      -- lua LSP for configs and plugin...api func, autocompletions etc 
+      -- lua LSP for configs and plugin...api func, autocompletions etc
       'folke/neodev.nvim',
     },
   },
@@ -119,15 +127,14 @@ require('lazy').setup({
 
   dependencies = {
   -- Snippet Engine & its associated nvim-cmp source
-  'L3MON4D3/LuaSnip',
-  'saadparwaiz1/cmp_luasnip',
+  'L3MON4D3/LuaSnip', --snippet engine
+  'saadparwaiz1/cmp_luasnip', --snippet completions
 
-  -- Adds LSP completion capabilities
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/cmp-cmdline',
+  'hrsh7th/cmp-path',  --file path autocompletions
+  'hrsh7th/cmp-nvim-lsp', -- LSP completion capabilities
+  'hrsh7th/cmp-cmdline', --command line completions
 
-  -- Adds a number of user-friendly snippets
-  'rafamadriz/friendly-snippets',
+  'rafamadriz/friendly-snippets',  -- Adds lots of user-friendly snippets
   },
   },
 
@@ -234,5 +241,8 @@ require('custom.telescope')
 require('custom.keymaps')
 require('custom.lsp')
 require('custom.completion')
+
+vim.cmd('source ~/.vimrc')
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+

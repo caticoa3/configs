@@ -4,7 +4,7 @@ vim.o.termguicolors = true             -- NOTE: You should make sure your termin
 --plugin dependent settings
 --vim.g.gitgutter_set_sign_backgrounds = 1
 
---NERDTreeIgnore WIP
+--NERDTreeIgnore WIP  
 --vim.cmd.let("NERDTreeIgnore = ['\\.git$', '__pycache__$']")
 --vim.g.NERDTreeIgnore = {'\\.git$', '__pycache__$'}
 
@@ -45,4 +45,16 @@ vim.o.ignorecase = true                -- Case-insensitive searching
 vim.o.updatetime = 250                 -- Decrease update time
 vim.o.timeoutlen = 300                 -- Decrease update time
 vim.o.completeopt = 'menuone,noselect' -- completopt for a better completion experience
+
+
+-- set background light or dark
+-- vim.cmd [[
+-- if strftime("%H") < 18 && strftime("%H") > 7
+--    colorscheme solarized8
+--    set background=light
+-- else
+--    colorscheme onedark
+--    set background=dark
+-- endif
+-- ]]
 
