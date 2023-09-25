@@ -53,7 +53,9 @@ require('lazy').setup({
   --yanking and commenting
   'vim-scripts/YankRing.vim',
   'ctrlpvim/ctrlP.vim',
-  'scrooloose/nerdcommenter',  --determines prefix to comment depending on file type
+
+  {'preservim/nerdcommenter',--determines prefix to comment depending on file type
+  event = 'VimEnter'},
 
   -- markdown dev
   'godlygeek/tabular',
@@ -172,7 +174,7 @@ require('lazy').setup({
 
   -- "gc" to comment visual regions/lines
   --[[
-     [{ 'numToStr/Comment.nvim', opts = {} },
+     [{ 'numtostr/comment.nvim', opts = {} },
      ]]
 
   -- Fuzzy Finder (files, lsp, etc)
@@ -242,7 +244,8 @@ require('custom.keymaps')
 require('custom.lsp')
 require('custom.completion')
 
+vim.cmd('source ~/.local/share/nvim/lazy/nerdcommenter/plugin/nerdcommenter.vim')
+vim.cmd('source ~/.local/share/nvim/lazy/nerdcommenter/autoload/nerdcommenter.vim')
 vim.cmd('source ~/.vimrc')
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-

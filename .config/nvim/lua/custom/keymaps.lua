@@ -145,5 +145,3 @@ vim.cmd([[
   noremap <silent> <c-l> :<C-U>TmuxNavigateRight<cr>
   noremap <silent> <c-\> :<C-U>TmuxNavigatePrevious<cr>
 ]])
-
-keymap('n', '<leader>cs', ':NERDCommenterSexy<CR>', { desc = 'Comment succint' })
