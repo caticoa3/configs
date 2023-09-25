@@ -9,7 +9,8 @@ vim.o.termguicolors = true             -- NOTE: You should make sure your termin
 --vim.g.NERDTreeIgnore = {'\\.git$', '__pycache__$'}
 
 --Spacing between # and text when commenting lines with NERD commenter
---vim.cmd('let NERDSpaceDelims=1')
+vim.cmd('let g:NERDSpaceDelims=1')
+vim.cmd('let g:NERDCompactSexyComs=1')
 
 --vim-fugitive
 --vim.cmd.set('diffopt=filler, vertical')
