@@ -1,4 +1,5 @@
 " set t_Co=256
+set nocompatible
 
 " set background light or dark
 if strftime("%H") < 18 && strftime("%H") > 7
@@ -90,7 +91,7 @@ nmap <leader># :call Preserve("%s/\\(#.\\+\\)\\@<!\\s\\+$//e")<cr>
 nmap <leader>$ :call Preserve("%s/\\s\\+$//e")<cr>
 
 " text wraping
-autocmd vimenter * :set wrap " would not work without autocmd
+autocmd VimEnter * :set wrap " would not work without autocmd
 set wrapmargin=2
 
 "command difforig vert new | set buftype=nofile | read ++edit # | 0d_
@@ -98,4 +99,4 @@ set wrapmargin=2
 "
 "
 " tmux navigator wip 
-" g:tmux_navigator_save_on_switch = 1  " saves current buffer when switching to tmux pane
+" let g:tmux_navigator_save_on_switch = 1  " saves current buffer when switching to tmux pane
