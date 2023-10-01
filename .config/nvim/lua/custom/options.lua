@@ -34,7 +34,7 @@ vim.cmd.colorscheme 'onedark'
 --vim.cmd('let g:airline#extensions#branch#enabled = 0')
 --vim.g.airline_theme = 'powerlineish'
 
-vim.o.hlsearch = false                 -- Set highlight on search
+vim.o.hlsearch = true                 -- Set highlight on search
 vim.wo.number = true                   -- Make line numbers default
 vim.o.mouse = 'a'                      -- Enable mouse mode
 vim.o.clipboard = 'unnamedplus'        -- Sync clipboard between OS and Neovim

@@ -29,8 +29,8 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
-  {"nvim-neo-tree/neo-tree.nvim",
-      lazy=false,
+  --[[ {'preservim/nerdtree', event='VimEnter'}, ]]
+  {"nvim-neo-tree/neo-tree.nvim", lazy=false,
       branch = "v3.x",
       dependencies = {
         "nvim-lua/plenary.nvim",
