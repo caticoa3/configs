@@ -96,6 +96,12 @@ require('lazy').setup({
     priority = 1000,  -- load before all otehrs
   },
 
+  {'nvimtools/none-ls.nvim',
+    ft = {"python"},
+    opts = function()
+      return require('custom.none-ls')
+    end
+  },
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -104,9 +110,10 @@ require('lazy').setup({
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
       -- manages LSP servers, DAP servers, linters, and formatters
-      { 'williamboman/mason.nvim', config = true ,
+      {'williamboman/mason.nvim', config = true ,
         opts = {
           ensure_installed = {
+            'black',
             'mypy',
             'ruff',
             'pyrite'
@@ -114,6 +121,7 @@ require('lazy').setup({
         }
       },
       'williamboman/mason-lspconfig.nvim',
+
 
       -- eye candy...status updates widget for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -163,12 +171,15 @@ require('lazy').setup({
   },
   {
     -- Add indentation guides even on blank lines
-    'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
+    'lukas-reineke/indent-blankline.nvim',  -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
+    main = "ibl",
     opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
+
+      enabled = true,
+      indent = { char = "|" },
+      --[[ char = '┊' ]]
+      --[[ IBshow_trailing_blankline_indent = false, ]]
     },
   },
 
