@@ -10,7 +10,7 @@ if not snip_status_ok then
   return
 end
 
-require('luasnip.loaders.from_vscode').lazy_load()
+require('luasnip.loaders.from_vscode').lazy_load() --lazy_load({paths='../luasnippets'})
 
 luasnip.config.setup {}
 
@@ -108,8 +108,15 @@ cmp.setup {
     documentation = cmp.config.window.bordered(),
   },
   experimental = {
-    ghost_text = false,
+    ghost_text = true,
     native_menu = false,
   }
 }
 
+--wip builing a snippet for printing f-strings
+--[[ luasnip.add_snippets("all", {
+   [         s("print(f'{", {
+   [                 -- equivalent to "${1:cond}=})"
+   [                 i(1, "obj"), t("=}')")
+   [         })
+   [ }) ]]
