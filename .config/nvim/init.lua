@@ -1,3 +1,7 @@
+if os.getenv("CONDA_DEFAULT_ENV") then
+vim.g.python3_host_prog = (os.getenv("HOME") .. "/anaconda3/envs/" .. os.getenv("CONDA_DEFAULT_ENV") .. "/bin/python")
+end
+--print(vim.g.python3_host_prog)
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -116,7 +120,7 @@ require('lazy').setup({
             'black',
             'mypy',
             'ruff',
-            'pyrite'
+            --[[ 'pyrite' ]]
           }
         }
       },
