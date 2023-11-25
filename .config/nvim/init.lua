@@ -120,7 +120,7 @@ require('lazy').setup({
             'black',
             'mypy',
             'ruff',
-            --[[ 'pyrite' ]]
+            'pyrite'
           }
         }
       },
