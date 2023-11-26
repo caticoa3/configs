@@ -62,7 +62,7 @@ vim.o.completeopt = 'menuone,noselect' -- completopt for a better completion exp
 --behave like NERDTree
 --options: https://github.com/nvim-neo-tree/neo-tree.nvim/blob/aec592bb1f0cf67f7e1123053d1eb17700aa9ed4/lua/neo-tree/defaults.lua#L378-L382
 require('neo-tree').setup({
-   filesystem = { follow_current_file = true,
+   filesystem = { follow_current_file = {enabled = true},
                   bind_to_cwd = false},
    filtered_items = { hide_gitignored = false},
    hide_by_name = {".DS_Store", "thumbs.db"},
