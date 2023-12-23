@@ -75,3 +75,9 @@ jupyter_dark:
 # after installing tmux with brew
 tmux_setup:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+clean_git_repo:
+	# delete all branched mered locally
+	git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d
+	# delete local versions of remote branches...remote/origin/branchname
+	git fetch --prune
