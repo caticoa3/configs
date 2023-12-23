@@ -7,10 +7,12 @@ null_ls.setup({
         extra_args = function()
         --[[ local virtual = os.getenv("VIRTUAL_ENV") or "/usr" ]]
         if os.getenv("CONDA_PREFIX") then 
-            anaconda_path = os.getenv("HOME") .. "/anaconda3/envs/" .. os.getenv("CONDA_PREFIX")
+            -- conda env is active
+            local anaconda_path = os.getenv("HOME") .. "/anaconda3/envs/" .. os.getenv("CONDA_DEFAULT_ENV")
             print(anaconda_path)
             return {"--python-executable", anaconda_path  .. "/bin/python"} --,  "--explicit-package-bases", anaconda_path}
         elseif os.getenv("VIRTUAL_ENV") then
+            print(os.getenv("VIRTUAL_ENV"))
             return {"--python-executable", os.getenv("VIRTUAL_ENV") .. "/bin/python"}
         end
         end,
