@@ -5,13 +5,16 @@ null_ls.setup({
         null_ls.builtins.diagnostics.mypy,
         null_ls.builtins.diagnostics.mypy.with({
         extra_args = function()
-        local virtual = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_DEFAULT_ENV") or "/usr"
-        if os.getenv("CONDA_DEFAULT_ENV")
-            then anaconda_path = os.getenv("HOME") .. "/anaconda3/envs/" .. virtual
+        --[[ local virtual = os.getenv("VIRTUAL_ENV") or "/usr" ]]
+        if os.getenv("CONDA_PREFIX") then 
+            -- conda env is active
+            local anaconda_path = os.getenv("HOME") .. "/anaconda3/envs/" .. os.getenv("CONDA_DEFAULT_ENV")
             print(anaconda_path)
-            else anaconda_path = ""
+            return {"--python-executable", anaconda_path  .. "/bin/python"} --,  "--explicit-package-bases", anaconda_path}
+        elseif os.getenv("VIRTUAL_ENV") then
+            print(os.getenv("VIRTUAL_ENV"))
+            return {"--python-executable", os.getenv("VIRTUAL_ENV") .. "/bin/python"}
         end
-        return {"--python-executable", anaconda_path  .. "/bin/python"} --,  "--explicit-package-bases", anaconda_path}
         end,
         }),
         --[[ null_ls.builtins.diagnostics.ruff, ]]
