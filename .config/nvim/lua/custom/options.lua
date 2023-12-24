@@ -4,16 +4,12 @@ vim.o.termguicolors = true             -- NOTE: You should make sure your termin
 --plugin dependent settings
 --vim.g.gitgutter_set_sign_backgrounds = 1
 
---NERDTreeIgnore WIP  
---vim.cmd.let("NERDTreeIgnore = ['\\.git$', '__pycache__$']")
---vim.g.NERDTreeIgnore = {'\\.git$', '__pycache__$'}
-
 --Spacing between # and text when commenting lines with NERD commenter
-vim.cmd('let g:NERDSpaceDelims=1')
+vim.cmd('let g:NERDSpaceDelims=0')
 vim.cmd('let g:NERDCompactSexyComs=1')
 
 --vim-fugitive
---vim.cmd.set('diffopt=filler, vertical')
+vim.o.diffopt = 'filler,vertical,hiddenoff'
 
 -- remove highlight on vertical line between panes and gitgutter SignColumn
 vim.api.nvim_create_autocmd({"VimEnter", "ColorScheme"}, {
@@ -47,23 +43,39 @@ vim.o.updatetime = 250                 -- Decrease update time
 vim.o.timeoutlen = 300                 -- Decrease update time
 vim.o.completeopt = 'menuone,noselect' -- completopt for a better completion experience
 
-
--- set background light or dark
--- vim.cmd [[
--- if strftime("%H") < 18 && strftime("%H") > 7
---    colorscheme solarized8
---    set background=light
--- else
---    colorscheme onedark
---    set background=dark
--- endif
--- ]]
-
 --behave like NERDTree
 --options: https://github.com/nvim-neo-tree/neo-tree.nvim/blob/aec592bb1f0cf67f7e1123053d1eb17700aa9ed4/lua/neo-tree/defaults.lua#L378-L382
 require('neo-tree').setup({
-   filesystem = { follow_current_file = {enabled = true},
-                  bind_to_cwd = false},
-   filtered_items = { hide_gitignored = false},
-   hide_by_name = {".DS_Store", "thumbs.db"},
+   filesystem = {
+      follow_current_file = {enabled = true},
+      bind_to_cwd = false,
+
+      filtered_items = {
+         visible = false, -- when true, they will just be displayed differently than normal items
+         hide_dotfiles = true,
+         hide_by_name = {
+           --"node_modules"
+         },
+         hide_by_pattern = { -- uses glob style patterns
+           --"*.meta",
+           --"*/src/*/tsconfig.json",
+         },
+         always_show = { -- remains visible even if other settings would normally hide it
+          ".gitignored",
+          --".gitkeep",
+          ".gcloudignore"
+         },
+         never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
+           ".DS_Store",
+           "thumbs.db"
+         },
+         never_show_by_pattern = { -- uses glob style patterns
+           ".null-ls_*",
+           "*__pycache__",
+           "*.pytest_cache",
+           "*.ipynb_checkpoints",
+           "*.pptx"
+         }
+      }
+   }
 })
