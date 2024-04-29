@@ -1,6 +1,7 @@
 if os.getenv("CONDA_DEFAULT_ENV") then
 vim.g.python3_host_prog = (os.getenv("HOME") .. "/anaconda3/envs/" .. os.getenv("CONDA_DEFAULT_ENV") .. "/bin/python")
 end
+
 --print(vim.g.python3_host_prog)
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
@@ -45,6 +46,17 @@ require('lazy').setup({
 
   -- json highlighting
   --'elzr/vim-json',
+  {"robitx/gp.nvim",
+	    config = function()
+		      require("gp").setup()
+          --[[local config = {openai_api_key = os.getenv("OPENAI_API_KEY")}]]
+
+          -- or setup with your own config (see Install > Configuration in Readme)
+          -- require("gp").setup(config)
+
+          -- shortcuts might be setup here (see Usage > Shortcuts in Readme)
+	    end,
+  },
 
   -- find things (not working in lua)
   'mhinz/vim-grepper',
@@ -141,12 +153,13 @@ require('lazy').setup({
 
   dependencies = {
   -- Snippet Engine & its associated nvim-cmp source
-  'L3MON4D3/LuaSnip', --snippet engine
-  'saadparwaiz1/cmp_luasnip', --snippet completions
+  'L3MON4D3/LuaSnip',              --snippet engine
+  'saadparwaiz1/cmp_luasnip',      --snippet completions
+  'kmarius/jsregexp',              --luasnip dependency
 
-  'hrsh7th/cmp-path',  --file path autocompletions
-  'hrsh7th/cmp-nvim-lsp', -- LSP completion capabilities
-  'hrsh7th/cmp-cmdline', --command line completions
+  'hrsh7th/cmp-path',              --file path autocompletions
+  'hrsh7th/cmp-nvim-lsp',          -- LSP completion capabilities
+  'hrsh7th/cmp-cmdline',           --command line completions
 
   'rafamadriz/friendly-snippets',  -- Adds lots of user-friendly snippets
   },
