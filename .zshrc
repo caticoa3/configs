@@ -175,11 +175,10 @@ unset __conda_setup
 alias config='/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME'
 
 eval "$(thefuck --alias)"
-
 eval $(thefuck --alias)
 
 # google auth
-export GOOGLE_APPLICATION_CREDENTIALS="$HOME/auth/google/mds-social-listening_voc-pipeline-runner.json"
+export GOOGLE_APPLICATION_CREDENTIALS="$HOME/auth/google/mds-social-listening_trend-id-runner.json"
 #alias gsutil= 'gsutil -o "GSUtil:parallel_process_count=1"'
 
 alias dir_tree="ls -R | grep ':' | sed -e 's/://' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
@@ -210,7 +209,7 @@ fi
 export PATH=/applications/snowsql.app/contents/macos:$PATH
 alias snowsql=/applications/snowsql.app/contents/macos/snowsql
 
-export DATABRICKS_CONFIG_FILE="$home/.databrickscfg"
+export DATABRICKS_CONFIG_FILE="$HOME/.databrickscfg"
 export DATABRICKS_CONFIG_PROFILE="default" #"mds01"
 
 export CLOUDSDK_PYTHON_SITEPACKAGES=1
