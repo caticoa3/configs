@@ -77,7 +77,7 @@ tmux_setup:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 clean_git_repo:
-	# delete all branched mered locally
+	# delete all local branches that have been merged to master 
 	git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d
 	# delete local versions of remote branches...remote/origin/branchname
 	git fetch --prune
