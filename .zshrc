@@ -1,5 +1,13 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+typeset -g powerlevel9k_instant_prompt=quiet
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$home/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$home/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# if you come from bash you might have to change your $path.
+# export PATH=$home/bin:/usr/local/bin:$PATH
 export PATH=~/repos/cpip/bin:$PATH:~/.local/bin
 
 # Path to your oh-my-zsh installation.
@@ -10,9 +18,6 @@ export CONDA_DEFAULT_ENV="root"
 
 # set vim config home
 export XDG_CONFIG_HOME="$HOME/.config"
-
-# set path for latex conversion needed to convert to pdf
-export PATH=/Library/TeX/texbin:$PATH
 
 # set path for latex conversion needed to convert to pdf
 export PATH=/Library/TeX/texbin:$PATH
@@ -197,3 +202,18 @@ else
     echo "setting light"
     setlight
 fi
+
+# jupyer lab
+#export JUPYTER_PREFER_ENV_PATH=1
+
+# added by snowflake snowsql installer v1.2
+export PATH=/applications/snowsql.app/contents/macos:$PATH
+alias snowsql=/applications/snowsql.app/contents/macos/snowsql
+
+export DATABRICKS_CONFIG_FILE="$home/.databrickscfg"
+export DATABRICKS_CONFIG_PROFILE="default" #"mds01"
+
+export CLOUDSDK_PYTHON_SITEPACKAGES=1
+export PROJECTID2=clorox-datalake-dev
+
+export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0
