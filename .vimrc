@@ -3,13 +3,38 @@
 set nocompatible
 
 " set background light or dark
-if strftime("%H") < 18 && strftime("%H") > 7
-   colorscheme solarized8
-   set background=light
-else
-   colorscheme onedark
-   set background=dark
-endif
+"if strftime("%H") < 18 && strftime("%H") > 7
+   "colorscheme solarized8
+   "set background=light
+"else
+   "colorscheme onedark
+   "set background=dark
+"endif
+
+" Automatically switch light/dark background + theme
+function! SetAppearance(...)
+  try
+    let s:mode = systemlist("defaults read -g AppleInterfaceStyle")[0]
+    let s:new_bg = ""
+    let s:new_theme = ""
+    if s:mode ==? "Dark"
+      let s:new_bg = "dark"
+      let s:new_theme = "onedark"
+    else
+      let s:new_bg = "light"
+      let s:new_theme = "solarized8"
+    endif
+    if &background !=? s:new_bg
+      let &background = s:new_bg
+      execute 'colorscheme '.s:new_theme
+    endif
+  catch
+    " Ignore errors
+  endtry
+endfunction
+
+call SetAppearance()
+call timer_start(2000, "SetAppearance", {"repeat": -1})
 
 "remove verticle split highlight
 " autocmd! VimEnter,ColorScheme * hi VertSplit ctermbg=none
