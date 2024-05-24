@@ -1,3 +1,4 @@
+--For the option key work as the <A> key in vim keymaps, set the (left) option to Esc+ in iTerm profiles.
 local opts = { noremap = true }
 
 local term_opts = { silent = true }

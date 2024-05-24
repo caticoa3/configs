@@ -32,10 +32,10 @@
 c.InteractiveShellApp.exec_lines = []
 c.InteractiveShellApp.exec_lines.append('%load_ext autoreload')
 c.InteractiveShellApp.exec_lines.append('%autoreload 2')
-c.InteractiveShellApp.exec_lines.append('''%%capture
-    from rich import print, pretty, traceback
-    pretty.install()
-    traceback.install()''')
+# c.InteractiveShellApp.exec_lines.append('''%%capture
+    # from rich import print, pretty, traceback
+    # pretty.install()
+    # traceback.install()''')
 
 ## A list of dotted module names of IPython extensions to load.
 #c.InteractiveShellApp.extensions = []
@@ -542,7 +542,7 @@ c.TerminalInteractiveShell.editing_mode = 'vi'
 
 ## Experimental: Use Jedi to generate autocompletions. Default to True if jedi is
 #  installed.
-#c.Completer.use_jedi = True
+# c.Completer.use_jedi = True
 
 #------------------------------------------------------------------------------
 # IPCompleter(Completer) configuration
