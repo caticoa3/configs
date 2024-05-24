@@ -1,6 +1,6 @@
 #!/bin/bash
-cd /User/carlos/
-source /Users/carlos/anaconda3/bin/activate 
+cd $HOME||exit
+source $HOME/anaconda3/bin/activate 
 conda activate 
 make jupyter_light
-source /Users/carlos/anaconda3/bin/deactivate
+source $HOME/anaconda3/bin/deactivate
