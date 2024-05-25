@@ -153,7 +153,8 @@ jobs:
           labels: bot
 
       - name: Create PR output
-        if: env.APPLY_FIXES_IF_PR == 'true'
+        # if: env.APPLY_FIXES_IF_PR == 'true'
+        if: always() 
         run: |
           echo "PR Number - ${{ steps.cpr.outputs.pull-request-number }}"
           echo "PR URL - ${{ steps.cpr.outputs.pull-request-url }}"
