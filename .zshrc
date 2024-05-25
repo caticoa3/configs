@@ -1,4 +1,3 @@
-
 typeset -g powerlevel9k_instant_prompt=quiet
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
