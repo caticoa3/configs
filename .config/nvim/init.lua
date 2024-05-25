@@ -1,4 +1,5 @@
-if os.getenv("CONDA_DEFAULT_ENV") then
+--Check if conda env enabled
+if os.getenv("CONDA_DEFAULT_ENV") ~= "root" then
   vim.g.python3_host_prog = (os.getenv("HOME") .. "/anaconda3/envs/" .. os.getenv("CONDA_DEFAULT_ENV") .. "/bin/python")
 end
 
