@@ -30,31 +30,3 @@ jobs:
         env:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Setup Git for commiting changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Check for lint changes
-        id: git_diff
-        run: |
-          git diff-index --quiet HEAD || echo "has_changes=true" >> $GITHUB_ENV
-
-      - name: Create new branch and push changes
-        if: env.has_changes == 'true'
-        run: |
-          git checkout -b lint-fixes
-          git add .
-          git commit -m "Apply lint fixes from Super-Linter"
-          git push -u origin lint-fixes
-
-      - name: Create Pull Request
-        if: env.has_changes == 'true'
-        uses: peter-evans/create-pull-request@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Apply lint fixes from Super-Linter"
-          branch: lint-fixes
-          title: "Super-Linter Fixes"
-          body: "This PR contains fixes from Super-Linter"
