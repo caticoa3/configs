@@ -1,5 +1,5 @@
 if os.getenv("CONDA_DEFAULT_ENV") then
-vim.g.python3_host_prog = (os.getenv("HOME") .. "/anaconda3/envs/" .. os.getenv("CONDA_DEFAULT_ENV") .. "/bin/python")
+  vim.g.python3_host_prog = (os.getenv("HOME") .. "/anaconda3/envs/" .. os.getenv("CONDA_DEFAULT_ENV") .. "/bin/python")
 end
 
 --print(vim.g.python3_host_prog)
@@ -90,7 +90,7 @@ require('lazy').setup({
   --Design and color schemes
   -- 'vim-airline/vim-airline',
   -- 'vim-airline/vim-airline-themes',
- {
+  {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
