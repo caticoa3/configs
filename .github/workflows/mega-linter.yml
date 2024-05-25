@@ -31,6 +31,10 @@ env:
   # or posted in a PR (pull_request)
   APPLY_FIXES_MODE: pull_request
 
+  # If DISABLE_ERRORS: is not set to true, you wont get a PR with changes
+  # see https://github.com/oxsecurity/megalinter/issues/3420
+  DISABLE_ERRORS: true
+
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
