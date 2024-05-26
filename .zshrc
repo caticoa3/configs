@@ -1,5 +1,5 @@
 typeset -g powerlevel9k_instant_prompt=quiet
-# Initialization code that may require console input (password prompts, [y/n]
+# Initialization code may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$home/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$home/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
