@@ -24,4 +24,4 @@ dependencies:
   - openpyxl
   - crcmod
   - ipydatagrid
-prefix: /Users/cariza2/anaconda3
+prefix: "$HOME/anaconda3"
