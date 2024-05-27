@@ -1,0 +1,2 @@
+# ignore large artifact from megalinter; for automated linting pull request
+*megalinter-reports/*
