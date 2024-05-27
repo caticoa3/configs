@@ -1,0 +1,15 @@
+Results of pylint linter (version 3.1.0)
+See documentation on https://megalinter.io/7.11.1/descriptors/python_pylint/
+-----------------------------------------------
+
+❌ [ERROR] for workspace /github/workspace
+Linter raw log:
+pylint: Command line or configuration file:1: UserWarning: 'Exception' is not a proper value for the 'overgeneral-exceptions' option. Use fully qualified name (maybe 'builtins.Exception' ?) instead. This will cease to be checked at runtime when the configuration upgrader is released.
+************* Module ipython_config
+.ipython/profile_default/ipython_config.py:32:0: E0602: Undefined variable 'c' (undefined-variable)
+.ipython/profile_default/ipython_config.py:33:0: E0602: Undefined variable 'c' (undefined-variable)
+.ipython/profile_default/ipython_config.py:34:0: E0602: Undefined variable 'c' (undefined-variable)
+.ipython/profile_default/ipython_config.py:302:0: E0602: Undefined variable 'c' (undefined-variable)
+************* Module auto_darkmode
+Library/Application Support/iTerm2/Scripts/AutoLaunch/auto_darkmode.py:7:0: E0401: Unable to import 'iterm2' (import-error)
+

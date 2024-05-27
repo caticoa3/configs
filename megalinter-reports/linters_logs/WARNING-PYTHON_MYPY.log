@@ -1,0 +1,12 @@
+Results of mypy linter (version 1.9.0)
+See documentation on https://megalinter.io/7.11.1/descriptors/python_mypy/
+-----------------------------------------------
+
+❌ [ERROR] for workspace /github/workspace
+Linter raw log:
+.ipython/profile_default/ipython_config.py:32: error: Name "c" is not defined  [name-defined]
+.ipython/profile_default/ipython_config.py:33: error: Name "c" is not defined  [name-defined]
+.ipython/profile_default/ipython_config.py:34: error: Name "c" is not defined  [name-defined]
+.ipython/profile_default/ipython_config.py:302: error: Name "c" is not defined  [name-defined]
+Found 4 errors in 1 file (checked 2 source files)
+

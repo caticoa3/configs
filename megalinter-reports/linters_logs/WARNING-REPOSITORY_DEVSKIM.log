@@ -1,0 +1,22 @@
+Results of devskim linter (version 1.0.33)
+See documentation on https://megalinter.io/7.11.1/descriptors/repository_devskim/
+-----------------------------------------------
+
+❌ [ERROR] for workspace /github/workspace
+Linter raw log:
+git version 2.43.0
+Unhandled exception. System.IO.FileNotFoundException: Could not find file '.mackup.cfg'.
+File name: '.mackup.cfg'
+   at Interop.ThrowExceptionForIoErrno(ErrorInfo errorInfo, String path, Boolean isDirError)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String path, OpenFlags flags, Int32 mode, Boolean failForSymlink, Boolean& wasSymlink, Func`4 createOpenException)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, UnixFileMode openPermissions, Int64& fileLength, UnixFileMode& filePermissions, Boolean failForSymlink, Boolean& wasSymlink, Func`4 createOpenException)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, Int64 preallocationSize)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at Microsoft.CST.RecursiveExtractor.Extractor.Extract(String filename, ExtractorOptions opts)
+   at Microsoft.DevSkim.CLI.Commands.AnalyzeCommand.FilePathToFileEntries(BaseAnalyzeCommandOptions opts, String file, Extractor extractor, ExtractorOptions extractorOptions) in D:\a\_work\1\s\DevSkim-DotNet\Microsoft.DevSkim.CLI\Commands\AnalyzeCommand.cs:line 253
+   at Microsoft.DevSkim.CLI.Commands.AnalyzeCommand.Run() in D:\a\_work\1\s\DevSkim-DotNet\Microsoft.DevSkim.CLI\Commands\AnalyzeCommand.cs:line 107
+   at Microsoft.DevSkim.CLI.Program.<>c.<Main>b__0_0(AnalyzeCommandOptions opts) in D:\a\_work\1\s\DevSkim-DotNet\Microsoft.DevSkim.CLI\Program.cs:line 16
+   at CommandLine.ParserResultExtensions.MapResult[T1,T2,T3,T4,TResult](ParserResult`1 result, Func`2 parsedFunc1, Func`2 parsedFunc2, Func`2 parsedFunc3, Func`2 parsedFunc4, Func`2 notParsedFunc)
+   at Microsoft.DevSkim.CLI.Program.Main(String[] args) in D:\a\_work\1\s\DevSkim-DotNet\Microsoft.DevSkim.CLI\Program.cs:line 14
+

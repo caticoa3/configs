@@ -1,0 +1,10 @@
+Results of bash-exec linter (version 5.2.21)
+See documentation on https://megalinter.io/7.11.1/descriptors/bash_bash_exec/
+-----------------------------------------------
+
+❌ [ERROR] .jupyter/custom/make_jupyter_dark.bash
+    Error: File:[.jupyter/custom/make_jupyter_dark.bash] is not executable
+
+❌ [ERROR] .jupyter/custom/make_jupyter_light.bash
+    Error: File:[.jupyter/custom/make_jupyter_light.bash] is not executable
+

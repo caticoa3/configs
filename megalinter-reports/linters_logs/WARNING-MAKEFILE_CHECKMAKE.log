@@ -1,0 +1,14 @@
+Results of checkmake linter (version 0.2.0)
+See documentation on https://megalinter.io/7.11.1/descriptors/makefile_checkmake/
+-----------------------------------------------
+
+❌ [ERROR] Makefile
+        RULE              DESCRIPTION             LINE NUMBER  
+                                                               
+      minphony   Missing required phony target    0            
+                 "all"                                         
+      minphony   Missing required phony target    0            
+                 "clean"                                       
+      minphony   Missing required phony target    0            
+                 "test"
+

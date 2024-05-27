@@ -1,0 +1,111 @@
+Results of luacheck linter (version 1.1.2)
+See documentation on https://megalinter.io/7.11.1/descriptors/lua_luacheck/
+-----------------------------------------------
+
+❌ [ERROR] .config/nvim/init.lua
+    Checking .config/nvim/init.lua                    18 warnings
+    
+        .config/nvim/init.lua:3:3: mutating non-standard global variable vim
+        .config/nvim/init.lua:10:18: accessing undefined variable vim
+        .config/nvim/init.lua:11:8: accessing undefined variable vim
+        .config/nvim/init.lua:12:3: accessing undefined variable vim
+        .config/nvim/init.lua:21:1: accessing undefined variable vim
+        .config/nvim/init.lua:184:9: accessing undefined variable vim
+        .config/nvim/init.lua:184:121: line is too long (126 > 120)
+        .config/nvim/init.lua:185:9: accessing undefined variable vim
+        .config/nvim/init.lua:185:121: line is too long (122 > 120)
+        .config/nvim/init.lua:186:9: accessing undefined variable vim
+        .config/nvim/init.lua:186:121: line is too long (122 > 120)
+        .config/nvim/init.lua:221:18: accessing undefined variable vim
+        .config/nvim/init.lua:260:25: accessing undefined variable vim
+        .config/nvim/init.lua:261:1: accessing undefined variable vim
+        .config/nvim/init.lua:263:5: accessing undefined variable vim
+        .config/nvim/init.lua:275:1: accessing undefined variable vim
+        .config/nvim/init.lua:276:1: accessing undefined variable vim
+        .config/nvim/init.lua:277:1: accessing undefined variable vim
+    
+    Total: 18 warnings / 0 errors in 1 file
+
+❌ [ERROR] .config/nvim/lua/custom/completion.lua
+    Checking .config/nvim/lua/custom/completion.lua   1 warning
+    
+        .config/nvim/lua/custom/completion.lua:88:121: line is too long (151 > 120)
+    
+    Total: 1 warning / 0 errors in 1 file
+
+❌ [ERROR] .config/nvim/lua/custom/keymaps.lua
+    Checking .config/nvim/lua/custom/keymaps.lua      11 warnings
+    
+        .config/nvim/lua/custom/keymaps.lua:6:16: accessing undefined variable vim
+        .config/nvim/lua/custom/keymaps.lua:9:1: mutating non-standard global variable vim
+        .config/nvim/lua/custom/keymaps.lua:10:1: mutating non-standard global variable vim
+        .config/nvim/lua/custom/keymaps.lua:23:121: line is too long (133 > 120)
+        .config/nvim/lua/custom/keymaps.lua:42:1: mutating non-standard global variable vim
+        .config/nvim/lua/custom/keymaps.lua:94:19: accessing undefined variable vim
+        .config/nvim/lua/custom/keymaps.lua:95:19: accessing undefined variable vim
+        .config/nvim/lua/custom/keymaps.lua:96:26: accessing undefined variable vim
+        .config/nvim/lua/custom/keymaps.lua:97:26: accessing undefined variable vim
+        .config/nvim/lua/custom/keymaps.lua:111:1: mutating non-standard global variable vim
+        .config/nvim/lua/custom/keymaps.lua:142:1: accessing undefined variable vim
+    
+    Total: 11 warnings / 0 errors in 1 file
+
+❌ [ERROR] .config/nvim/lua/custom/lsp.lua
+    Checking .config/nvim/lua/custom/lsp.lua          17 warnings
+    
+        .config/nvim/lua/custom/lsp.lua:15:5: accessing undefined variable vim
+        .config/nvim/lua/custom/lsp.lua:18:22: accessing undefined variable vim
+        .config/nvim/lua/custom/lsp.lua:19:22: accessing undefined variable vim
+        .config/nvim/lua/custom/lsp.lua:21:14: accessing undefined variable vim
+        .config/nvim/lua/custom/lsp.lua:23:14: accessing undefined variable vim
+        .config/nvim/lua/custom/lsp.lua:24:21: accessing undefined variable vim
+        .config/nvim/lua/custom/lsp.lua:29:13: accessing undefined variable vim
+        .config/nvim/lua/custom/lsp.lua:30:17: accessing undefined variable vim
+        .config/nvim/lua/custom/lsp.lua:33:14: accessing undefined variable vim
+        .config/nvim/lua/custom/lsp.lua:34:22: accessing undefined variable vim
+        .config/nvim/lua/custom/lsp.lua:35:22: accessing undefined variable vim
+        .config/nvim/lua/custom/lsp.lua:37:11: accessing undefined variable vim
+        .config/nvim/lua/custom/lsp.lua:37:23: accessing undefined variable vim
+        .config/nvim/lua/custom/lsp.lua:41:3: accessing undefined variable vim
+        .config/nvim/lua/custom/lsp.lua:42:5: accessing undefined variable vim
+        .config/nvim/lua/custom/lsp.lua:75:22: accessing undefined variable vim
+        .config/nvim/lua/custom/lsp.lua:82:22: accessing undefined variable vim
+    
+    Total: 17 warnings / 0 errors in 1 file
+
+❌ [ERROR] .config/nvim/lua/custom/none-ls.lua
+    Checking .config/nvim/lua/custom/none-ls.lua      2 warnings
+    
+        .config/nvim/lua/custom/none-ls.lua:9:42: line contains trailing whitespace
+        .config/nvim/lua/custom/none-ls.lua:13:121: line is too long (123 > 120)
+    
+    Total: 2 warnings / 0 errors in 1 file
+
+❌ [ERROR] .config/nvim/lua/custom/options.lua
+    Checking .config/nvim/lua/custom/options.lua      20 warnings
+    
+        .config/nvim/lua/custom/options.lua:1:1: mutating non-standard global variable vim
+        .config/nvim/lua/custom/options.lua:2:1: mutating non-standard global variable vim
+        .config/nvim/lua/custom/options.lua:8:1: accessing undefined variable vim
+        .config/nvim/lua/custom/options.lua:9:1: accessing undefined variable vim
+        .config/nvim/lua/custom/options.lua:12:1: mutating non-standard global variable vim
+        .config/nvim/lua/custom/options.lua:15:1: accessing undefined variable vim
+        .config/nvim/lua/custom/options.lua:17:1: accessing undefined variable vim
+        .config/nvim/lua/custom/options.lua:24:1: accessing undefined variable vim
+        .config/nvim/lua/custom/options.lua:25:1: accessing undefined variable vim
+        .config/nvim/lua/custom/options.lua:33:1: mutating non-standard global variable vim
+        .config/nvim/lua/custom/options.lua:34:1: mutating non-standard global variable vim
+        .config/nvim/lua/custom/options.lua:35:1: mutating non-standard global variable vim
+        .config/nvim/lua/custom/options.lua:36:1: mutating non-standard global variable vim
+        .config/nvim/lua/custom/options.lua:37:1: mutating non-standard global variable vim
+        .config/nvim/lua/custom/options.lua:38:1: mutating non-standard global variable vim
+        .config/nvim/lua/custom/options.lua:39:1: mutating non-standard global variable vim
+        .config/nvim/lua/custom/options.lua:42:1: mutating non-standard global variable vim
+        .config/nvim/lua/custom/options.lua:43:1: mutating non-standard global variable vim
+        .config/nvim/lua/custom/options.lua:44:1: mutating non-standard global variable vim
+        .config/nvim/lua/custom/options.lua:47:121: line is too long (139 > 120)
+    
+    Total: 20 warnings / 0 errors in 1 file
+
+✅ [SUCCESS] .config/nvim/lua/custom/telescope.lua
+✅ [SUCCESS] .config/nvim/lua/custom/treesitter.lua

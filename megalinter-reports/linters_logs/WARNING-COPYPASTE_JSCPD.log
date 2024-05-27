@@ -1,0 +1,38 @@
+Results of jscpd linter (version 3.5.10)
+See documentation on https://megalinter.io/7.11.1/descriptors/copypaste_jscpd/
+-----------------------------------------------
+
+❌ [ERROR] for workspace /github/workspace
+Linter raw log:
+Clone found (lua):
+ - .config/nvim/lua/custom/telescope.lua [55:11 - 62:4] (7 lines, 78 tokens)
+   .config/nvim/lua/custom/telescope.lua [40:23 - 46:8]
+
+Clone found (css):
+ - .vim/github-markdown.css [592:5 - 609:22] (17 lines, 100 tokens)
+   .vim/github-markdown.css [180:8 - 201:18]
+
+┌────────────┬────────────────┬─────────────┬──────────────┬──────────────┬──────────────────┬───────────────────┐
+│ Format     │ Files analyzed │ Total lines │ Total tokens │ Clones found │ Duplicated lines │ Duplicated tokens │
+├────────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+│ python     │ 3              │ 694         │ 1607         │ 0            │ 0 (0%)           │ 0 (0%)            │
+├────────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+│ lua        │ 8              │ 906         │ 6312         │ 1            │ 7 (0.77%)        │ 78 (1.24%)        │
+├────────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+│ bash       │ 2              │ 10          │ 60           │ 0            │ 0 (0%)           │ 0 (0%)            │
+├────────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+│ javascript │ 1              │ 130         │ 415          │ 0            │ 0 (0%)           │ 0 (0%)            │
+├────────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+│ css        │ 1              │ 984         │ 3917         │ 1            │ 17 (1.73%)       │ 100 (2.55%)       │
+├────────────┼────────────────┼─────────────┼──────────────┼──────────────┼──────────────────┼───────────────────┤
+│ Total:     │ 15             │ 2724        │ 12311        │ 2            │ 24 (0.88%)       │ 178 (1.45%)       │
+└────────────┴────────────────┴─────────────┴──────────────┴──────────────┴──────────────────┴───────────────────┘
+Found 2 clones.
+HTML report saved to megalinter-reports/copy-paste/html/
+ERROR: jscpd found too many duplicates (0.88%) over threshold (0%)
+Error: ERROR: jscpd found too many duplicates (0.88%) over threshold (0%)
+    at ThresholdReporter.report (/node-deps/node_modules/@jscpd/finder/dist/reporters/threshold.js:12:19)
+    at /node-deps/node_modules/@jscpd/finder/dist/in-files-detector.js:82:26
+    at Array.forEach (<anonymous>)
+    at /node-deps/node_modules/@jscpd/finder/dist/in-files-detector.js:81:28
+

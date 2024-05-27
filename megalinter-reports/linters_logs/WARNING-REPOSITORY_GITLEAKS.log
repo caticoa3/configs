@@ -1,0 +1,121 @@
+Results of gitleaks linter (version 8.18.2)
+See documentation on https://megalinter.io/7.11.1/descriptors/repository_gitleaks/
+-----------------------------------------------
+
+❌ [ERROR] for workspace /github/workspace
+Linter raw log:
+
+    ○
+    │╲
+    │ ○
+    ○ ░
+    ░    gitleaks
+
+Finding:     - anaconda-client=REDACTED
+  - anaconda-naviga...
+Secret:      REDACTED
+RuleID:      generic-api-key
+Entropy:     3.614369
+File:        .config/conda/environment_all.yml
+Line:        6
+Commit:      2f12b82d99e93436f5e23c096c92def3e0377d75
+Author:      Carlos Ariza
+Email:       caticoa3@users.noreply.github.com
+Date:        2024-04-21T01:32:05Z
+Fingerprint: 2f12b82d99e93436f5e23c096c92def3e0377d75:.config/conda/environment_all.yml:generic-api-key:6
+
+Finding:     - asttokens=REDACTED
+  - attrs=21.4.0=py...
+Secret:      REDACTED
+RuleID:      generic-api-key
+Entropy:     3.725481
+File:        .config/conda/environment_all.yml
+Line:        13
+Commit:      2f12b82d99e93436f5e23c096c92def3e0377d75
+Author:      Carlos Ariza
+Email:       caticoa3@users.noreply.github.com
+Date:        2024-04-21T01:32:05Z
+Fingerprint: 2f12b82d99e93436f5e23c096c92def3e0377d75:.config/conda/environment_all.yml:generic-api-key:13
+
+Finding:     - conda-token=REDACTED
+  - conda-verify=3....
+Secret:      REDACTED
+RuleID:      generic-api-key
+Entropy:     3.503258
+File:        .config/conda/environment_all.yml
+Line:        45
+Commit:      2f12b82d99e93436f5e23c096c92def3e0377d75
+Author:      Carlos Ariza
+Email:       caticoa3@users.noreply.github.com
+Date:        2024-04-21T01:32:05Z
+Fingerprint: 2f12b82d99e93436f5e23c096c92def3e0377d75:.config/conda/environment_all.yml:generic-api-key:45
+
+Finding:     - jupyter_client=REDACTED
+  - jupyter_contrib...
+Secret:      REDACTED
+RuleID:      generic-api-key
+Entropy:     3.947703
+File:        .config/conda/environment_all.yml
+Line:        83
+Commit:      2f12b82d99e93436f5e23c096c92def3e0377d75
+Author:      Carlos Ariza
+Email:       caticoa3@users.noreply.github.com
+Date:        2024-04-21T01:32:05Z
+Fingerprint: 2f12b82d99e93436f5e23c096c92def3e0377d75:.config/conda/environment_all.yml:generic-api-key:83
+
+Finding:     - nbclient=REDACTED
+  - nbconvert=6.4.5...
+Secret:      REDACTED
+RuleID:      generic-api-key
+Entropy:     3.826875
+File:        .config/conda/environment_all.yml
+Line:        150
+Commit:      2f12b82d99e93436f5e23c096c92def3e0377d75
+Author:      Carlos Ariza
+Email:       caticoa3@users.noreply.github.com
+Date:        2024-04-21T01:32:05Z
+Fingerprint: 2f12b82d99e93436f5e23c096c92def3e0377d75:.config/conda/environment_all.yml:generic-api-key:150
+
+Finding:     - oauthlib=REDACTED
+  - openjpeg=2.5.0=...
+Secret:      REDACTED
+RuleID:      generic-api-key
+Entropy:     3.836592
+File:        .config/conda/environment_all.yml
+Line:        162
+Commit:      2f12b82d99e93436f5e23c096c92def3e0377d75
+Author:      Carlos Ariza
+Email:       caticoa3@users.noreply.github.com
+Date:        2024-04-21T01:32:05Z
+Fingerprint: 2f12b82d99e93436f5e23c096c92def3e0377d75:.config/conda/environment_all.yml:generic-api-key:162
+
+Finding:     - prometheus_client=REDACTED
+  - prompt-toolkit=...
+Secret:      REDACTED
+RuleID:      generic-api-key
+Entropy:     3.681881
+File:        .config/conda/environment_all.yml
+Line:        180
+Commit:      2f12b82d99e93436f5e23c096c92def3e0377d75
+Author:      Carlos Ariza
+Email:       caticoa3@users.noreply.github.com
+Date:        2024-04-21T01:32:05Z
+Fingerprint: 2f12b82d99e93436f5e23c096c92def3e0377d75:.config/conda/environment_all.yml:generic-api-key:180
+
+Finding:     - websocket-client=REDACTED
+  - wheel=0.37.1=py...
+Secret:      REDACTED
+RuleID:      generic-api-key
+Entropy:     3.683542
+File:        .config/conda/environment_all.yml
+Line:        240
+Commit:      2f12b82d99e93436f5e23c096c92def3e0377d75
+Author:      Carlos Ariza
+Email:       caticoa3@users.noreply.github.com
+Date:        2024-04-21T01:32:05Z
+Fingerprint: 2f12b82d99e93436f5e23c096c92def3e0377d75:.config/conda/environment_all.yml:generic-api-key:240
+
+5:18AM INF 143 commits scanned.
+5:18AM INF scan completed in 589ms
+5:18AM WRN leaks found: 8
+

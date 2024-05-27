@@ -1,0 +1,120 @@
+Results of flake8 linter (version 7.0.0)
+See documentation on https://megalinter.io/7.11.1/descriptors/python_flake8/
+-----------------------------------------------
+
+❌ [ERROR] for workspace /github/workspace
+Linter raw log:
+.ipython/profile_default/ipython_config.py:7:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:21:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:24:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:28:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:31:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:32:1: F821 undefined name 'c'
+.ipython/profile_default/ipython_config.py:33:1: F821 undefined name 'c'
+.ipython/profile_default/ipython_config.py:34:1: F821 undefined name 'c'
+.ipython/profile_default/ipython_config.py:40:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:43:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:46:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:49:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:54:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:58:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:61:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:64:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:68:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:74:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:81:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:83:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:86:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:89:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:96:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:98:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:101:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:107:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:112:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:118:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:121:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:124:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:132:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:135:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:139:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:141:89: E501 line too long (109 > 88 characters)
+.ipython/profile_default/ipython_config.py:143:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:150:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:152:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:156:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:160:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:163:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:171:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:174:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:177:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:178:89: E501 line too long (214 > 88 characters)
+.ipython/profile_default/ipython_config.py:180:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:183:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:191:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:196:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:202:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:205:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:209:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:212:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:215:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:222:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:226:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:229:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:233:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:240:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:243:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:247:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:251:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:255:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:271:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:274:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:281:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:288:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:291:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:296:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:301:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:302:1: F821 undefined name 'c'
+.ipython/profile_default/ipython_config.py:304:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:307:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:310:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:314:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:319:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:322:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:326:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:332:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:336:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:339:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:342:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:352:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:355:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:358:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:362:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:371:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:376:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:382:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:389:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:409:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:411:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:415:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:422:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:430:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:438:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:476:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:501:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:522:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:527:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:531:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:538:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:543:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:551:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:553:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:564:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:570:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:585:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:591:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:599:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:609:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:611:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:618:1: E266 too many leading '#' for block comment
+.ipython/profile_default/ipython_config.py:622:1: E266 too many leading '#' for block comment
+

@@ -1,0 +1,12 @@
+Results of ruff linter (version 0.4.1)
+See documentation on https://megalinter.io/7.11.1/descriptors/python_ruff/
+-----------------------------------------------
+
+❌ [ERROR] for workspace /github/workspace
+Linter raw log:
+.ipython/profile_default/ipython_config.py:32:1: F821 Undefined name `c`
+.ipython/profile_default/ipython_config.py:33:1: F821 Undefined name `c`
+.ipython/profile_default/ipython_config.py:34:1: F821 Undefined name `c`
+.ipython/profile_default/ipython_config.py:302:1: F821 Undefined name `c`
+Found 5 errors (1 fixed, 4 remaining).
+

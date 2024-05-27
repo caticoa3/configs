@@ -1,0 +1,56 @@
+Results of bandit linter (version 1.7.8)
+See documentation on https://megalinter.io/7.11.1/descriptors/python_bandit/
+-----------------------------------------------
+
+❌ [ERROR] for workspace /github/workspace
+Linter raw log:
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	using config: /action/lib/.automation/.bandit.yml
+[main]	INFO	running on Python 3.12.3
+Run started:2024-05-27 05:18:55.564423
+
+Test results:
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.7.8/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: ./Library/Application Support/iTerm2/Scripts/AutoLaunch/auto_darkmode.py:4:0
+3	
+4	import subprocess
+5	import time
+
+--------------------------------------------------
+>> Issue: [B602:subprocess_popen_with_shell_equals_true] subprocess call with shell=True identified, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.7.8/plugins/b602_subprocess_popen_with_shell_equals_true.html
+   Location: ./Library/Application Support/iTerm2/Scripts/AutoLaunch/auto_darkmode.py:13:8
+12	    p = subprocess.Popen(
+13	        cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
+14	    )
+15	    return bool(p.communicate()[0])
+16	
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 35
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 1
+		Medium: 0
+		High: 1
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 2
+Files skipped (0):
+

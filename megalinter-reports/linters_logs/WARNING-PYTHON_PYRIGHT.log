@@ -1,0 +1,17 @@
+Results of pyright linter (version 1.1.359)
+See documentation on https://megalinter.io/7.11.1/descriptors/python_pyright/
+-----------------------------------------------
+
+❌ [ERROR] for workspace /github/workspace
+Linter raw log:
+
+added 1 package, and audited 2 packages in 5s
+
+found 0 vulnerabilities
+Library/Application Support/iTerm2/Scripts/AutoLaunch/auto_darkmode.py
+  Library/Application Support/iTerm2/Scripts/AutoLaunch/auto_darkmode.py:7:8 - error: Import "iterm2" could not be resolved (reportMissingImports)
+1 error, 0 warnings, 0 informations 
+WARNING: there is a new pyright version available (v1.1.359 -> v1.1.364).
+Please install the new version or set PYRIGHT_PYTHON_FORCE_VERSION to `latest`
+
+

@@ -1,0 +1,354 @@
+{
+  "statistics": {
+    "detectionDate": "2024-05-27T05:18:20.157Z",
+    "formats": {
+      "python": {
+        "sources": {
+          "Library/Application Support/iTerm2/Scripts/AutoLaunch/auto_darkmode.py": {
+            "lines": 46,
+            "tokens": 299,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          ".ipython/profile_default/startup/keybindings.py": {
+            "lines": 25,
+            "tokens": 168,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          ".ipython/profile_default/ipython_config.py": {
+            "lines": 623,
+            "tokens": 1140,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 694,
+          "tokens": 1607,
+          "sources": 3,
+          "clones": 0,
+          "duplicatedLines": 0,
+          "duplicatedTokens": 0,
+          "percentage": 0,
+          "percentageTokens": 0,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "lua": {
+        "sources": {
+          ".config/nvim/lua/custom/treesitter.lua": {
+            "lines": 64,
+            "tokens": 493,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          ".config/nvim/lua/custom/telescope.lua": {
+            "lines": 98,
+            "tokens": 778,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 14,
+            "duplicatedTokens": 156,
+            "percentage": 14.29,
+            "percentageTokens": 20.05,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          ".config/nvim/lua/custom/options.lua": {
+            "lines": 80,
+            "tokens": 453,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          ".config/nvim/lua/custom/none-ls.lua": {
+            "lines": 25,
+            "tokens": 213,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          ".config/nvim/lua/custom/lsp.lua": {
+            "lines": 93,
+            "tokens": 702,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          ".config/nvim/lua/custom/keymaps.lua": {
+            "lines": 147,
+            "tokens": 1244,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          ".config/nvim/lua/custom/completion.lua": {
+            "lines": 121,
+            "tokens": 923,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          ".config/nvim/init.lua": {
+            "lines": 278,
+            "tokens": 1506,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 906,
+          "tokens": 6312,
+          "sources": 8,
+          "clones": 1,
+          "duplicatedLines": 7,
+          "duplicatedTokens": 78,
+          "percentage": 0.77,
+          "percentageTokens": 1.24,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "bash": {
+        "sources": {
+          ".jupyter/custom/make_jupyter_light.bash": {
+            "lines": 5,
+            "tokens": 30,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          ".jupyter/custom/make_jupyter_dark.bash": {
+            "lines": 5,
+            "tokens": 30,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 10,
+          "tokens": 60,
+          "sources": 2,
+          "clones": 0,
+          "duplicatedLines": 0,
+          "duplicatedTokens": 0,
+          "percentage": 0,
+          "percentageTokens": 0,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "javascript": {
+        "sources": {
+          ".jupyter/custom/custom.js": {
+            "lines": 130,
+            "tokens": 415,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 130,
+          "tokens": 415,
+          "sources": 1,
+          "clones": 0,
+          "duplicatedLines": 0,
+          "duplicatedTokens": 0,
+          "percentage": 0,
+          "percentageTokens": 0,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "css": {
+        "sources": {
+          ".vim/github-markdown.css": {
+            "lines": 984,
+            "tokens": 3917,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 34,
+            "duplicatedTokens": 200,
+            "percentage": 3.46,
+            "percentageTokens": 5.11,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 984,
+          "tokens": 3917,
+          "sources": 1,
+          "clones": 1,
+          "duplicatedLines": 17,
+          "duplicatedTokens": 100,
+          "percentage": 1.73,
+          "percentageTokens": 2.55,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      }
+    },
+    "total": {
+      "lines": 2724,
+      "tokens": 12311,
+      "sources": 15,
+      "clones": 2,
+      "duplicatedLines": 24,
+      "duplicatedTokens": 178,
+      "percentage": 0.88,
+      "percentageTokens": 1.45,
+      "newDuplicatedLines": 0,
+      "newClones": 0
+    }
+  },
+  "duplicates": [
+    {
+      "format": "lua",
+      "lines": 8,
+      "fragment": ",\n\n        [\"<Tab>\"] = actions.toggle_selection + actions.move_selection_worse,\n        [\"<S-Tab>\"] = actions.toggle_selection + actions.move_selection_better,\n        [\"<C-q>\"] = actions.send_to_qflist + actions.open_qflist,\n        [\"<M-q>\"] = actions.send_selected_to_qflist + actions.open_qflist,\n\n        [\"j\"",
+      "tokens": 0,
+      "firstFile": {
+        "name": ".config/nvim/lua/custom/telescope.lua",
+        "start": 55,
+        "end": 62,
+        "startLoc": {
+          "line": 55,
+          "column": 11,
+          "position": 470
+        },
+        "endLoc": {
+          "line": 62,
+          "column": 4,
+          "position": 548
+        }
+      },
+      "secondFile": {
+        "name": ".config/nvim/lua/custom/telescope.lua",
+        "start": 40,
+        "end": 46,
+        "startLoc": {
+          "line": 40,
+          "column": 23,
+          "position": 299
+        },
+        "endLoc": {
+          "line": 46,
+          "column": 8,
+          "position": 376
+        }
+      }
+    },
+    {
+      "format": "css",
+      "lines": 18,
+      "fragment": ";\n}\n\n.markdown-body kbd {\n  display: inline-block;\n  padding: 3px 5px;\n  font: 11px SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;\n  line-height: 10px;\n  color: #444d56;\n  vertical-align: middle;\n  background-color: #fafbfc;\n  border: 1px solid #d1d5da;\n  border-radius: 3px;\n  box-shadow: inset 0 -1px 0 #d1d5da;\n}\n\n.markdown-body:after,\n.markdown-body:before",
+      "tokens": 0,
+      "firstFile": {
+        "name": ".vim/github-markdown.css",
+        "start": 592,
+        "end": 609,
+        "startLoc": {
+          "line": 592,
+          "column": 5,
+          "position": 2188
+        },
+        "endLoc": {
+          "line": 609,
+          "column": 22,
+          "position": 2288
+        }
+      },
+      "secondFile": {
+        "name": ".vim/github-markdown.css",
+        "start": 180,
+        "end": 201,
+        "startLoc": {
+          "line": 180,
+          "column": 8,
+          "position": 690
+        },
+        "endLoc": {
+          "line": 201,
+          "column": 18,
+          "position": 790
+        }
+      }
+    }
+  ],
+  "filename": "/node-deps/node_modules/@jscpd/html-reporter/dist/templates/main.pug"
+}

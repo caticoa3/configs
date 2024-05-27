@@ -1,0 +1,29 @@
+Results of shellcheck linter (version 0.10.0)
+See documentation on https://megalinter.io/7.11.1/descriptors/bash_shellcheck/
+-----------------------------------------------
+
+❌ [ERROR] for workspace /github/workspace
+Linter raw log:
+
+In .jupyter/custom/make_jupyter_dark.bash line 3:
+source "$HOME/anaconda3/bin/activate"
+       ^----------------------------^ SC1091 (info): Not following: ./anaconda3/bin/activate: openBinaryFile: does not exist (No such file or directory)
+
+
+In .jupyter/custom/make_jupyter_dark.bash line 6:
+source "$HOME/anaconda3/bin/deactivate"
+       ^-- SC1091 (info): Not following: ./anaconda3/bin/deactivate: openBinaryFile: does not exist (No such file or directory)
+
+
+In .jupyter/custom/make_jupyter_light.bash line 3:
+source "$HOME/anaconda3/bin/activate"
+       ^----------------------------^ SC1091 (info): Not following: ./anaconda3/bin/activate: openBinaryFile: does not exist (No such file or directory)
+
+
+In .jupyter/custom/make_jupyter_light.bash line 6:
+source "$HOME/anaconda3/bin/deactivate"
+       ^-- SC1091 (info): Not following: ./anaconda3/bin/deactivate: openBinaryFile: does not exist (No such file or directory)
+
+For more information:
+  https://www.shellcheck.net/wiki/SC1091 -- Not following: ./anaconda3/bin/ac...
+
