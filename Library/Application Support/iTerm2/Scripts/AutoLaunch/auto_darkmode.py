@@ -1,16 +1,19 @@
 #!/usr/bin/env python3.7
 # https://notes.arne.me/automatic-darkmode-for-iterm/
 
-import asyncio
-import time
 import subprocess
+import time
+
 import iterm2
 
+
 def is_dark_mode():
-    cmd = 'defaults read -g AppleInterfaceStyle'
-    p = subprocess.Popen(cmd, stdout=subprocess.PIPE,
-			 stderr=subprocess.PIPE, shell=True)
+    cmd = "defaults read -g AppleInterfaceStyle"
+    p = subprocess.Popen(
+        cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True
+    )
     return bool(p.communicate()[0])
+
 
 async def set_profile(connection):
     app = await iterm2.async_get_app(connection)
@@ -23,7 +26,7 @@ async def set_profile(connection):
 
     partialProfiles = await iterm2.PartialProfile.async_query(connection)
     for partial in partialProfiles:
-    	if partial.name == profile:
+        if partial.name == profile:
             full = await partial.async_get_full_profile()
             # Set profile in _all_ sessions
             for window in app.terminal_windows:
@@ -33,10 +36,12 @@ async def set_profile(connection):
                         print(profile)
                 return
 
+
 async def main(connection):
     await set_profile(connection)
     while True:
         time.sleep(2)
         await set_profile(connection)
+
 
 iterm2.run_forever(main)
