@@ -71,3 +71,13 @@ jupyter_dark:
 	jt -t onedork -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T -vim
 	mv ~/.jupyter/custom/temp_custom.js ~/.jupyter/custom/custom.js
 	echo 'switched Jupyter to dark theme'
+
+# after installing tmux with brew
+tmux_setup:
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+clean_git_repo:
+	# delete all local branches that have been merged to master 
+	git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d
+	# delete local versions of remote branches...remote/origin/branchname
+	git fetch --prune
