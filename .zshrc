@@ -1,12 +1,14 @@
-typeset -g powerlevel9k_instant_prompt=quiet
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 # Initialization code may require console input (password prompts, [y/n] confirmations, etc.) 
 # must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$home/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$home/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# if you come from bash you might have to change your $path.
-# export PATH=$home/bin:/usr/local/bin:$PATH
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 export PATH=~/repos/cpip/bin:$PATH:~/.local/bin
 
 # Path to your oh-my-zsh installation.
@@ -132,7 +134,6 @@ bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward
 
 
-
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_CUSTOM_MYPROMPT="echo ♛"
 POWERLEVEL9K_CUSTOM_MYPROMPT_BACKGROUND="008"
@@ -176,10 +177,6 @@ alias config='/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME'
 eval "$(thefuck --alias)"
 eval $(thefuck --alias)
 
-# google auth
-export GOOGLE_APPLICATION_CREDENTIALS="$HOME/auth/google/mds-social-listening_trend-id-runner.json"
-#alias gsutil= 'gsutil -o "GSUtil:parallel_process_count=1"'
-
 alias dir_tree="ls -R | grep ':' | sed -e 's/://' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
 export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
 
@@ -201,17 +198,27 @@ else
     setlight
 fi
 
-# jupyer lab
+alias syncthing="~/Applications/syncthing-macos-amd64-v1.4.2/syncthing"
+
+# Jupyer Lab
 #export JUPYTER_PREFER_ENV_PATH=1
 
-# added by snowflake snowsql installer v1.2
-export PATH=/applications/snowsql.app/contents/macos:$PATH
-alias snowsql=/applications/snowsql.app/contents/macos/snowsql
+# added by Snowflake SnowSQL installer v1.2
+export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
+alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
 
 export DATABRICKS_CONFIG_FILE="$HOME/.databrickscfg"
-export DATABRICKS_CONFIG_PROFILE="default" #"mds01"
+export DATABRICKS_CONFIG_PROFILE="DEFAULT" #"MDS01"
 
+# Google Cloud
+export CLOUDSDK_PYTHON="$HOME/anaconda3/bin/python"
 export CLOUDSDK_PYTHON_SITEPACKAGES=1
 export PROJECTID2=clorox-datalake-dev
+#alias gsutil= 'gsutil -o "GSUtil:parallel_process_count=1"'
 
 export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0
+
+# source secrets and api_keys from a file (not version control)
+if [ -f ~/.secrets.sh ]; then
+    source ~/.secrets.sh
+fi
