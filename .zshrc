@@ -198,8 +198,6 @@ else
     setlight
 fi
 
-alias syncthing="~/Applications/syncthing-macos-amd64-v1.4.2/syncthing"
-
 # Jupyer Lab
 #export JUPYTER_PREFER_ENV_PATH=1
 
