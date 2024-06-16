@@ -186,17 +186,8 @@ if [ -f '/Users/cariza2/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/cariza2
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/cariza2/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/cariza2/google-cloud-sdk/completion.zsh.inc'; fi
 
-# Changing theme from cli
-alias setlight="git config --global delta.syntax-theme GitHub"
-alias setdark="git config --global delta.syntax-theme Solarized"
-
-if [[  $(date +%H) -gt 18  ]] ||  [[ $(date +%H) -lt 7  ]]; then
-    echo "setting dark"
-    setdark
-else
-    echo "setting light"
-    setlight
-fi
+# Dark and light themes change with daylight for iTerm2 and git diff. See the automation
+# script ~/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/auto_darkmode.py
 
 # Jupyer Lab
 #export JUPYTER_PREFER_ENV_PATH=1

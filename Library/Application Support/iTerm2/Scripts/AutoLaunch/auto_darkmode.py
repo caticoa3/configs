@@ -18,9 +18,16 @@ def is_dark_mode():
 async def set_profile(connection):
     app = await iterm2.async_get_app(connection)
 
+    # themes during daylight
     profile = "solarized light"
+    # theme for comparing git diffs during the day
+    subprocess.run("git config --global delta.syntax-theme GitHub".split())
+
     if is_dark_mode():
+        # themes during daylight
         profile = "Groovy Boxy"
+        # theme for comparing git diffs  after sunset
+        subprocess.run("git config --global delta.syntax-theme gruvbox-dark".split())
 
     print(profile)
 
