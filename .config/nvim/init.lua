@@ -3,6 +3,18 @@ if os.getenv("CONDA_DEFAULT_ENV") ~= "root" then
   vim.g.python3_host_prog = (os.getenv("HOME") .. "/anaconda3/envs/" .. os.getenv("CONDA_DEFAULT_ENV") .. "/bin/python")
 end
 
+local function get_venv(variable)
+  local venv = os.getenv(variable)
+  if venv ~= nil and string.find(venv, "/") then
+    local orig_venv = venv
+    for w in orig_venv:gmatch("([^/]+)") do
+      venv = w
+    end
+    venv = string.format("%s", venv)
+  end
+  return venv
+end
+
 --print(vim.g.python3_host_prog)
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
@@ -91,17 +103,37 @@ require('lazy').setup({
   --Design and color schemes
   -- 'vim-airline/vim-airline',
   -- 'vim-airline/vim-airline-themes',
+
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     opts = {
-      options = {
+    options = {
         icons_enabled = true,
         component_separators = '|',
         section_separators = '',
       },
+
+    sections = {
+        lualine_y = {
+          {
+            function()
+              local venv = get_venv("CONDA_DEFAULT_ENV") or get_venv("VIRTUAL_ENV") or "NO ENV"
+              print(" " .. venv)
+            return " " .. venv
+            end,
+            cond = function() return vim.bo.filetype == "python" end,
+          },
+        },
+      },
     },
+  },
+
+  -- A pretty list for showing diagnostics, references, telescope results, quickfix and locations 
+  {"folke/trouble.nvim",
+  opts = {}, -- for default options, refer to the configuration section for custom setup.
+  cmd = "Trouble",
   },
 
   --color schemes
