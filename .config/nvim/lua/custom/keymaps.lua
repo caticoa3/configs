@@ -132,6 +132,13 @@ keymap('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S
 keymap('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 keymap('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
+keymap('n', '<leader>xx', ":Trouble diagnostics toggle<CR>", {desc = "Diagnostics (Trouble)"})
+keymap('n', '<leader>xX', ":Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics (Trouble)" })
+keymap('n', '<leader>st', ":Trouble symbols toggle focus=false<cr>", { desc = "Symbols (Trouble)"})
+keymap('n', "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", { desc = "LSP Definitions / references / ... (Trouble)"})
+keymap('n',  "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)" })
+keymap('n', "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)" })
+
 -- [[ Basic Keymaps ]]
 --keymap({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
