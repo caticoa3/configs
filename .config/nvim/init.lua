@@ -1,21 +1,26 @@
---Check if conda env enabled
-if os.getenv("CONDA_DEFAULT_ENV") ~= "root" then
-  vim.g.python3_host_prog = (os.getenv("HOME") .. "/anaconda3/envs/" .. os.getenv("CONDA_DEFAULT_ENV") .. "/bin/python")
+local function get_python_path()
+  if (os.getenv("CONDA_PREFIX") ~= "root") and (os.getenv("CONDA_PREFIX") ~= nil) then  -- conda envirnment is enabled
+    return os.getenv("CONDA_PREFIX") .. "/bin/python"
+  elseif os.getenv("VIRTUAL_ENV") then  --another virtual environment is enabled (e.g. pipenv)
+    return os.getenv("VIRTUAL_ENV") .. "/bin/python"
+  end
+  return nil
 end
 
+vim.g.python3_host_prog = get_python_path()
+print(vim.g.python3_host_prog)
+
+-- get_venv() used to print in lualine_y for python files
 local function get_venv(variable)
   local venv = os.getenv(variable)
   if venv ~= nil and string.find(venv, "/") then
     local orig_venv = venv
-    for w in orig_venv:gmatch("([^/]+)") do
-      venv = w
-    end
+    venv = orig_venv:match("([^/]+)$")
     venv = string.format("%s", venv)
   end
   return venv
 end
 
---print(vim.g.python3_host_prog)
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -113,18 +118,22 @@ require('lazy').setup({
         icons_enabled = true,
         component_separators = '|',
         section_separators = '',
-      },
+        ignore_focus = {'neo-tree'},
+    },
 
     sections = {
+        lualine_c = {{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 }}, 'filename'},
+        lualine_x = {'encoding', 'fileformat'},
         lualine_y = {
           {
             function()
-              local venv = get_venv("CONDA_DEFAULT_ENV") or get_venv("VIRTUAL_ENV") or "NO ENV"
-              print(" " .. venv)
+              local venv = get_venv("CONDA_PREFIX") or get_venv("VIRTUAL_ENV") or "NO ENV"
+              --[[print(" " .. venv)]]
             return " " .. venv
             end,
             cond = function() return vim.bo.filetype == "python" end,
           },
+          'progress'
         },
       },
     },
@@ -274,7 +283,7 @@ require('lazy').setup({
   -- { import = 'custom.plugins' },
 }, {})
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore)o.
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 
 local cmp = require'cmp'
 cmp.setup.cmdline(':', {
