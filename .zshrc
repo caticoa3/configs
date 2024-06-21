@@ -211,3 +211,7 @@ export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0
 if [ -f ~/.secrets.sh ]; then
     source ~/.secrets.sh
 fi
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
