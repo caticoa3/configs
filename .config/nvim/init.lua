@@ -8,7 +8,7 @@ local function get_python_path()
 end
 
 vim.g.python3_host_prog = get_python_path()
-print(vim.g.python3_host_prog)
+print('python location', vim.g.python3_host_prog)
 
 -- get_venv() used to print in lualine_y for python files
 local function get_venv(variable)
@@ -24,6 +24,8 @@ end
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
+--local stdpath = vim.fn.stdpath 'data'
+--print(stdpath)
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -172,9 +174,9 @@ require('lazy').setup({
         opts = {
           ensure_installed = {
             'black',
-            'mypy',
+            --[['mypy',]]
             'ruff',
-            'pyrite'
+            --[['pyrite']]
           }
         }
       },
