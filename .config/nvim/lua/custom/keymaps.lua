@@ -134,9 +134,9 @@ keymap('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S
 
 keymap('n', '<leader>xx', ":Trouble diagnostics toggle<CR>", {desc = "Diagnostics (Trouble)"})
 keymap('n', '<leader>xX', ":Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics (Trouble)" })
-keymap('n', '<leader>st', ":Trouble symbols toggle focus=false<cr>", { desc = "Symbols (Trouble)"})
-keymap('n', "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", { desc = "LSP Definitions / references / ... (Trouble)"})
-keymap('n',  "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)" })
+keymap('n', '<leader>st', ":Trouble symbols toggle focus=false<cr>", { desc = "Document Symbols (Trouble)"})
+--keymap('n', "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", { desc = "LSP Definitions / references / ... (Trouble)"})
+--[[keymap('n',  "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)" })]]
 keymap('n', "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)" })
 
 -- [[ Basic Keymaps ]]
