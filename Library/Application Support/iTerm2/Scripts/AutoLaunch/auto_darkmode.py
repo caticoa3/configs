@@ -3,6 +3,7 @@
 
 import subprocess
 import time
+import asyncio
 
 import iterm2
 
@@ -47,7 +48,7 @@ async def set_profile(connection):
 async def main(connection):
     await set_profile(connection)
     while True:
-        time.sleep(2)
+        await asyncio.sleep(600)
         await set_profile(connection)
 
 
