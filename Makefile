@@ -52,9 +52,9 @@ conda_mac:
 
 # Setting up jupyter lab with vim
 vim_in_jupter_lab:
-	pip install jupyterlab_vim
-	# for jlab 3+
-	pip install jupyterlab-vimrc
+	conda install jupyterlab_vim
+	# for jlab 3+, not available for 4+ 
+	# pip install jupyterlab-vimrc
 
 # jupyter themes -vim option removes jupyter notebook customizations  
 # workaround is to save custom.js to a temp file then restore
@@ -75,6 +75,7 @@ jupyter_dark:
 # after installing tmux with brew
 tmux_setup:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	# then run prefix + I (capital i) to install plugins
 
 clean_git_repo:
 	# delete all local branches that have been merged to master 
