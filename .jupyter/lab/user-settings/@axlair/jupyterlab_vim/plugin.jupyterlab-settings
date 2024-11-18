@@ -1,0 +1,31 @@
+{
+    "enabled": true,
+    "enabledInEditors": true,
+    "cmdModeKeys": {
+        "escToCmdMode": false,
+        "shiftEscOverrideBrowser": true
+    },
+    "extraKeybindings": [
+        {
+            "context": "insert",
+            "mapfn": "map",
+            "enabled": true,
+            "command": "kj",
+            "keys": "<Esc>"
+        },
+        {
+            "command": "<C-k>",
+            "keys": "100k",
+            "enabled": true,
+            "context": "normal",
+            "mapfn": "map"
+        },
+        {
+            "command": "<C-k>",
+            "keys": "<Esc>100k",
+            "context": "insert",
+            "enabled": true,
+            "mapfn": "map"
+        }
+    ]
+}
