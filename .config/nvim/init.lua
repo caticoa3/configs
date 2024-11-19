@@ -42,6 +42,10 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
+
+  -- Neovim in web browser works with Chrome/Firefox firenvim plugin 
+  { 'glacambre/firenvim', build = ":call firenvim#install(0)" },
+
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
@@ -53,6 +57,12 @@ require('lazy').setup({
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
+
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
+    config = true,
+  },
 
   --[[ {'preservim/nerdtree', event='VimEnter'}, ]]
   {"nvim-neo-tree/neo-tree.nvim", lazy=false,
