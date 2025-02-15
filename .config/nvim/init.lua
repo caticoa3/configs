@@ -41,22 +41,118 @@ vim.opt.rtp:prepend(lazypath)
 
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
+
+-- Add this near the top of init.lua, before plugin setup
+local in_cursor = vim.g.vscode ~= nil  -- Check if we're running in Cursor/VSCode
+
+-- Modify the plugin setup section
 require('lazy').setup({
+  -- Only load these plugins when NOT in Cursor
+  {
+    'glacambre/firenvim',
+    cond = not in_cursor,
+    build = ":call firenvim#install(0)"
+  },
 
-  -- Neovim in web browser works with Chrome/Firefox firenvim plugin 
-  { 'glacambre/firenvim', build = ":call firenvim#install(0)" },
+  {
+    'github/copilot.vim',
+    cond = not in_cursor,
+  },
 
-  -- Git related plugins
+  {
+    'easymotion/vim-easymotion',
+    cond = not in_cursor,
+  },
+
+  -- LSP related plugins only when not in Cursor
+  {
+    'neovim/nvim-lspconfig',
+    cond = not in_cursor,
+    dependencies = {
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      'j-hui/fidget.nvim',
+      'folke/neodev.nvim',
+    },
+  },
+
+  {
+    'hrsh7th/nvim-cmp',
+    cond = not in_cursor,
+    dependencies = {
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-cmdline',
+      'rafamadriz/friendly-snippets',
+    },
+  },
+
+  -- Keep these plugins even in Cursor
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
-  'airblade/vim-gitgutter',
   'whiteinge/diffconflicts',
-
-  -- Faster vim motions for jumping to section in code
-  'easymotion/vim-easymotion',
-
-  -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
+
+  {
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    lazy = false,
+    version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+    opts = {
+      -- add any opts here
+      -- for example
+      provider = "openai",
+      openai = {
+        endpoint = "https://api.openai.com/v1",
+        model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+        timeout = 30000, -- timeout in milliseconds
+        temperature = 0, -- adjust if needed
+        max_tokens = 4096,
+      },
+    },
+    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    build = "make",
+    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+    dependencies = {
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      --- The below dependencies are optional,
+      "echasnovski/mini.pick", -- for file_selector provider mini.pick
+      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+      "ibhagwan/fzf-lua", -- for file_selector provider fzf
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      {
+        -- support for image pasting
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          -- recommended settings
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            -- required for Windows users
+            use_absolute_path = true,
+          },
+        },
+      },
+      {
+        -- Make sure to set this up properly if you have lazy=true
+        'MeanderingProgrammer/render-markdown.nvim',
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+    },
+  },
 
   {
     "vhyrro/luarocks.nvim",
@@ -64,7 +160,6 @@ require('lazy').setup({
     config = true,
   },
 
-  --[[ {'preservim/nerdtree', event='VimEnter'}, ]]
   {"nvim-neo-tree/neo-tree.nvim", lazy=false,
       branch = "v3.x",
       dependencies = {
@@ -90,7 +185,6 @@ require('lazy').setup({
 
   -- find things (not working in lua)
   'mhinz/vim-grepper',
-  --'dyng/ctrlsf.vim',
 
   --TMUX interactions
   'christoomey/vim-tmux-navigator', --Navigating to and from tmux panes to vim
@@ -116,10 +210,6 @@ require('lazy').setup({
   --cmd = { "MarkdownPreview", "MarkdownPreviewStop" },
 	build= 'sh -c "cd app & yarn install"'
   },
-
-  --Design and color schemes
-  -- 'vim-airline/vim-airline',
-  -- 'vim-airline/vim-airline-themes',
 
   {
     -- Set lualine as statusline
