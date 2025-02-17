@@ -41,176 +41,258 @@ vim.opt.rtp:prepend(lazypath)
 
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
-
--- Add this near the top of init.lua, before plugin setup
-local in_cursor = vim.g.vscode ~= nil  -- Check if we're running in Cursor/VSCode
-
--- Modify the plugin setup section
 require('lazy').setup({
-  -- Only load these plugins when NOT in Cursor
+
+  -- Plugins that should always load
   {
-    'glacambre/firenvim',
-    cond = not in_cursor,
-    build = ":call firenvim#install(0)"
+    -- Git related plugins
+    'tpope/vim-fugitive',
+    'tpope/vim-rhubarb',
+
+    {'preservim/nerdcommenter', event = 'VimEnter'},
+
   },
 
+  -- Plugins that should only load outside of VSCode
   {
-    'github/copilot.vim',
-    cond = not in_cursor,
-  },
-
-  {
-    'easymotion/vim-easymotion',
-    cond = not in_cursor,
-  },
-
-  -- LSP related plugins only when not in Cursor
-  {
-    'neovim/nvim-lspconfig',
-    cond = not in_cursor,
-    dependencies = {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      'j-hui/fidget.nvim',
-      'folke/neodev.nvim',
-    },
-  },
-
-  {
-    'hrsh7th/nvim-cmp',
-    cond = not in_cursor,
-    dependencies = {
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-cmdline',
-      'rafamadriz/friendly-snippets',
-    },
-  },
-
-  -- Keep these plugins even in Cursor
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
-  'whiteinge/diffconflicts',
-  'tpope/vim-sleuth',
-
-  {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    lazy = false,
-    version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
-    opts = {
-      -- add any opts here
-      -- for example
-      provider = "openai",
-      openai = {
-        endpoint = "https://api.openai.com/v1",
-        model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
-        timeout = 30000, -- timeout in milliseconds
-        temperature = 0, -- adjust if needed
-        max_tokens = 4096,
+    name ='cursor-disabled-group',
+    cond = not vim.g.vscode,
+    
+    -- simplifies the three-way merge view into a two-way view
+    'whiteinge/diffconflicts',
+    
+    -- Detect tabstop and shiftwidth automatically
+    'tpope/vim-sleuth',
+    
+    -- markdown dev
+    'godlygeek/tabular',
+    'plasticboy/vim-markdown',
+    
+    -- Adds git related signs to the gutter, as well as utilities for managing changes
+    --[['airblade/vim-gitgutter',]]
+    {
+      'lewis6991/gitsigns.nvim',
+      opts = {
+        -- See `:help gitsigns.txt`
+        signs = {
+          add = { text = '+' },
+          change = { text = '~' },
+          delete = { text = '_' },
+          topdelete = { text = '‾' },
+          changedelete = { text = '~' },
+        },
+        on_attach = function(bufnr)
+          vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+          vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
+          vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
+        end,
       },
     },
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    build = "make",
-    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-    dependencies = {
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      --- The below dependencies are optional,
-      "echasnovski/mini.pick", -- for file_selector provider mini.pick
-      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-      "ibhagwan/fzf-lua", -- for file_selector provider fzf
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
-      {
-        -- support for image pasting
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          -- recommended settings
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
+
+    -- A pretty list for showing diagnostics, references, telescope results, quickfix and locations 
+    {"folke/trouble.nvim",
+      opts = {}, -- for default options, refer to the configuration section for custom setup.
+      cmd = "Trouble",
+    },
+    
+    -- Useful plugin to show you pending keybinds
+    'folke/which-key.nvim',
+    
+    -- yanking with history
+    'vim-scripts/YankRing.vim',
+    
+    'glacambre/firenvim',
+    --[['github/copilot.vim',]]
+    'easymotion/vim-easymotion',
+    'christoomey/vim-tmux-navigator',
+    
+    -- File explorer
+    {
+      "nvim-neo-tree/neo-tree.nvim",
+      lazy = false,
+      branch = "v3.x",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons",
+        "MunifTanjim/nui.nvim",
+      },
+    },
+
+    -- LSP and other plugins...
+    {
+      'neovim/nvim-lspconfig',
+      dependencies = {
+        -- Automatically install LSPs to stdpath for neovim
+        -- manages LSP servers, DAP servers, linters, and formatters
+        {'williamboman/mason.nvim', config = true,
+          opts = {
+            ensure_installed = {
+              'black',
+              --[['mypy',]]
+              'ruff',
+              --[['pyrite']]
+            }
+          }
+        },
+        'williamboman/mason-lspconfig.nvim',
+
+        -- eye candy...status updates widget for LSP
+        -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+        { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+
+        -- lua LSP for configs and plugin...api func, autocompletions etc
+        'folke/neodev.nvim',
+      },
+    },
+
+    -- Autocompletion
+    {
+      'hrsh7th/nvim-cmp',
+      dependencies = {
+        'L3MON4D3/LuaSnip',              --snippet engine
+        'saadparwaiz1/cmp_luasnip',      --snippet completions
+        'hrsh7th/cmp-path',              --file path autocompletions
+        'hrsh7th/cmp-nvim-lsp',          -- LSP completion capabilities
+        'hrsh7th/cmp-cmdline',           --command line completions
+        'rafamadriz/friendly-snippets',  -- Adds lots of user-friendly snippets
+      },
+      config = function()
+        -- Initialize cmp with empty setup - detailed configuration is in lua/custom/completion.lua
+        local cmp = require('cmp')
+        cmp.setup {}  -- Empty setup, will be configured in completion.lua
+        
+        -- Setup cmdline completion (this specific setup is here to keep all cmp initialization together)
+        cmp.setup.cmdline(':', {
+          mapping = cmp.mapping.preset.cmdline(),
+          sources = cmp.config.sources({
+            { name = 'path' }
+          }, {
+            { name = 'cmdline' }
+          })
+        })
+      end,
+    },
+
+    -- Avante and its dependencies
+    {
+      "yetone/avante.nvim",
+      event = "VeryLazy",
+      lazy = false,
+      version = false,
+      opts = {
+        -- add any opts here
+        -- for example
+        provider = "openai",
+        openai = {
+          endpoint = "https://api.openai.com/v1",
+          model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+          timeout = 30000, -- timeout in milliseconds
+          temperature = 0, -- adjust if needed
+          max_tokens = 4096,
+        },
+        debug = true,
+      },
+      -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+      build = "make",
+      -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+      dependencies = {
+        "stevearc/dressing.nvim",
+        "nvim-lua/plenary.nvim",
+        "MunifTanjim/nui.nvim",
+        --- The below dependencies are optional,
+        "echasnovski/mini.pick", -- for file_selector provider mini.pick
+        "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+        "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+        "ibhagwan/fzf-lua", -- for file_selector provider fzf
+        "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+        "zbirenbaum/copilot.lua", -- for providers='copilot'
+        {
+          -- support for image pasting
+          "HakonHarnes/img-clip.nvim",
+          event = "VeryLazy",
+          opts = {
+            -- recommended settings
+            default = {
+              embed_image_as_base64 = false,
+              prompt_for_file_name = false,
+              drag_and_drop = {
+                insert_mode = true,
+              },
+              -- required for Windows users
+              use_absolute_path = true,
             },
-            -- required for Windows users
-            use_absolute_path = true,
           },
         },
-      },
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        'MeanderingProgrammer/render-markdown.nvim',
-        opts = {
-          file_types = { "markdown", "Avante" },
+        {
+          -- Make sure to set this up properly if you have lazy=true
+          'MeanderingProgrammer/render-markdown.nvim',
+          opts = {
+            file_types = { "markdown", "Avante" },
+          },
+          ft = { "markdown", "Avante" },
         },
-        ft = { "markdown", "Avante" },
+      },
+    },
+
+    -- Document formats and conversion
+    'vim-pandoc/vim-pandoc',
+    'vim-pandoc/vim-pandoc-syntax',
+
+    -- GPT integration
+    {"robitx/gp.nvim",
+      config = function()
+        require("gp").setup()
+      end,
+    },
+
+    -- null-ls for additional formatting/linting
+    {'nvimtools/none-ls.nvim',
+      ft = {"python"},
+      opts = function()
+        return require('custom.none-ls')
+      end
+    },
+
+    -- Highlight, edit, and navigate code
+    {
+      'nvim-treesitter/nvim-treesitter',
+      dependencies = {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+      },
+      build = ':TSUpdate',
+    },
+
+    -- Add indentation guides even on blank lines
+    {
+      'lukas-reineke/indent-blankline.nvim',  -- Enable `lukas-reineke/indent-blankline.nvim`
+      -- See `:help indent_blankline.txt`
+      main = "ibl",
+      opts = {
+        enabled = true,
+        indent = { char = "|" },
+        --[[ char = '┊' ]]
+        --[[ IBshow_trailing_blankline_indent = false, ]]
       },
     },
   },
 
+  -- Luarocks package manager
   {
     "vhyrro/luarocks.nvim",
     priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
     config = true,
   },
 
-  {"nvim-neo-tree/neo-tree.nvim", lazy=false,
-      branch = "v3.x",
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-        "MunifTanjim/nui.nvim",
-      },
-  },
-
-  -- json highlighting
-  --'elzr/vim-json',
-  {"robitx/gp.nvim",
-	    config = function()
-		      require("gp").setup()
-          --[[local config = {openai_api_key = os.getenv("OPENAI_API_KEY")}]]
-
-          -- or setup with your own config (see Install > Configuration in Readme)
-          -- require("gp").setup(config)
-
-          -- shortcuts might be setup here (see Usage > Shortcuts in Readme)
-	    end,
-  },
-
-  -- find things (not working in lua)
+  -- find things
   'mhinz/vim-grepper',
 
-  --TMUX interactions
-  'christoomey/vim-tmux-navigator', --Navigating to and from tmux panes to vim
-  'epeli/slimux', --send selected code to other tmux window
-
-  --yanking and commenting
-  'vim-scripts/YankRing.vim',
-  'ctrlpvim/ctrlP.vim',
-
-  {'preservim/nerdcommenter',--determines prefix to comment depending on file type
-  event = 'VimEnter'},
-
-  -- markdown dev
-  'godlygeek/tabular',
-  'plasticboy/vim-markdown',
-
-  -- converting to filetypes
-  'vim-pandoc/vim-pandoc',
-  'vim-pandoc/vim-pandoc-syntax',
-
+  -- markdown preview
   {'iamcco/markdown-preview.nvim',
-  ft = {'markdown', 'pandoc.markdown', 'rmd'},
-  --cmd = { "MarkdownPreview", "MarkdownPreviewStop" },
-	build= 'sh -c "cd app & yarn install"'
+    ft = {'markdown', 'pandoc.markdown', 'rmd'},
+    build = 'sh -c "cd app & yarn install"'
   },
 
+  -- Status line
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -241,162 +323,15 @@ require('lazy').setup({
     },
   },
 
-  -- A pretty list for showing diagnostics, references, telescope results, quickfix and locations 
-  {"folke/trouble.nvim",
-  opts = {}, -- for default options, refer to the configuration section for custom setup.
-  cmd = "Trouble",
-  },
-
-  --color schemes
+  -- color schemes
   'lifepillar/vim-solarized8',
-  --'morhetz/gruvbox',
   'ellisonleao/gruvbox.nvim',
   {'navarasu/onedark.nvim', -- theme inspired by atom
     lazy = false,
-    priority = 1000,  -- load before all otehrs
+    priority = 1000,  -- load before all others
   },
 
-  {'nvimtools/none-ls.nvim',
-    ft = {"python"},
-    opts = function()
-      return require('custom.none-ls')
-    end
-  },
-  -- NOTE: This is where your plugins related to LSP can be installed.
-  --  The configuration is done below. Search for lspconfig to find it below.
-  {
-    -- LSP Configuration & Plugins
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
-      -- manages LSP servers, DAP servers, linters, and formatters
-      {'williamboman/mason.nvim', config = true ,
-        opts = {
-          ensure_installed = {
-            'black',
-            --[['mypy',]]
-            'ruff',
-            --[['pyrite']]
-          }
-        }
-      },
-      'williamboman/mason-lspconfig.nvim',
-
-
-      -- eye candy...status updates widget for LSP
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
-
-      -- lua LSP for configs and plugin...api func, autocompletions etc
-      'folke/neodev.nvim',
-    },
-  },
-
-  { -- Autocompletion
-  'hrsh7th/nvim-cmp',
-
-  dependencies = {
-  -- Snippet Engine & its associated nvim-cmp source
-  'L3MON4D3/LuaSnip',              --snippet engine
-  'saadparwaiz1/cmp_luasnip',      --snippet completions
-  'kmarius/jsregexp',              --luasnip dependency
-
-  'hrsh7th/cmp-path',              --file path autocompletions
-  'hrsh7th/cmp-nvim-lsp',          -- LSP completion capabilities
-  'hrsh7th/cmp-cmdline',           --command line completions
-
-  'rafamadriz/friendly-snippets',  -- Adds lots of user-friendly snippets
-  },
-  },
-
-  -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
-  {
-    -- Adds git related signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      -- See `:help gitsigns.txt`
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-      on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
-        vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
-        vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
-      end,
-    },
-  },
-  {
-    -- Add indentation guides even on blank lines
-    'lukas-reineke/indent-blankline.nvim',  -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help indent_blankline.txt`
-    main = "ibl",
-    opts = {
-      enabled = true,
-      indent = { char = "|" },
-      --[[ char = '┊' ]]
-      --[[ IBshow_trailing_blankline_indent = false, ]]
-    },
-  },
-
-  -- "gc" to comment visual regions/lines
-  --[[
-     [{ 'numtostr/comment.nvim', opts = {} },
-     ]]
-
-  -- Fuzzy Finder (files, lsp, etc)
-  {
-    'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-      -- Only load if `make` is available. Make sure you have the system
-      -- requirements installed.
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'make',
-        cond = function()
-          return vim.fn.executable 'make' == 1
-        end,
-      },
-    },
-  },
-
-  {
-    -- Highlight, edit, and navigate code
-    'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    build = ':TSUpdate',
-  },
-
-  -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-  --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
-  --    up-to-date with whatever is in the kickstart repo.
-  --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  --
-  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
 }, {})
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-
-local cmp = require'cmp'
-cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
-})
-
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -409,14 +344,21 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
-require('custom.options')  -- no need to specify the lua directory it will search within
-require('custom.telescope')
 require('custom.keymaps')
-require('custom.lsp')
-require('custom.completion')
+if vim.g.vscode then
+  -- Load minimal config when in VS Code
+  require('custom.options')
+else
+  -- Only load these configs when not in VS Code
+  require('custom.options')
+  require('custom.telescope')
+  require('custom.lsp')
+  require('custom.completion')
+  require('custom.treesitter')
+end
 
-vim.cmd('source ~/.local/share/nvim/lazy/nerdcommenter/plugin/nerdcommenter.vim')
-vim.cmd('source ~/.local/share/nvim/lazy/nerdcommenter/autoload/nerdcommenter.vim')
+-- Keep these regardless of environment
 vim.cmd('source ~/.vimrc')
+--
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

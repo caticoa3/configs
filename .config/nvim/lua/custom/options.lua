@@ -1,6 +1,9 @@
 vim.opt.autochdir = true
 vim.o.termguicolors = true             -- NOTE: You should make sure your terminal supports this
 
+-- recommended for Avante: views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
+
 --plugin dependent settings
 --vim.g.gitgutter_set_sign_backgrounds = 1
 
@@ -43,39 +46,42 @@ vim.o.updatetime = 250                 -- Decrease update time
 vim.o.timeoutlen = 300                 -- Decrease update time
 vim.o.completeopt = 'menuone,noselect' -- completopt for a better completion experience
 
---behave like NERDTree
---options: https://github.com/nvim-neo-tree/neo-tree.nvim/blob/aec592bb1f0cf67f7e1123053d1eb17700aa9ed4/lua/neo-tree/defaults.lua#L378-L382
-require('neo-tree').setup({
-   filesystem = {
-      follow_current_file = {enabled = true},
-      bind_to_cwd = false,
+-- Only configure neo-tree if we're not in Cursor/VS Code
+if not vim.g.vscode then
+  --behave like NERDTree
+  --options: https://github.com/nvim-neo-tree/neo-tree.nvim/blob/aec592bb1f0cf67f7e1123053d1eb17700aa9ed4/lua/neo-tree/defaults.lua#L378-L382
+  require('neo-tree').setup({
+     filesystem = {
+        follow_current_file = {enabled = true},
+        bind_to_cwd = false,
 
-      filtered_items = {
-         visible = false, -- when true, they will just be displayed differently than normal items
-         hide_dotfiles = true,
-         hide_by_name = {
-           --"node_modules"
-         },
-         hide_by_pattern = { -- uses glob style patterns
-           --"*.meta",
-           --"*/src/*/tsconfig.json",
-         },
-         always_show = { -- remains visible even if other settings would normally hide it
-          ".gitignored",
-          --".gitkeep",
-          ".gcloudignore"
-         },
-         never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
-           ".DS_Store",
-           "thumbs.db"
-         },
-         never_show_by_pattern = { -- uses glob style patterns
-           ".null-ls_*",
-           "*__pycache__",
-           "*.pytest_cache",
-           "*.ipynb_checkpoints",
-           "*.pptx"
-         }
-      }
-   }
-})
+        filtered_items = {
+           visible = false, -- when true, they will just be displayed differently than normal items
+           hide_dotfiles = true,
+           hide_by_name = {
+             --"node_modules"
+           },
+           hide_by_pattern = { -- uses glob style patterns
+             --"*.meta",
+             --"*/src/*/tsconfig.json",
+           },
+           always_show = { -- remains visible even if other settings would normally hide it
+            ".gitignored",
+            --".gitkeep",
+            ".gcloudignore"
+           },
+           never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
+             ".DS_Store",
+             "thumbs.db"
+           },
+           never_show_by_pattern = { -- uses glob style patterns
+             ".null-ls_*",
+             "*__pycache__",
+             "*.pytest_cache",
+             "*.ipynb_checkpoints",
+             "*.pptx"
+           }
+        }
+     }
+  })
+end

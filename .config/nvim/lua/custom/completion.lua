@@ -1,5 +1,17 @@
--- [[ Configure nvim-cmp ]]
--- See `:help cmp`
+-- [[ Configure nvim-cmp and LuaSnip ]]
+-- This file contains:
+-- 1. Detailed configuration for nvim-cmp (completion)
+--    - Mappings, formatting, sources, etc.
+--    - Basic initialization is done in init.lua
+-- 2. Configuration for LuaSnip (snippets)
+--    - Loading snippets from friendly-snippets
+--    - Custom snippet definitions
+-- See `:help cmp` and `:help luasnip`
+
+if vim.g.vscode then
+  return  -- Exit early if we're in Cursor
+end
+
 local cmp_status_ok, cmp = pcall(require, 'cmp')
 if not cmp_status_ok then
   return
@@ -43,10 +55,12 @@ local kind_icons = {
   TypeParameter = "󰉺",
 }
 
+-- Configure the completion behavior for nvim-cmp
+-- This overrides the empty setup from init.lua with our detailed configuration
 cmp.setup {
   snippet = {
     expand = function(args)
-      luasnip.lsp_expand(args.body)
+      require('luasnip').lsp_expand(args.body)
     end,
   },
 
