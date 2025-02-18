@@ -353,7 +353,6 @@ else
   require('custom.lsp')
   require('custom.completion')
   require('custom.treesitter')
-  require('custom.snippets')
 end
 
 -- Keep these regardless of environment

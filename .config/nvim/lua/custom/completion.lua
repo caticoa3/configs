@@ -22,9 +22,24 @@ if not snip_status_ok then
   return
 end
 
+-- Define snippet helpers
+local s = luasnip.snippet
+local t = luasnip.text_node
+local i = luasnip.insert_node
+
 require('luasnip.loaders.from_vscode').lazy_load() --lazy_load({paths='../luasnippets'})
 
 luasnip.config.setup {}
+
+-- Add custom snippets
+luasnip.add_snippets("python", {
+  -- Trigger with 'fp' (f-print)
+  s("fp", {
+    t("print(f'{"),
+    i(1, "var"),  -- First placeholder
+    t("=}')"),    -- Added curly braces
+  }),
+})
 
 --   פּ ﯟ   some other good icons
 local kind_icons = {
@@ -126,11 +141,3 @@ cmp.setup {
     native_menu = false,
   }
 }
-
---wip builing a snippet for printing f-strings
---[[ luasnip.add_snippets("all", {
-   [         s("print(f'{", {
-   [                 -- equivalent to "${1:cond}=})"
-   [                 i(1, "obj"), t("=}')")
-   [         })
-   [ }) ]]
