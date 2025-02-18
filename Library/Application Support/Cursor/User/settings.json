@@ -1,0 +1,19 @@
+{
+    "window.commandCenter": true,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/nvim/init.lua",
+    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+    "vscode-neovim.mouseSelectionStartVisualMode": true,
+    "vscode-neovim.useCtrlKeysForInsertMode": true,
+    "vscode-neovim.useCtrlKeysForNormalMode": true,
+    "editor.scrollBeyondLastLine": false,
+    "editor.lineNumbers": "relative",
+    "vscode-neovim.keybindings": [
+        {
+            "before": ["k", "j"],
+            "after": ["<Esc>"]
+        }
+    ]
+}

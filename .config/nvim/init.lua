@@ -42,20 +42,18 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-
-  -- Plugins that should always load
+  -- Common plugins (both VS Code and Neovim)
   {
-    -- Git related plugins
+    -- Git plugins
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
 
     {'preservim/nerdcommenter', event = 'VimEnter'},
-
   },
 
-  -- Plugins that should only load outside of VSCode
+  -- Neovim-only plugins
   {
-    name ='cursor-disabled-group',
+    name = 'vscode-disabled-group',
     cond = not vim.g.vscode,
     
     -- simplifies the three-way merge view into a two-way view
@@ -355,6 +353,7 @@ else
   require('custom.lsp')
   require('custom.completion')
   require('custom.treesitter')
+  require('custom.snippets')
 end
 
 -- Keep these regardless of environment
