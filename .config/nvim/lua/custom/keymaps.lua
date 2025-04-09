@@ -1,6 +1,3 @@
--- Add this at the top of the file
-print("Loading keymaps.lua, vscode:", vim.g.vscode)
-
 --For the option key work as the <A> key in vim keymaps, set the (left) option to Esc+ in iTerm profiles.
 local opts = { noremap = true }
 
@@ -22,14 +19,22 @@ vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
 -- Common bindings (work in both VS Code and Neovim)
-print("Setting up kj escape binding")
 keymap("n", "<Leader>p", '"+p', opts) -- paste system clipboard
+
+vim.schedule(function()
+  vim.notify('Setting up kj escape binding', vim.log.levels.INFO)
+end)
 
 -- Press kj fast for ESC
 keymap("i", "kj", "<ESC>", opts)
 keymap("v", "kj", "<ESC>", opts)
 keymap("x", "kj", "<ESC>", opts)
 keymap("c", "kj", "<ESC>", opts)
+
+-- Show vscode status without requiring input
+vim.schedule(function()
+  vim.notify('Loading keymaps.lua, vscode: ' .. tostring(vim.g.vscode), vim.log.levels.INFO)
+end)
 
 if vim.g.vscode then
     -- VS Code specific LSP-like features

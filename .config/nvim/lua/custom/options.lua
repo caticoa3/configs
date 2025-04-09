@@ -1,6 +1,9 @@
 vim.opt.autochdir = true
 vim.o.termguicolors = true             -- NOTE: You should make sure your terminal supports this
 
+-- Disable Perl provider since we don't use it
+vim.g.loaded_perl_provider = 0
+
 -- recommended for Avante: views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3
 
