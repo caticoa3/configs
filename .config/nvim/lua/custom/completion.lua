@@ -22,6 +22,9 @@ if not snip_status_ok then
   return
 end
 
+-- Disable jsregexp warning since we don't use transformations
+vim.g.luasnip_no_lsp_snippets_transformations = true
+
 -- Define snippet helpers
 local s = luasnip.snippet
 local t = luasnip.text_node

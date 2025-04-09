@@ -8,7 +8,10 @@ local function get_python_path()
 end
 
 vim.g.python3_host_prog = get_python_path()
-print('python location', vim.g.python3_host_prog)
+-- Show python location without requiring input
+vim.schedule(function()
+  vim.notify('Python location: ' .. (vim.g.python3_host_prog or 'not found'), vim.log.levels.INFO)
+end)
 
 -- get_venv() used to print in lualine_y for python files
 local function get_venv(variable)
@@ -49,6 +52,27 @@ require('lazy').setup({
     'tpope/vim-rhubarb',
 
     {'preservim/nerdcommenter', event = 'VimEnter'},
+
+    -- Motion and editing plugins
+    {
+      'ggandor/leap.nvim',
+      config = function()
+        require('leap').add_default_mappings()
+      end
+    },
+
+    {
+      'echasnovski/mini.pairs',
+      config = function()
+        require('mini.pairs').setup({
+          modes = { insert = true, command = false, terminal = false },
+          mappings = {
+            ['"'] = { action = 'open', pair = '""', neigh_pattern = '[^%a\\].' },
+            ["'"] = { action = 'open', pair = "''", neigh_pattern = '[^%a\\].' }
+          }
+        })
+      end
+    },
   },
 
   -- Neovim-only plugins
@@ -94,7 +118,16 @@ require('lazy').setup({
     },
     
     -- Useful plugin to show you pending keybinds
-    'folke/which-key.nvim',
+    {
+      'folke/which-key.nvim',
+      opts = {
+        icons = {
+          breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
+          separator = "➜", -- symbol used between a key and it's label
+          group = "+", -- symbol prepended to a group
+        }
+      }
+    },
     
     -- yanking with history
     'vim-scripts/YankRing.vim',
@@ -272,13 +305,6 @@ require('lazy').setup({
         --[[ IBshow_trailing_blankline_indent = false, ]]
       },
     },
-  },
-
-  -- Luarocks package manager
-  {
-    "vhyrro/luarocks.nvim",
-    priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
-    config = true,
   },
 
   -- find things
