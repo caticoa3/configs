@@ -67,8 +67,11 @@ require('lazy').setup({
         require('mini.pairs').setup({
           modes = { insert = true, command = false, terminal = false },
           mappings = {
-            ['"'] = { action = 'open', pair = '""', neigh_pattern = '[^%a\\].' },
-            ["'"] = { action = 'open', pair = "''", neigh_pattern = '[^%a\\].' }
+            ['('] = { action = 'open', pair = '()', neigh_pattern = '.[^%w|^\\|^/]' },
+            ['['] = { action = 'open', pair = '[]', neigh_pattern = '.[^%w|^\\|^/]' },
+            ['{'] = { action = 'open', pair = '{}', neigh_pattern = '.[^%w|^\\|^/]' },
+            ['"'] = { action = 'closeopen', pair = '""', neigh_pattern = '.[^%w|^\\|^/]', register = { cr = false } },
+            ["'"] = { action = 'closeopen', pair = "''", neigh_pattern = '.[^%w|^\\|^/]', register = { cr = false } },
           }
         })
       end
