@@ -1,7 +1,0 @@
-[
-    {
-        "key": "k j",
-        "command": "vscode-neovim.escape",
-        "when": "editorTextFocus && neovim.mode == insert"
-    }
-] 
