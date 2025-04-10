@@ -1,10 +1,6 @@
 {
     "window.commandCenter": 1,
-    "vim.enabled": true,
     "vim.useSystemClipboard": true,
-    "vim.hlsearch": true,
-    "vim.timeout": true,
-    "vim.timeoutlen": 200,
     "vscode-neovim.compositeKeys": {
             "kj": {
                 "command": "vscode-neovim.escape",
@@ -17,7 +13,6 @@
         "asvetliakov.vscode-neovim": 1
     },
     "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/nvim/init.lua",
-    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/Cellar/neovim/0.10.4_1/bin/nvim",
     "vscode-neovim.mouseSelectionStartVisualMode": true,
     "vscode-neovim.useCtrlKeysForInsertMode": true,
     "vscode-neovim.useCtrlKeysForNormalMode": true,
