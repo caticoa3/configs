@@ -1,19 +1,26 @@
 {
-    "window.commandCenter": true,
+    "window.commandCenter": 1,
+    "vim.enabled": true,
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.timeout": true,
+    "vim.timeoutlen": 200,
+    "vscode-neovim.compositeKeys": {
+            "kj": {
+                "command": "vscode-neovim.escape",
+            },
+    },
+    "workbench.preferredDarkColorTheme": "Default Dark+",
+    "workbench.preferredLightColorTheme": "Solarized Light",
+    "window.autoDetectColorScheme": true,
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
     "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/nvim/init.lua",
-    "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+    "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/Cellar/neovim/0.10.4_1/bin/nvim",
     "vscode-neovim.mouseSelectionStartVisualMode": true,
     "vscode-neovim.useCtrlKeysForInsertMode": true,
     "vscode-neovim.useCtrlKeysForNormalMode": true,
     "editor.scrollBeyondLastLine": false,
-    "editor.lineNumbers": "relative",
-    "vscode-neovim.keybindings": [
-        {
-            "before": ["k", "j"],
-            "after": ["<Esc>"]
-        }
-    ]
+    "editor.lineNumbers": "relative"
 }
