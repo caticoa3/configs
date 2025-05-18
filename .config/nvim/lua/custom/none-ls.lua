@@ -6,17 +6,11 @@ local null_ls = require("null-ls")
 --    print('k'..key..'value'..value)
 --end
 
+-- Simplify to just handle formatting
 null_ls.setup({
-    debug = true,
+    debug = false, -- Set to false to reduce noise
     sources = {
-        -- Python formatting
-        null_ls.builtins.formatting.black,
-        -- Python linting
-        null_ls.builtins.diagnostics.ruff,
-        --null_ls.builtins.diagnostics.mypy,
-        --null_ls.builtins.formatting.stylua,
-        --null_ls.builtins.code_actions.proselint,
-        --null_ls.builtins.diagnostics.eslint,
-        --null_ls.builtins.completion.spell,
+        -- Only use none-ls for formatting
+        -- null_ls.builtins.formatting.black,  -- Commented out as not currently used
     }
 })

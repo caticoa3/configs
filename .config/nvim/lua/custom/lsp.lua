@@ -75,17 +75,18 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
-mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers),
-}
+-- Simple mason-lspconfig setup without ensuring installation
+-- (installation is now handled in init.lua for clarity)
+mason_lspconfig.setup {}
 
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
-    }
-  end
-}
+-- Manual setup for each server
+for server_name, server_opts in pairs(servers) do
+  local opts = {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = server_opts,
+    filetypes = server_opts.filetypes,
+  }
+  
+  require('lspconfig')[server_name].setup(opts)
+end

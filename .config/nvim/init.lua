@@ -161,10 +161,11 @@ require('lazy').setup({
         {'williamboman/mason.nvim', config = true,
           opts = {
             ensure_installed = {
-              'black',
-              --[['mypy',]]
-              'ruff',
-              --[['pyrite']]
+              --'black',  -- Commented out as not currently used
+              --'mypy',
+              --'ruff',   -- Commented out to avoid duplicate diagnostics
+              'pyright',  -- Add pyright explicitly here
+              'lua-language-server',  -- Add lua-ls explicitly here
             }
           }
         },
@@ -207,66 +208,24 @@ require('lazy').setup({
       end,
     },
 
-    -- Avante and its dependencies
+    -- "stevearc/dressing.nvim",
+    "echasnovski/mini.pick",
     {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    lazy = false,
-    version = false,
-    opts = {
-      -- add any opts here
-      -- for example
-      provider = "openai",
-      openai = {
-        endpoint = "https://api.openai.com/v1",
-        model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
-        timeout = 30000, -- timeout in milliseconds
-        temperature = 0, -- adjust if needed
-        max_tokens = 4096,
-      },
-      debug = true,
+      'nvim-telescope/telescope.nvim',
+      branch = '0.1.x',
+      dependencies = { 'nvim-lua/plenary.nvim' }
     },
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    build = "make",
-    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-    dependencies = {
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      --- The below dependencies are optional,
-      "echasnovski/mini.pick", -- for file_selector provider mini.pick
-      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-      "ibhagwan/fzf-lua", -- for file_selector provider fzf
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
-      {
-        -- support for image pasting
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          -- recommended settings
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-            -- required for Windows users
-            use_absolute_path = true,
-          },
-        },
+    "ibhagwan/fzf-lua",
+    "nvim-tree/nvim-web-devicons",
+    
+    {
+      -- Markdown rendering support
+      'MeanderingProgrammer/render-markdown.nvim',
+      opts = {
+        file_types = { "markdown" },
       },
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        'MeanderingProgrammer/render-markdown.nvim',
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
-      },
+      ft = { "markdown" },
     },
-  },
 
     -- Document formats and conversion
     'vim-pandoc/vim-pandoc',
@@ -325,22 +284,22 @@ require('lazy').setup({
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     opts = {
-    options = {
+      options = {
         icons_enabled = true,
         component_separators = '|',
         section_separators = '',
         ignore_focus = {'neo-tree'},
-    },
+      },
 
-    sections = {
+      sections = {
         lualine_c = {{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 }}, 'filename'},
         lualine_x = {'encoding', 'fileformat'},
         lualine_y = {
           {
             function()
               local venv = get_venv("CONDA_PREFIX") or get_venv("VIRTUAL_ENV") or "NO ENV"
-              --[[print(" " .. venv)]]
-            return " " .. venv
+              --[[print(" " .. venv)]]
+              return " " .. venv
             end,
             cond = function() return vim.bo.filetype == "python" end,
           },
@@ -386,6 +345,10 @@ end
 
 -- Keep these regardless of environment
 vim.cmd('source ~/.vimrc')
+
+-- Load dotfiles git integration
+require('custom.dotfiles').setup()
+
 --
 -- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et 
