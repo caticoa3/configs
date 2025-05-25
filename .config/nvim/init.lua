@@ -158,18 +158,19 @@ require('lazy').setup({
       dependencies = {
         -- Automatically install LSPs to stdpath for neovim
         -- manages LSP servers, DAP servers, linters, and formatters
-        {'williamboman/mason.nvim', config = true,
-          opts = {
-            ensure_installed = {
-              --'black',  -- Commented out as not currently used
-              --'mypy',
-              --'ruff',   -- Commented out to avoid duplicate diagnostics
-              'pyright',  -- Add pyright explicitly here
-              'lua-language-server',  -- Add lua-ls explicitly here
-            }
-          }
+        {'mason-org/mason.nvim', 
+          config = function()
+            require("mason").setup()
+          end
         },
-        'williamboman/mason-lspconfig.nvim',
+        {'mason-org/mason-lspconfig.nvim',
+          config = function()
+            require("mason-lspconfig").setup({
+              ensure_installed = {"pyright", "lua_ls"},  -- install mypy and ruff through GUI
+              automatic_enable = false,  -- enabled in lsp.lua
+            })
+          end
+        },
 
         -- eye candy...status updates widget for LSP
         -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`

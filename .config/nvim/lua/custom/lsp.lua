@@ -1,7 +1,6 @@
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
-
   -- In this case, we create a function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
   local nmap = function(keys, func, desc)
@@ -48,21 +47,36 @@ end
 --
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
-local servers = {
-  -- clangd = {},
-  -- gopls = {},
-     pyright = {},
-  -- mypy = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+--
+local lspconfig = require('lspconfig') -- for debuging finding correct .git in project root 
+local util = require('lspconfig.util') -- for debuging finding correct .git in project root 
 
+local servers = {
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
     },
   },
+  pyright = {
+    settings = {
+      python = {
+        analysis = {
+          diagnosticMode = "openFilesOnly",
+          autoSearchPaths = true,
+          useLibraryCodeForTypes = true
+        }
+      }
+    },
+    root_dir = function(fname)  -- debugs out of memory error by finding correct .git in project root 
+      local root = util.root_pattern('.git')(fname)
+      if root and not root:match('^' .. os.getenv('HOME')) then
+        return root
+      end
+      return util.root_pattern('Pipfile', 'pyproject.toml', 'setup.py', 'requirements.txt')(fname)
+        or util.path.dirname(fname)
+    end
+  }
 }
 
 -- Setup neovim lua configuration
@@ -84,9 +98,11 @@ for server_name, server_opts in pairs(servers) do
   local opts = {
     capabilities = capabilities,
     on_attach = on_attach,
-    settings = server_opts,
     filetypes = server_opts.filetypes,
   }
-  
+  -- Merge in any other top-level keys (like settings, root_dir, etc.)
+  for k, v in pairs(server_opts) do
+    opts[k] = v
+  end
   require('lspconfig')[server_name].setup(opts)
 end
