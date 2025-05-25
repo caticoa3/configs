@@ -166,7 +166,7 @@ require('lazy').setup({
         {'mason-org/mason-lspconfig.nvim',
           config = function()
             require("mason-lspconfig").setup({
-              ensure_installed = {"pyright", "lua_ls"},  -- install mypy and ruff through GUI
+              ensure_installed = {"pyright", "lua_ls", "ruff"},  -- install mypy and ruff through GUI
               automatic_enable = false,  -- enabled in lsp.lua
             })
           end

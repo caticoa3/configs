@@ -58,15 +58,21 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+  -- Pyright is kept here to provide LSP features such as go-to-definition, hover, signature help, and references.
+  -- All type checking, linting, formatting, and import organization are delegated to Ruff LSP (see ruff_lsp entry below).
+  -- The 'ignore = { "*" }' setting disables Pyright's own diagnostics and type checking.
+  -- If you want Pyright to provide type checking as well, remove or comment out the 'ignore' line below.
   pyright = {
     settings = {
       python = {
         analysis = {
           diagnosticMode = "openFilesOnly",
           autoSearchPaths = true,
-          useLibraryCodeForTypes = true
+          useLibraryCodeForTypes = true,
+          ignore = { '*' }, -- disables Pyright's own analysis; Ruff LSP handles linting/type checking
         }
-      }
+      },
+      disableOrganizeImports = true, -- Ruff LSP will handle import organization
     },
     root_dir = function(fname)  -- debugs out of memory error by finding correct .git in project root 
       local root = util.root_pattern('.git')(fname)
@@ -76,7 +82,20 @@ local servers = {
       return util.root_pattern('Pipfile', 'pyproject.toml', 'setup.py', 'requirements.txt')(fname)
         or util.path.dirname(fname)
     end
-  }
+  },
+  ruff = {
+    init_options = {
+      settings = {
+        -- Enable formatting and organize imports
+        format = { preview = true },
+        -- You can add more Ruff settings here if needed
+      }
+    },
+    -- (Optional) Disable hover if you want Pyright to handle it
+    on_attach = function(client, _)
+      client.server_capabilities.hoverProvider = false
+    end,
+  },
 }
 
 -- Setup neovim lua configuration
@@ -106,3 +125,5 @@ for server_name, server_opts in pairs(servers) do
   end
   require('lspconfig')[server_name].setup(opts)
 end
+
+
