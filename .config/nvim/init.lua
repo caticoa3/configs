@@ -171,7 +171,14 @@ require('lazy').setup({
             })
           end
         },
-
+        --[[{
+           [  "WhoIsSethDaniel/mason-tool-installer.nvim",
+           [  opts = {
+           [    ensure_installed = { "mypy" },
+           [    auto_update = false,
+           [    run_on_start = true,
+           [  },
+           [},]]
         -- eye candy...status updates widget for LSP
         -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
         { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
@@ -311,7 +318,10 @@ require('lazy').setup({
   },
 
   -- color schemes
-  'lifepillar/vim-solarized8',
+  {
+    "lifepillar/vim-solarized8",
+    branch = "neovim",
+  },
   'ellisonleao/gruvbox.nvim',
   {'navarasu/onedark.nvim', -- theme inspired by atom
     lazy = false,
