@@ -69,18 +69,25 @@ local servers = {
           diagnosticMode = "openFilesOnly",
           autoSearchPaths = true,
           useLibraryCodeForTypes = true,
+          -- typeCheckingMode = "basic",
           ignore = { '*' }, -- disables Pyright's own analysis; Ruff LSP handles linting/type checking
         }
       },
       disableOrganizeImports = true, -- Ruff LSP will handle import organization
     },
-    root_dir = function(fname)  -- debugs out of memory error by finding correct .git in project root 
+    root_dir = function(fname)-- debugs out of memory error by finding correct .git in project root 
       local root = util.root_pattern('.git')(fname)
-      if root and not root:match('^' .. os.getenv('HOME')) then
+      local home = os.getenv('HOME')
+      if root and root ~= home and not root:match('^' .. home .. '/?$') then
         return root
       end
-      return util.root_pattern('Pipfile', 'pyproject.toml', 'setup.py', 'requirements.txt')(fname)
-        or util.path.dirname(fname)
+      -- Fallback to project markers
+      root = util.root_pattern('Pipfile', 'pyproject.toml', 'setup.py', 'requirements.txt')(fname)
+      if root and root ~= home and not root:match('^' .. home .. '/?$') then
+        return root
+      end
+      -- As a last resort, use the directory of the file
+      return util.path.dirname(fname)
     end
   },
   ruff = {

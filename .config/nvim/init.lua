@@ -171,14 +171,14 @@ require('lazy').setup({
             })
           end
         },
-        --[[{
-           [  "WhoIsSethDaniel/mason-tool-installer.nvim",
-           [  opts = {
-           [    ensure_installed = { "mypy" },
-           [    auto_update = false,
-           [    run_on_start = true,
-           [  },
-           [},]]
+        {
+          "WhoIsSethDaniel/mason-tool-installer.nvim",
+          opts = {
+            ensure_installed = { "mypy" },
+            auto_update = false,
+            run_on_start = true,
+          },
+        },
         -- eye candy...status updates widget for LSP
         -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
         { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
