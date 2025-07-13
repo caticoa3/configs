@@ -17,5 +17,6 @@
     "vscode-neovim.useCtrlKeysForInsertMode": true,
     "vscode-neovim.useCtrlKeysForNormalMode": true,
     "editor.scrollBeyondLastLine": false,
-    "editor.lineNumbers": "relative"
+    "editor.lineNumbers": "relative",
+    "cursor.general.disableHttp2": true
 }
