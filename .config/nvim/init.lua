@@ -82,17 +82,17 @@ require('lazy').setup({
   {
     name = 'vscode-disabled-group',
     cond = not vim.g.vscode,
-    
-    -- simplifies the three-way merge view into a two-way view
-    'whiteinge/diffconflicts',
-    
-    -- Detect tabstop and shiftwidth automatically
-    'tpope/vim-sleuth',
-    
+
+    'sindrets/diffview.nvim',  --git diff viewer
+
+    'whiteinge/diffconflicts', -- simplifies the three-way merge view into a two-way view
+
+    'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+
     -- markdown dev
     'godlygeek/tabular',
     'plasticboy/vim-markdown',
-    
+
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     --[['airblade/vim-gitgutter',]]
     {
@@ -119,7 +119,7 @@ require('lazy').setup({
       opts = {}, -- for default options, refer to the configuration section for custom setup.
       cmd = "Trouble",
     },
-    
+
     -- Useful plugin to show you pending keybinds
     {
       'folke/which-key.nvim',
@@ -131,15 +131,17 @@ require('lazy').setup({
         }
       }
     },
-    
+
     -- yanking with history
     'vim-scripts/YankRing.vim',
-    
+
     'glacambre/firenvim',
     --[['github/copilot.vim',]]
     'easymotion/vim-easymotion',
     'christoomey/vim-tmux-navigator',
-    
+
+    'esamattis/slimux', --copy paste across tmux panes
+
     -- File explorer
     {
       "nvim-neo-tree/neo-tree.nvim",
@@ -158,7 +160,7 @@ require('lazy').setup({
       dependencies = {
         -- Automatically install LSPs to stdpath for neovim
         -- manages LSP servers, DAP servers, linters, and formatters
-        {'mason-org/mason.nvim', 
+        {'mason-org/mason.nvim',
           config = function()
             require("mason").setup()
           end
@@ -203,7 +205,7 @@ require('lazy').setup({
         -- Initialize cmp with empty setup - detailed configuration is in lua/custom/completion.lua
         local cmp = require('cmp')
         cmp.setup {}  -- Empty setup, will be configured in completion.lua
-        
+
         -- Setup cmdline completion (this specific setup is here to keep all cmp initialization together)
         cmp.setup.cmdline(':', {
           mapping = cmp.mapping.preset.cmdline(),
@@ -225,7 +227,7 @@ require('lazy').setup({
     },
     "ibhagwan/fzf-lua",
     "nvim-tree/nvim-web-devicons",
-    
+
     {
       -- Markdown rendering support
       'MeanderingProgrammer/render-markdown.nvim',
@@ -340,6 +342,20 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+-- [[ Auto-open Trouble diagnostics on file save ]]
+if not vim.g.vscode then
+  vim.api.nvim_create_autocmd("BufWritePost", {
+    callback = function()
+      -- Only open Trouble if there are diagnostics
+      local diagnostics = vim.diagnostic.get(0)
+      if #diagnostics > 0 then
+        require("trouble").open("diagnostics")
+      end
+    end,
+    group = vim.api.nvim_create_augroup("TroubleOnSave", { clear = true }),
+  })
+end
 
 require('custom.keymaps')
 if vim.g.vscode then

@@ -109,11 +109,11 @@ else
     keymap('n', '<Leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
     -- Plugin Dependent
-    -- slimux
-    --[[keymap('', "<Leader>s", ":SlimuxREPLSendLine<CR>", opts)
-       [keymap({'v', 'x'}, "<Leader>s", "SlimuxREPLSendSelection<CR>", opts)
-       [keymap('', "<Leader>a", ":SlimuxShellLast<CR>", opts)
-       [keymap('', "<Leader>k", ":SlimuxSendKeysLast<CR>", opts)]]
+
+    keymap('', "<Leader>s", ":SlimuxREPLSendLine<CR>", opts)
+    keymap({'v', 'x'}, "<Leader>s", ":SlimuxREPLSendSelection<CR>", opts)
+    keymap('', "<Leader>a", ":SlimuxShellLast<CR>", opts)
+    keymap('', "<Leader>k", ":SlimuxSendKeysLast<CR>", opts)
 
     --NeoTree
     keymap('n', "<Leader>N", ":Neotree<CR>", opts)
