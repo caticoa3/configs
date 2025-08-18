@@ -277,6 +277,20 @@ require('lazy').setup({
         --[[ IBshow_trailing_blankline_indent = false, ]]
       },
     },
+
+    -- Gives suggestions on alternate Vim usage
+    {
+      "m4xshen/hardtime.nvim",
+      lazy = false,
+      dependencies = { "MunifTanjim/nui.nvim" },
+      opts = {},
+    },
+
+    {
+      "coder/claudecode.nvim",
+      dependencies = { "folke/snacks.nvim" },
+      config = true,
+    }
   },
 
   -- find things
@@ -344,18 +358,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- [[ Auto-open Trouble diagnostics on file save ]]
-if not vim.g.vscode then
-  vim.api.nvim_create_autocmd("BufWritePost", {
-    callback = function()
-      -- Only open Trouble if there are diagnostics
-      local diagnostics = vim.diagnostic.get(0)
-      if #diagnostics > 0 then
-        require("trouble").open("diagnostics")
-      end
-    end,
-    group = vim.api.nvim_create_augroup("TroubleOnSave", { clear = true }),
-  })
-end
+--[[if not vim.g.vscode then
+   [  vim.api.nvim_create_autocmd("BufWritePost", {
+   [    callback = function()
+   [      -- Only open Trouble if there are diagnostics
+   [      local diagnostics = vim.diagnostic.get(0)
+   [      if #diagnostics > 0 then
+   [        require("trouble").open("diagnostics")
+   [      end
+   [    end,
+   [    group = vim.api.nvim_create_augroup("TroubleOnSave", { clear = true }),
+   [  })
+   [end]]
 
 require('custom.keymaps')
 if vim.g.vscode then

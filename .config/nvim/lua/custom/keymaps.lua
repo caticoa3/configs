@@ -155,6 +155,17 @@ else
     --[[keymap('n',  "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)" })]]
     keymap('n', "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)" })
 
+    -- Claude Code keymaps
+    keymap("n", "<Leader><Leader>ac", ":ClaudeCode<CR>", { desc = "Toggle Claude" })
+    keymap("n", "<Leader><Leader>af", ":ClaudeCodeFocus<CR>", { desc = "Focus Claude" })
+    keymap("n", "<Leader><Leader>ar", ":ClaudeCode --resume<CR>", { desc = "Resume Claude" })
+    keymap("n", "<Leader><Leader>aC", ":ClaudeCode --continue<CR>", { desc = "Continue Claude" })
+    keymap("n", "<Leader><Leader>am", ":ClaudeCodeSelectModel<CR>", { desc = "Select Claude model" })
+    keymap("n", "<Leader><Leader>ab", ":ClaudeCodeAdd %<CR>", { desc = "Add current buffer" })
+    keymap("v", "<Leader><Leader>as", ":ClaudeCodeSend<CR>", { desc = "Send to Claude" })
+    keymap("n", "<Leader><Leader>aa", ":ClaudeCodeDiffAccept<CR>", { desc = "Accept diff" })
+    keymap("n", "<Leader><Leader>ad", ":ClaudeCodeDiffDeny<CR>", { desc = "Deny diff" })
+
     -- [[ Basic Keymaps ]]
     --keymap({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
     -- Remap for dealing with word wrap
