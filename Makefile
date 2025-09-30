@@ -2,7 +2,7 @@ dotfile_vc:
 	# do this after installing ohmyzsh
 	echo ".myconfig" >> .gitignore
 	mkdir .myconfig
-	jupyter_themegit clone --bare https://github.com/caticoa3/configs.git $HOME/.myconfig/
+	git clone --bare https://github.com/caticoa3/configs.git $HOME/.myconfig/
 	alias config='/usr/bin/git --git-dir=$HOME/.myconfig/ --work-tree=$HOME'
 	config checkout
 	config config --local status.showUntrackedFiles no
