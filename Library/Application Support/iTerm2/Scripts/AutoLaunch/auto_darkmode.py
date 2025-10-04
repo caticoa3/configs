@@ -25,9 +25,9 @@ async def set_profile(connection):
     subprocess.run("git config --global delta.syntax-theme GitHub".split())
 
     if is_dark_mode():
-        # themes during daylight
-        profile = "Groovy Boxy"
-        # theme for comparing git diffs  after sunset
+        # themes during dark mode - using Default until corruption with "Groovy Boxy" is fixed
+        profile = "Default"  # safe fallback profile
+        # theme for comparing git diffs after sunset
         subprocess.run("git config --global delta.syntax-theme gruvbox-dark".split())
 
     print(profile)
