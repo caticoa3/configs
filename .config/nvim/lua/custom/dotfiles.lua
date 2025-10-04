@@ -17,6 +17,29 @@ end
 
 -- Set up custom Fugitive-like commands for the dotfiles repository
 function M.setup()
+  -- ConfigLazygit - Open lazygit for dotfiles in a floating terminal
+  vim.api.nvim_create_user_command('ConfigLazygit', function()
+    local cmd = 'lazygit --git-dir=' .. dotfiles_dir .. ' --work-tree=' .. dotfiles_work_tree
+    vim.cmd('terminal ' .. cmd)
+    vim.cmd('startinsert')
+  end, {})
+
+  -- ConfigDiffview - Open diffview for dotfiles
+  vim.api.nvim_create_user_command('ConfigDiffview', function()
+    -- Set environment variables for git
+    vim.env.GIT_DIR = dotfiles_dir
+    vim.env.GIT_WORK_TREE = dotfiles_work_tree
+
+    -- Open diffview for working directory changes
+    vim.cmd('DiffviewOpen')
+
+    -- Clean up environment variables after a short delay
+    vim.defer_fn(function()
+      vim.env.GIT_DIR = nil
+      vim.env.GIT_WORK_TREE = nil
+    end, 500)
+  end, {})
+
   -- ConfigStatus - similar to Gstatus
   vim.api.nvim_create_user_command('ConfigStatus', function()
     -- Create a temp file with git status output
@@ -26,7 +49,7 @@ function M.setup()
     if file then
       file:write(status_output)
       file:close()
-      
+
       -- Open in a new buffer
       vim.cmd('split ' .. temp_file)
       vim.bo.buftype = 'nofile'
