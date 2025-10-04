@@ -54,12 +54,6 @@ require('lazy').setup({
     {'preservim/nerdcommenter', event = 'VimEnter'},
 
     -- Motion and editing plugins
-    {
-      'ggandor/leap.nvim',
-      config = function()
-        require('leap').add_default_mappings()
-      end
-    },
 
     {
       'echasnovski/mini.pairs',
@@ -133,11 +127,18 @@ require('lazy').setup({
     },
 
     -- yanking with history
-    'vim-scripts/YankRing.vim',
+    {
+      'gbprod/yanky.nvim',
+      opts = {
+        highlight = {
+          on_put = false, -- disable to avoid conflict with our existing highlight
+          on_yank = false, -- disable to avoid conflict with our existing highlight  
+        },
+      },
+    },
 
     'glacambre/firenvim',
     --[['github/copilot.vim',]]
-    'easymotion/vim-easymotion',
     'christoomey/vim-tmux-navigator',
 
     'esamattis/slimux', --copy paste across tmux panes
@@ -182,8 +183,11 @@ require('lazy').setup({
           },
         },
         -- eye candy...status updates widget for LSP
-        -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-        { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+        { 'j-hui/fidget.nvim',
+          config = function()
+            require('fidget').setup({})
+          end,
+        },
 
         -- lua LSP for configs and plugin...api func, autocompletions etc
         'folke/neodev.nvim',

@@ -80,7 +80,22 @@ else
     keymap("n", "<S-l>", ":bnext<CR>", opts)
     keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
+    -- Jump list navigation (using bracket prefix to avoid j delay)
+    keymap("n", "]j", "<C-i>", { desc = "Jump forward" })
+    keymap("n", "[j", "<C-o>", { desc = "Jump back" })
+
+    -- Screen movement (using g prefix to avoid pandoc conflicts)
+    keymap("n", "gh", "H", { desc = "Move to top of screen" })
+    keymap("n", "gm", "M", { desc = "Move to middle of screen" })
+    keymap("n", "gl", "L", { desc = "Move to bottom of screen" })
+
     -- Visual and Visual Block --
+    -- Map case changing to Leader keys to prevent accidental usage
+    keymap({"v", "x"}, "u", "<Nop>", opts) -- disable accidental lowercase
+    keymap({"v", "x"}, "U", "<Nop>", opts) -- disable accidental uppercase
+    keymap({"v", "x"}, "<Leader>u", "u", opts) -- intentional lowercase via Leader+u
+    keymap({"v", "x"}, "<Leader>U", "U", opts) -- intentional uppercase via Leader+U
+    
     -- Move text up and down
     keymap("v", "<A-k>", ":m .-2<CR>==", opts) -- move text up
     keymap("v", "<A-j>", ":m .+1<CR>==", opts) -- move text down
@@ -118,9 +133,8 @@ else
     --NeoTree
     keymap('n', "<Leader>N", ":Neotree<CR>", opts)
 
-    --yankring
-    keymap('', "<Leader>yr", ":YRShow <CR>", opts)
-    vim.g.yankring_replace_n_pkey = "<Leader>yp"
+    --yanky
+    keymap('n', "<Leader>yr", "<cmd>Telescope yank_history<cr>", opts)
 
     --Gitgutter
     keymap("n", "<F3>", ":GitGutterBufferToggle<CR>", opts)
