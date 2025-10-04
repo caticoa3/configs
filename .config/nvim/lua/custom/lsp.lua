@@ -48,14 +48,14 @@ end
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 --
-local lspconfig = require('lspconfig') -- for debuging finding correct .git in project root 
-local util = require('lspconfig.util') -- for debuging finding correct .git in project root 
 
 local servers = {
   lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
+    settings = {
+      Lua = {
+        workspace = { checkThirdParty = false },
+        telemetry = { enable = false },
+      },
     },
   },
   -- Pyright is kept here to provide LSP features such as go-to-definition, hover, signature help, and references.
@@ -75,20 +75,9 @@ local servers = {
       },
       disableOrganizeImports = true, -- Ruff LSP will handle import organization
     },
-    root_dir = function(fname)-- debugs out of memory error by finding correct .git in project root 
-      local root = util.root_pattern('.git')(fname)
-      local home = os.getenv('HOME')
-      if root and root ~= home and not root:match('^' .. home .. '/?$') then
-        return root
-      end
-      -- Fallback to project markers
-      root = util.root_pattern('Pipfile', 'pyproject.toml', 'setup.py', 'requirements.txt')(fname)
-      if root and root ~= home and not root:match('^' .. home .. '/?$') then
-        return root
-      end
-      -- As a last resort, use the directory of the file
-      return util.path.dirname(fname)
-    end
+    -- Use root_markers instead of root_dir function for new API
+    -- Priority order: .git first, then other project markers
+    root_markers = { '.git', 'Pipfile', 'pyproject.toml', 'setup.py', 'requirements.txt' },
   },
   ruff = {
     init_options = {
@@ -119,18 +108,22 @@ local mason_lspconfig = require 'mason-lspconfig'
 -- (installation is now handled in init.lua for clarity)
 mason_lspconfig.setup {}
 
--- Manual setup for each server
+-- Manual setup for each server using new vim.lsp.config API
 for server_name, server_opts in pairs(servers) do
-  local opts = {
+  -- Build the configuration
+  local config = {
     capabilities = capabilities,
     on_attach = on_attach,
-    filetypes = server_opts.filetypes,
   }
-  -- Merge in any other top-level keys (like settings, root_dir, etc.)
+
+  -- Merge in server-specific options
   for k, v in pairs(server_opts) do
-    opts[k] = v
+    config[k] = v
   end
-  require('lspconfig')[server_name].setup(opts)
+
+  -- Register and enable the server configuration
+  vim.lsp.config(server_name, config)
+  vim.lsp.enable(server_name)
 end
 
 
