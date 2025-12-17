@@ -100,8 +100,14 @@ conda_mac:
 # Setting up jupyter lab with vim
 vim_in_jupter_lab:
 	conda install jupyterlab_vim
-	# for jlab 3+, not available for 4+ 
+	# for jlab 3+, not available for 4+
 	# pip install jupyterlab-vimrc
+
+# Modern JupyterLab setup with LSP and language servers
+jupyter_lsp_setup:
+	conda install jupyterlab-lsp
+	conda install jupyter-ruff -c conda-forge
+	npm install --save-dev pyright sql-language-server dockerfile-language-server-nodejs
 
 # jupyter themes -vim option removes jupyter notebook customizations  
 # workaround is to save custom.js to a temp file then restore
@@ -129,5 +135,3 @@ clean_git_repo:
 	git branch --merged | egrep -v "(^\*|master|main|dev)" | xargs git branch -d
 	# delete local versions of remote branches...remote/origin/branchname
 	git fetch --prune
-
-
