@@ -184,9 +184,11 @@ require('lazy').setup({
         },
         -- eye candy...status updates widget for LSP
         { 'j-hui/fidget.nvim',
-          config = function()
-            require('fidget').setup({})
-          end,
+          opts = {
+            notification = {
+              override_vim_notify = true
+            },
+          }
         },
 
         -- lua LSP for configs and plugin...api func, autocompletions etc
@@ -237,6 +239,13 @@ require('lazy').setup({
       'MeanderingProgrammer/render-markdown.nvim',
       opts = {
         file_types = { "markdown" },
+        render_modes = { 'n', 'c' },
+        -- Exclude rendering in floating windows (hover, diagnostics, etc)
+        overrides = {
+          buftype = {
+            nofile = { enabled = false },
+          },
+        },
       },
       ft = { "markdown" },
     },
@@ -291,6 +300,13 @@ require('lazy').setup({
     },
 
     {
+      "folke/snacks.nvim",
+      priority = 1000,
+      lazy = false,
+      opts = {},
+    },
+
+    {
       "coder/claudecode.nvim",
       dependencies = { "folke/snacks.nvim" },
       config = true,
@@ -303,7 +319,11 @@ require('lazy').setup({
   -- markdown preview
   {'iamcco/markdown-preview.nvim',
     ft = {'markdown', 'pandoc.markdown', 'rmd'},
-    build = 'sh -c "cd app & yarn install"'
+    build = 'sh -c "cd app & yarn install"',
+    init = function()
+      -- Use GitHub-flavored markdown CSS
+      vim.g.mkdp_markdown_css = 'https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown.css'
+    end
   },
 
   -- Status line

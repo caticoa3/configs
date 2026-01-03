@@ -139,6 +139,10 @@ cmp.setup {
   window = {
     documentation = cmp.config.window.bordered(),
   },
+  performance = {
+    -- Disable snippet provider check to avoid vim.snippet errors
+    fetching_timeout = 500,
+  },
   experimental = {
     ghost_text = true,
     native_menu = false,

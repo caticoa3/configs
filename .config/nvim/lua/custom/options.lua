@@ -62,7 +62,6 @@ if not vim.g.vscode then
            visible = false, -- when true, they will just be displayed differently than normal items
            hide_dotfiles = true,
            hide_by_name = {
-             --"node_modules"
            },
            hide_by_pattern = { -- uses glob style patterns
              --"*.meta",
@@ -75,14 +74,16 @@ if not vim.g.vscode then
            },
            never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
              ".DS_Store",
-             "thumbs.db"
+             "thumbs.db",
+             ".mypy_cache"
            },
            never_show_by_pattern = { -- uses glob style patterns
              ".null-ls_*",
              "*__pycache__",
              "*.pytest_cache",
              "*.ipynb_checkpoints",
-             "*.pptx"
+             "*.pptx",
+             "*.egg-info"
            }
         }
      }
