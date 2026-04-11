@@ -140,9 +140,21 @@ else
     keymap("n", "<F3>", ":GitGutterBufferToggle<CR>", opts)
 
     -- Colorscheme switching
-    keymap('n', '<Leader>bd1', ':colorscheme onedark<CR>', opts)
-    keymap('n', '<Leader>bd', ':colorscheme solarized8<CR>', opts)
-    keymap('n', '<Leader>bl', ':set background=light<CR>', opts)
+    keymap('n', '<Leader>bd1', function()
+      vim.g.user_background = 'dark'
+      require('onedark').setup({ style = 'dark' })
+      require('onedark').load()
+    end, opts)
+    keymap('n', '<Leader>bd', function()
+      vim.g.user_background = 'dark'
+      vim.o.background = 'dark'
+      vim.cmd('colorscheme solarized8')
+    end, opts)
+    keymap('n', '<Leader>bl', function()
+      vim.g.user_background = 'light'
+      vim.o.background = 'light'
+      vim.cmd('colorscheme solarized8')
+    end, opts)
 
     -- See `:help telescope.builtin`
     keymap('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })

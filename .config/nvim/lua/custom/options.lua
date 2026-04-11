@@ -27,8 +27,28 @@ vim.api.nvim_create_autocmd({"VimEnter", "ColorScheme"}, {
 --vim.g.gitgutter_set_sign_backgrounds = 1
 
 --start up colorscheme
+vim.g.user_background = 'dark'
 vim.cmd("let g:onedark_config = {'style' : 'warmer'}")
 vim.cmd.colorscheme 'onedark'
+
+-- Guard against Neovim's built-in OSC 11 terminal background detection
+-- (vim/_defaults.lua) overriding manual colorscheme keybindings.
+-- tmux intercepts OSC 11 and always reports dark, so without this guard
+-- switching to light mode would immediately revert.
+vim.api.nvim_create_autocmd('OptionSet', {
+  pattern = 'background',
+  callback = function()
+    local desired = vim.g.user_background or 'dark'
+    if vim.v.option_new ~= desired then
+      vim.schedule(function()
+        vim.o.background = desired
+        if desired == 'light' then
+          vim.cmd('colorscheme solarized8')
+        end
+      end)
+    end
+  end,
+})
 
 --WIP
 --vim.g.airline_powerline_fonts = 1
