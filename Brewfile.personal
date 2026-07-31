@@ -1,0 +1,191 @@
+tap "databricks/tap"
+tap "dwarvesf/tap"
+tap "eqnxio/ngrok"
+tap "homebrew/bundle"
+tap "ngrok/ngrok"
+# Run your GitHub Actions locally
+brew "act"
+# Image format providing lossless and lossy compression for web images
+brew "webp"
+# New file format for still image compression
+brew "jpeg-xl"
+# Codec library for encoding and decoding AV1 video streams
+brew "aom"
+# Automatically formats Python code to conform to the PEP 8 style guide
+brew "autopep8"
+# Microsoft Azure CLI 2.0
+brew "azure-cli"
+# Core application library for C
+brew "glib"
+# Vector graphics library with cross-device output support
+brew "cairo"
+# OpenType text shaping engine
+brew "harfbuzz"
+# Development kit for the Java programming language
+brew "openjdk"
+# Remove large files or passwords from Git history like git-filter-branch
+brew "bfg"
+# Container runtimes on MacOS (and Linux) with minimal setup
+brew "colima"
+# Utility that creates projects from templates
+brew "cookiecutter"
+# Get, unpack, build, and install modules from CPAN
+brew "cpanminus"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
+# Docker CLI plugin for extended build capabilities with BuildKit
+brew "docker-buildx"
+# Isolated development environments using Docker
+brew "docker-compose"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Asynchronous event library
+brew "libevent"
+# International domain name library (IDNA2008, Punycode and TR46)
+brew "libidn2"
+# Library to load and enumerate PKCS#11 modules
+brew "p11-kit"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
+# GNU Transport Layer Security (TLS) Library
+brew "gnutls"
+# Library for JPEG-2000 image manipulation
+brew "openjpeg"
+# Image processing and image analysis library
+brew "leptonica"
+# Subtitle renderer for the ASS/SSA subtitle format
+brew "libass"
+# Light HTTP/1.1 server library
+brew "libmicrohttpd"
+# Reliable Internet Stream Transport (RIST)
+brew "librist"
+# Framework for layout and rendering of i18n text
+brew "pango"
+# Secure Reliable Transport
+brew "srt"
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# Toolkit for image loading and pixel buffer manipulation
+brew "gdk-pixbuf"
+# GitHub command-line tool
+brew "gh"
+# Interpreter for PostScript and PDF
+brew "ghostscript"
+# Distributed revision control system
+brew "git"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# Generate introspection data for GObject libraries
+brew "gobject-introspection"
+# GNU Ubiquitous Intelligent Language for Extensions
+brew "guile"
+# Improved top (interactive process viewer)
+brew "htop"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@75", link: true
+# Simple terminal UI for git commands
+brew "lazygit"
+# Library to render SVG files using Cairo
+brew "librsvg"
+# Keep your Mac's application settings in sync
+brew "mackup"
+# Utility for directing compilation
+brew "make"
+# Mac App Store command-line interface
+brew "mas"
+# Library for a binary-based efficient data interchange format
+brew "msgpack"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Optimized BLAS library
+brew "openblas"
+# Manage multiple Node.js versions
+brew "nvm"
+# Protocol buffers (Google's data interchange format)
+brew "protobuf"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
+# Open Visual Inference And Optimization toolkit for AI inference
+brew "openvino"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
+# Python dependency management tool
+brew "pipenv"
+# Show ps output as a tree
+brew "pstree"
+# Python version management
+brew "pyenv"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.10"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Powerful, clean, object-oriented scripting language
+brew "ruby"
+# SOund eXchange: universal sound sample translator
+brew "sox"
+# Open source continuous file synchronization application
+brew "syncthing"
+# Code-search similar to ack
+brew "the_silver_searcher"
+# Programmatically correct mistyped console commands
+brew "thefuck"
+# Terminal multiplexer
+brew "tmux"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# ODBC 3 connectivity for UNIX
+brew "unixodbc"
+# Tool for creating isolated virtual python environments
+brew "virtualenv"
+# Sends magic packets to wake up network-devices
+brew "wakeonlan"
+# Internet file retriever
+brew "wget"
+# Network analyzer and capture tool - without graphical user interface
+brew "wireshark"
+# JavaScript package manager
+brew "yarn"
+# Command-line interface for the Databricks platform
+brew "databricks/tap/databricks"
+brew "eqnxio/ngrok/ngrok"
+# Automatic tiling window manager similar to xmonad
+cask "amethyst"
+# Write, edit, and chat about your code with AI
+cask "cursor"
+# Universal database tool and SQL client
+cask "dbeaver-community"
+# Desktop automation application
+cask "hammerspoon"
+# Full TeX Live distribution with GUI applications
+cask "mactex"
+# Tool to control external monitor brightness & volume
+cask "monitorcontrol"
+# Command-line client for connecting to Snowflake
+cask "snowflake-snowsql"
+# cask "vimmotion"  # Not available in Homebrew
+mas "BetterSnapTool", id: 417375580
+mas "GarageBand", id: 682658836
+mas "Goodnotes", id: 1444383602
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Microsoft To Do", id: 1274495053
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Wallpaperer", id: 1102248738
+vscode "anysphere.cursorpyright"
+vscode "asvetliakov.vscode-neovim"
+vscode "github.vscode-github-actions"
+vscode "mermaidchart.vscode-mermaid-chart"
+vscode "ms-python.debugpy"
+vscode "ms-python.python"
