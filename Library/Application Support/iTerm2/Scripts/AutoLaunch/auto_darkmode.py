@@ -46,6 +46,7 @@ async def set_profile(connection):
 
 
 async def main(connection):
+    await asyncio.sleep(30)  # let sessions initialize before setting profile
     await set_profile(connection)
     while True:
         await asyncio.sleep(600)
